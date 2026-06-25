@@ -21,7 +21,7 @@ get_fishtracks <- function(station_id){
   # get station table for timezone
   fishtracks_con <- dbConnect(odbc::odbc(), "Fish_Tracks_Real_Time")
   
-  tbl_station <- tbl(fishtracks_con, "station") %>% collect()
+  tbl_station <- tbl(fishtracks_con, Id(schema = 'dbo', table = "station")) %>% collect()
   
   dbDisconnect(fishtracks_con)
   

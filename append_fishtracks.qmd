@@ -4,7 +4,9 @@ author: "Michael Spear"
 format:
   html:
     code-fold: true
-    code-summary: "Show code"
+    code-summary: Show code
+resource_files:
+- code/fn_get_fishtracks.R
 ---
 
 This Quarto appends new records from FishTracks USGS website, which displays 7 days of Real-Time acoustic tag detections at 5-minute intervals, to the IRBS database that accumulates these data with a long-term vision. Data may eventually be supplemented by a ~6-month schedule of data physically downloaded from each receiver with longer-term and/or more detailed data.
@@ -26,6 +28,7 @@ library(here)
 source(here('code', 'fn_get_fishtracks.R'))
 
 ```
+
 
 ```{r}
 #| warning: TRUE
@@ -53,12 +56,33 @@ tryCatch({
   
   log_msg("Job started")
   
-  # Connect to db
-  con <- dbConnect(odbc::odbc(), "Fish_Tracks_Real_Time")
+  # Connect to db, with intuitive error handling
+con <- tryCatch({
+
+  dbConnect(odbc::odbc(), "Fish_Tracks_Real_Time")
+
+}, error = function(e) {
+
+  log_msg("Database connection failed", "ERROR")
+
+  log_msg(paste("ODBC error:", e$message), "ERROR")
+
+  stop(
+    paste(
+      "Failed to connect to DSN 'Fish_Tracks_Real_Time'.",
+      "Possible causes:",
+      "- DSN not defined on server",
+      "- Network / VPN issue",
+      "- SQL Server unavailable",
+      "- Credentials issue",
+      "\nOriginal error:", e$message
+    )
+  )
+})
   log_msg("Connected to database")
   
   # Get stations
-  tbl_station <- tbl(con, "station") %>% collect()
+  tbl_station <- tbl(con, Id(schema = 'dbo', table = "station")) %>% collect()
   log_msg(sprintf("Loaded %d stations", nrow(tbl_station)))
   
   
@@ -86,22 +110,26 @@ tryCatch({
   
   log_msg(sprintf("Retrieved %d new records", nrow(compiled)))
   
+  # Clear the staging table
+  dbExecute(con, "DELETE FROM dbo.staging_event")
   # Write new data to staging table
-  dbWriteTable(con,
-               name = "staging_event",
-               value = compiled,
-               overwrite = TRUE)
+dbWriteTable(
+  con,
+  Id(schema="dbo", table="staging_event"),
+  value = compiled,
+  append = TRUE
+)
   
   
   log_msg("Wrote staging table")
   
   # Append only new rows to events table
   append_sql <- "
-INSERT INTO event
+INSERT INTO dbo.event
 SELECT *
-  FROM staging_event s
+  FROM dbo.staging_event s
 WHERE NOT EXISTS (SELECT 1
-  FROM event t
+  FROM dbo.event t
   WHERE t.DetectionID = s.DetectionID)
 
 "
@@ -126,7 +154,7 @@ WHERE NOT EXISTS (SELECT 1
   
 dbExecute(
   con,
-  "INSERT INTO insert_log (run_time, rows_inserted, rows_skipped) VALUES (?, ?, ?)",
+  "INSERT INTO dbo.insert_log (run_time, rows_inserted, rows_skipped) VALUES (?, ?, ?)",
   params = list(timestamp, rows_inserted, rows_skipped)
 )
 
@@ -151,7 +179,7 @@ error = function(e){
 
       dbExecute(
         con,
-        "INSERT INTO insert_log (run_time, rows_inserted, rows_skipped) VALUES (?, ?, ?)",
+        "INSERT INTO dbo.insert_log (run_time, rows_inserted, rows_skipped) VALUES (?, ?, ?)",
         params = list(Sys.time(), rows_inserted, rows_skipped)
       )
 
@@ -171,7 +199,7 @@ error = function(e){
 
 ## Status
 
-`r if (rows_inserted > 0) "✅ Data inserted" else "⚠️ No new data"`
+`r if (is.na(rows_inserted))"❌ Job failed" else if (rows_inserted > 0) "✅ Data inserted" else "⚠️ No new data"`
 
 ## Run Summary
 
@@ -186,7 +214,7 @@ error = function(e){
 ## Rows inserted by run
 
 ```{r}
-log_data <- tbl(con, "insert_log") %>%
+log_data <- tbl(con, Id(schema = "dbo", table = "insert_log")) %>%
   collect()
 
 library(ggplot2)

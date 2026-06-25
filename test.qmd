@@ -1,0 +1,12 @@
+---
+title: "test fishtracks"
+format: html
+editor: visual
+---
+
+```{r}
+library(tidyverse)
+library(DBI)
+con <-   dbConnect(odbc::odbc(), "Fish_Tracks_Real_Time")
+DBI::dbListTables(con)
+```
