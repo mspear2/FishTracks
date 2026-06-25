@@ -1,0 +1,206 @@
+---
+title: "Append to Fish_Tracks_Real_Time db"
+author: "Michael Spear"
+format:
+  html:
+    code-fold: true
+    code-summary: "Show code"
+---
+
+This Quarto appends new records from FishTracks USGS website, which displays 7 days of Real-Time acoustic tag detections at 5-minute intervals, to the IRBS database that accumulates these data with a long-term vision. Data may eventually be supplemented by a ~6-month schedule of data physically downloaded from each receiver with longer-term and/or more detailed data.
+
+The IRBS FishTracks Real-Time database is referenced here and on Posit Connect as a DSN, but lives on the PRI Datastorm Microsoft SQL Server.
+
+## Run log
+
+```{r}
+#| warning: FALSE
+#| message: FALSE
+#| error: TRUE
+
+library(tidyverse)
+library(DBI)
+library(odbc)
+library(here)
+# source function that reads data from USGS website
+source(here('code', 'fn_get_fishtracks.R'))
+
+```
+
+```{r}
+#| warning: TRUE
+#| message: TRUE
+#| error: TRUE
+options(show.error.messages = TRUE)
+
+# simple logging helper
+log_msg <- function(msg, level = "INFO") {
+  cat(sprintf("[%s] [%s] %s\n", Sys.time(), level, msg))
+}
+
+
+# initialize variables in case of error
+rows_inserted <- NA_integer_
+rows_skipped  <- NA_integer_
+rows_retrieved <- NA_integer_
+stations_retrieved <- NA_integer_
+stations_lacking_data <- NA
+compiled <- NULL
+tbl_station <- NULL
+
+
+tryCatch({
+  
+  log_msg("Job started")
+  
+  # Connect to db
+  con <- dbConnect(odbc::odbc(), "Fish_Tracks_Real_Time")
+  log_msg("Connected to database")
+  
+  # Get stations
+  tbl_station <- tbl(con, "station") %>% collect()
+  log_msg(sprintf("Loaded %d stations", nrow(tbl_station)))
+  
+  
+  # Fetch data
+  DateRetrieved = now()
+  
+  
+  log_msg("Fetching FishTracks data")
+  
+  compiled <- map_df(tbl_station$station_id, function(id) {
+  tryCatch(
+    get_fishtracks(id),
+    error = function(e) {
+      log_msg(paste("Station failed:", id, "|", e$message), "WARN")
+      return(NULL)
+    }
+  )
+}) %>%
+    mutate(
+      DateRetrieved = DateRetrieved,
+      DetectionID = paste(station_id, Record, sep = '_')
+    ) %>%
+    relocate(DetectionID)
+  
+  
+  log_msg(sprintf("Retrieved %d new records", nrow(compiled)))
+  
+  # Write new data to staging table
+  dbWriteTable(con,
+               name = "staging_event",
+               value = compiled,
+               overwrite = TRUE)
+  
+  
+  log_msg("Wrote staging table")
+  
+  # Append only new rows to events table
+  append_sql <- "
+INSERT INTO event
+SELECT *
+  FROM staging_event s
+WHERE NOT EXISTS (SELECT 1
+  FROM event t
+  WHERE t.DetectionID = s.DetectionID)
+
+"
+  
+  rows_retrieved <- nrow(compiled)
+  rows_inserted <- as.integer(dbExecute(con, append_sql))
+  rows_skipped <- rows_retrieved - rows_inserted
+  stations_retrieved <- length(unique(compiled$station_id))
+  stations_lacking_data <- setdiff(tbl_station$station_id, unique(compiled$station_id))
+  
+  timestamp <- Sys.time()
+  
+  log_msg(sprintf("Rows retrieved: %d", rows_retrieved))
+  log_msg(sprintf("Rows inserted: %d", rows_inserted))
+  log_msg(sprintf("Rows skipped: %d", rows_skipped))
+  log_msg(sprintf("Stations retrieved: %d/%d", stations_retrieved, length(tbl_station$station_id)))  
+  log_msg(paste("Station IDs not retrieved: ", stations_lacking_data))
+
+
+  
+  # Log run to SQL log table
+  
+dbExecute(
+  con,
+  "INSERT INTO insert_log (run_time, rows_inserted, rows_skipped) VALUES (?, ?, ?)",
+  params = list(timestamp, rows_inserted, rows_skipped)
+)
+
+  
+  
+  log_msg("Logged run to database")
+  log_msg("Job completed successfully", "SUCCESS")
+},
+
+# Handle errors with useful logging
+error = function(e){
+
+  log_msg(paste("ERROR:", e$message), "ERROR")
+
+  # Safe defaults so logging doesn't fail
+  rows_inserted <<- if (!exists("rows_inserted")) NA_integer_ else rows_inserted
+  rows_skipped  <<- if (!exists("rows_skipped"))  NA_integer_ else rows_skipped
+
+  # Try logging error to SQL
+  try({
+    if (exists("con") && dbIsValid(con)) {
+
+      dbExecute(
+        con,
+        "INSERT INTO insert_log (run_time, rows_inserted, rows_skipped) VALUES (?, ?, ?)",
+        params = list(Sys.time(), rows_inserted, rows_skipped)
+      )
+
+      dbDisconnect(con)
+    }
+  }, silent = TRUE)
+
+  # IMPORTANT: print full condition so Quarto shows it
+  message("Full error:")
+  print(e)
+
+  # Re-throw so Connect marks failure
+  stop(e)
+}
+)
+```
+
+## Status
+
+`r if (rows_inserted > 0) "✅ Data inserted" else "⚠️ No new data"`
+
+## Run Summary
+
+-   **Run time:** `r format(Sys.time(), "%Y-%m-%d %H:%M:%S")`
+-   **Stations queried:** `r nrow(tbl_station)`
+-   **Stations Retrieved:** `r stations_retrieved`
+-   **Station IDs lacking data:** `r stations_lacking_data`
+-   **Rows retrieved:** `r nrow(compiled)`
+-   **Rows inserted:** `r rows_inserted`
+-   **Rows skipped (duplicates):** `r nrow(compiled) - rows_inserted`
+
+## Rows inserted by run
+
+```{r}
+log_data <- tbl(con, "insert_log") %>%
+  collect()
+
+library(ggplot2)
+
+ggplot(log_data, aes(run_time, rows_inserted)) +
+  geom_line() +
+  geom_point() +
+  labs(
+    title = "Rows Inserted per Run",
+    x = "Run Time",
+    y = "Rows Inserted"
+  )
+
+# Disconnect
+dbDisconnect(con)
+
+```
