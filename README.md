@@ -1,0 +1,1 @@
+This project appends Real-Time acoustic fish tag data (Fish Tracks) to an IRBS-owned SQL Server database. It fetches data from the [USGS FishTracks website](https://cm.water.usgs.gov/data/Fish_Tracks_Real_Time/), which houses 7 days of data for each sensor, and aggrgates them over time into a running database.
