@@ -69,8 +69,8 @@ get_fishtracks <- function(station_id){
       I(txt), 
       col_names = FALSE, show_col_types = FALSE, 
       col_types = cols(.default = col_character()), 
-      na = c("", "NA", "N/A", "NULL", "--", " ")
-    )
+      na = c("", "NaN", "NA", "N/A", "NULL", "--", " ", NaN)
+    ) 
   }
   
   
@@ -112,8 +112,12 @@ get_fishtracks <- function(station_id){
     mutate(
       across(contains('TimeStamp'), as.POSIXct),
       across(all_of(c('Record', 'VRDetectCount', 'VRTagCount', 'VRUniqTagCount')), as.integer),
-      across(all_of(c('VRLineVolt', 'VRBatVolt', 'VRTemp', 'VRDetectMem')), as.numeric)
+      across(all_of(c('VRLineVolt', 'VRBatVolt', 'VRTemp', 'VRDetectMem')), as.numeric) 
+    ) %>%
+    mutate(
+      across(where(is.numeric), ~ replace(., is.nan(.), NA))
     )
+  
   
   }
   

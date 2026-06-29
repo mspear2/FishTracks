@@ -200,7 +200,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log_msg</span>(<span class="fu">sprintf</span>(<span class="st">"Retrieved %d new records"</span>, <span class="fu">nrow</span>(compiled)))</span>
 <span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Clear the staging table</span></span>
-<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dbExecute</span>(con, <span class="st">"TRUNCATE TABLE dbo.staging_event"</span>)</span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dbExecute</span>(con, <span class="st">"DELETE FROM dbo.staging_event"</span>)</span>
 <span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Write new data to staging table</span></span>
 <span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(</span>
 <span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>  con,</span>
@@ -286,10 +286,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[2026-06-25 15:51:51.856911] [INFO] Job started
-[2026-06-25 15:51:52.179091] [INFO] Connected to database
-[2026-06-25 15:51:52.44496] [INFO] Loaded 13 stations
-[2026-06-25 15:51:52.445959] [INFO] Fetching FishTracks data</code></pre>
+<pre><code>[2026-06-29 11:42:55.652096] [INFO] Job started
+[2026-06-29 11:42:56.802162] [INFO] Connected to database
+[2026-06-29 11:42:57.238449] [INFO] Loaded 13 stations
+[2026-06-29 11:42:57.240323] [INFO] Fetching FishTracks data</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Station ID 05536890: 2,016 rows successfully retrieved.</code></pre>
@@ -322,6 +322,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>Station ID 412341088161001: 2,016 rows successfully retrieved.</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
+<pre><code>Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `across(...)`.
+Caused by warning:
+! NAs introduced by coercion to integer range</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
 <pre><code>Station ID 412618083021701: 2,016 rows successfully retrieved.</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
@@ -335,15 +341,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>Station ID 412957090371001: 0 rows successfully retrieved.</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[2026-06-25 15:52:35.35008] [INFO] Retrieved 24192 new records
-[2026-06-25 15:52:37.885248] [INFO] Wrote staging table
-[2026-06-25 15:52:38.1894] [INFO] Rows retrieved: 24192
-[2026-06-25 15:52:38.189944] [INFO] Rows inserted: 24192
-[2026-06-25 15:52:38.190258] [INFO] Rows skipped: 0
-[2026-06-25 15:52:38.190537] [INFO] Stations retrieved: 12/13
-[2026-06-25 15:52:38.190814] [INFO] Station IDs not retrieved:  412957090371001
-[2026-06-25 15:52:38.283421] [INFO] Logged run to database
-[2026-06-25 15:52:38.283872] [SUCCESS] Job completed successfully</code></pre>
+<pre><code>[2026-06-29 11:43:42.403534] [INFO] Retrieved 24192 new records
+[2026-06-29 11:43:44.897169] [INFO] Wrote staging table
+[2026-06-29 11:43:45.042438] [INFO] Rows retrieved: 24192
+[2026-06-29 11:43:45.052168] [INFO] Rows inserted: 3308
+[2026-06-29 11:43:45.052584] [INFO] Rows skipped: 20884
+[2026-06-29 11:43:45.053146] [INFO] Stations retrieved: 12/13
+[2026-06-29 11:43:45.053511] [INFO] Station IDs not retrieved:  412957090371001
+[2026-06-29 11:43:45.139097] [INFO] Logged run to database
+[2026-06-29 11:43:45.139414] [SUCCESS] Job completed successfully</code></pre>
 </div>
 </div>
 </section>
@@ -354,13 +360,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="run-summary" class="level2">
 <h2 class="anchored" data-anchor-id="run-summary">Run Summary</h2>
 <ul>
-<li><strong>Run time:</strong> 2026-06-25 15:52:38</li>
+<li><strong>Run time:</strong> 2026-06-29 11:43:45</li>
 <li><strong>Stations queried:</strong> 13</li>
 <li><strong>Stations Retrieved:</strong> 12</li>
 <li><strong>Station IDs lacking data:</strong> 412957090371001</li>
 <li><strong>Rows retrieved:</strong> 24192</li>
-<li><strong>Rows inserted:</strong> 24192</li>
-<li><strong>Rows skipped (duplicates):</strong> 0</li>
+<li><strong>Rows inserted:</strong> 3308</li>
+<li><strong>Rows skipped (duplicates):</strong> 20884</li>
 </ul>
 </section>
 <section id="rows-inserted-by-run" class="level2">
@@ -368,19 +374,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Show code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>log_data <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con, <span class="fu">Id</span>(<span class="at">schema =</span> <span class="st">"dbo"</span>, <span class="at">table =</span> <span class="st">"insert_log"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>()</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(log_data, <span class="fu">aes</span>(run_time, rows_inserted)) <span class="sc">+</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Rows Inserted per Run"</span>,</span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Run Time"</span>,</span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Rows Inserted"</span></span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>log_data <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con, <span class="fu">Id</span>(<span class="at">schema =</span> <span class="st">"dbo"</span>, <span class="at">table =</span> <span class="st">"insert_log"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>()</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(log_data, <span class="fu">aes</span>(run_time, rows_inserted)) <span class="sc">+</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Rows Inserted per Run"</span>,</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Run Time"</span>,</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Rows Inserted"</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -391,8 +397,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <details class="code-fold">
 <summary>Show code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Disconnect</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Disconnect</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
