@@ -159,3 +159,12 @@ aggregate_detections <- function(df, unit = "30 minutes") {
     )
   
 }
+
+# Assemble TagID in tag tabl ematching format of TagID in event table ####
+assemble_TagID <- function(tag){
+  tag %>%
+    mutate(TagID = paste(tag_code_space, tag_id_code, sep = '-'))
+}
+
+
+
