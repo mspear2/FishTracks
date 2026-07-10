@@ -3,6 +3,10 @@ library(tidyverse)
 library(DBI)
 library(odbc)
 library(lubridate)
+library(here)
+
+source(here('code', 'helper_functions.R'))
+
 # schema setting helper
 dbo <- function(name) {
   Id(schema = "dbo", table = name)
@@ -23,21 +27,6 @@ tbl_station <- tbl(con, dbo('station')) %>%
   mutate(plot_order = factor(plot_order, levels = sort(plot_order)))
 
 
-# helper fns
-
-aggregate_detections <- function(df, unit = "30 minutes") {
-  df %>%
-    mutate(
-      TimeStamp_binned = floor_date(TimeStamp, unit = unit)
-    ) %>%
-    group_by(animal_id, TagID, station_id, common_name_e, TimeStamp_binned) %>%
-    summarise(
-      detections = n(),
-      presence = 1L,
-      .groups = "drop"
-    )
-  
-}
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
@@ -94,12 +83,7 @@ server <- function(input, output) {
     tbl(con, dbo('event')) %>%
       filter(TimeStamp >= time_threshold_nonr ) %>%
       collect() %>%
-      pivot_longer(
-        cols = matches("^TagID(_\\d+)?$|^TagIDTimeStamp_\\d+$"),
-        names_to = c(".value", "idx"),
-        names_pattern = "(TagID|TagIDTimeStamp)_?(\\d+)"
-      ) %>%
-      filter(!is.na(TagID) & TagID != "")
+      event_pivot_longer()
   })
   
   

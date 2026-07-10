@@ -3,7 +3,7 @@ library(DBI)
 library(odbc)
 library(here)
 
-source(here('code', 'fn_get_fishtracks.R'))
+source(here('code', 'helper_functions.R'))
 
 con <- dbConnect(odbc::odbc(), "Fish_Tracks_Real_Time")
 tbl_station <- tbl(con, Id(schema = 'dbo', table = "station")) %>% collect()

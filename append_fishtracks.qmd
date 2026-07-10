@@ -25,7 +25,7 @@ library(DBI)
 library(odbc)
 library(here)
 # source function that reads data from USGS website
-source(here('code', 'fn_get_fishtracks.R'))
+source(here('code', 'helper_functions.R'))
 
 ```
 
