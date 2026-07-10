@@ -1,4 +1,9 @@
 library(tidyverse)
+library(DBI)
+library(odbc)
+library(here)
+
+source(here('code', 'fn_get_fishtracks.R'))
 
 con <- dbConnect(odbc::odbc(), "Fish_Tracks_Real_Time")
 tbl_station <- tbl(con, Id(schema = 'dbo', table = "station")) %>% collect()
@@ -13,5 +18,10 @@ df %>%
   ungroup() %>%
   select(station_id, TimeStamp) %>%
   mutate(
-    time_since_timestamp = as.numeric((now() - TimeStamp)) * 60
+    TimeStamp = with_tz(TimeStamp, "America/Chicago")) %>%
+  mutate(
+    min_since_timestamp =
+      as.numeric(difftime(now(tzone = "America/Chicago"),
+                          TimeStamp,
+                          units = "mins"))
   )
