@@ -110,11 +110,48 @@ v_event_animal %>%
   left_join(tbl_event) %>%
   left_join(tbl_station)  %>%
   collect() %>%
-  ggplot(aes(x = TimeStamp, y = as.factor(station_id), color = TagID, group = TagID)) +
+  ggplot(aes(x = TimeStamp, y = as.factor(station_name), color = TagID, group = TagID)) +
   geom_point() +
   geom_line() +
-  facet_wrap(~river_name)
+  facet_wrap(~river_name, scales = 'free_y') +
+  scale_y_discrete(
+    labels = scales::label_wrap(20) 
+  )
 
+
+
+unk <- v_event_animal %>% 
+  left_join(tbl_event %>% select(DetectionID, station_id)) %>%
+  left_join(tbl_station) %>%
+  left_join(tbl_tag %>% select(animal_id, common_name_e)) %>%
+  collect() %>%
+  filter(is.na(animal_id)) %>%
+  pull(TagID) %>%
+  unique()
+
+
+
+v_event_animal %>%
+  collect() %>%
+  group_by(TagID) %>%
+  count() %>%
+  ungroup() %>%
+  filter(n <= 1)
 
 dbDisconnect(con)
 
+tags %>%
+  filter(tag_code_space == 'A69-9001', tag_id_code == '55906')
+
+
+tags %>%
+  group_by(common_name_e) %>%
+  summarise(
+    n = n(),
+    .groups = 'drop'
+  ) %>%
+  mutate(
+    pct = round(n / sum(n) * 100, 2)
+  ) %>%
+  arrange(-pct) %>%
+  clipr::write_clip()

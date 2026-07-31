@@ -7,6 +7,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/r
 # Edit at https://www.toptal.com/developers/gitignore?templates=r
 
+# make sure we dont publish transmitter metadata
+/data/Transmitter data from RAFT/
+
 ### R ###
 # History files
 .Rapp.history
