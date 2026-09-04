@@ -13,28 +13,20 @@ tbl_nat <- tbl(con, Id(schema = 'dbo', table = "non_animal_tag"))
 v_deployments <- tbl(con, "deployment_intervals")
 v_event_animal <- tbl(con, "event_animal")
 
-
-tbl_eve
-
-tbl_event
-
-
-tbl_event %>% glimpse
-
-
 aggregate_detections(tbl_event)
 
+tbl_tag %>% pull(TagID) %>% unique
+
+
 tbl_event %>%
-event_pivot_longer() %>%
+  event_pivot_longer() %>%
   left_join(
     tbl_tag %>%
       assemble_TagID()
-  )%>%
-  filter(TagID %in% nat) %>%
+  ) %>%
   collect() %>%
-  View
-
-
+  filter(!TagID %in% (tbl_tag %>% pull(TagID) %>% unique)) %>%
+  pull(TagID)
 
 
 tags_intervals <- tbl_tag %>%
@@ -49,7 +41,6 @@ tags_intervals <- tbl_tag %>%
   ungroup()
 
 
-
 joined <- tbl_event %>%
   collect() %>%
   left_join(
@@ -60,8 +51,6 @@ joined <- tbl_event %>%
       TimeStamp < deployment_end
     )
   )
-
-
 
 
 most_detected <- v_event_animal %>%
@@ -78,7 +67,6 @@ most_detected_events <- v_event_animal %>%
   left_join(tbl_event, by = 'DetectionID') %>%
   left_join(tbl_station) %>%
   collect()
-
 
 
 v_event_animal %>%
@@ -107,34 +95,42 @@ mult_det_tags <- v_event_animal %>%
     .groups = "drop"
   ) %>%
   filter(n_stations > 1) %>%
-  pull(TagID) 
+  pull(TagID)
 
 
 v_event_animal %>%
   filter(TagID %in% mult_det_tags) %>%
   left_join(tbl_event) %>%
-  left_join(tbl_station)  %>%
+  left_join(tbl_station) %>%
   collect() %>%
-  ggplot(aes(x = TimeStamp, y = as.factor(station_name), color = TagID, group = TagID)) +
+  ggplot(aes(
+    x = TimeStamp,
+    y = as.factor(station_name),
+    color = TagID,
+    group = TagID
+  )) +
   geom_point() +
   geom_line() +
   facet_wrap(~river_name, scales = 'free_y') +
   scale_y_discrete(
-    labels = scales::label_wrap(20) 
+    labels = scales::label_wrap(20)
   )
 
 
-
-unk <- v_event_animal %>% 
+unk <- v_event_animal %>%
   left_join(tbl_event %>% select(DetectionID, station_id)) %>%
   left_join(tbl_station) %>%
   left_join(tbl_tag %>% select(animal_id, common_name_e)) %>%
   collect() %>%
   filter(is.na(animal_id)) %>%
-  pull(TagID) %>%
-  unique()
+  group_by(TagID) %>%
+  summarise(n_detections = n())
 
-
+unmatched <- unk %>%
+  arrange(-n_detections) %>%
+  filter(!TagID %in% unk) %>%
+  collect() %>%
+  filter(!TagID %in% (tbl_nat %>% pull(TagID) %>% unique))
 
 v_event_animal %>%
   collect() %>%
@@ -162,7 +158,6 @@ tags %>%
   clipr::write_clip()
 
 
-
 v_event_animal %>%
   left_join(tbl_event %>% select(DetectionID, station_id)) %>%
   left_join(tbl_station) %>%
@@ -171,28 +166,26 @@ v_event_animal %>%
   collect()
 
 
-new_wp_tags <- 
-c(
-'A69-1601-29672',
-'A69-1601-62032',
-'A69-1601-62867',
-'A69-1601-62876',
-'A69-1602-25029',
-'A69-1602-5623',
-'A69-1604-14669',
-'A69-1604-29037',
-'A69-1604-29044',
-'A69-1604-29045',
-'A69-1604-29048',
-'A69-1604-29063',
-'A69-1604-29084',
-'A69-1604-29097',
-'A69-1604-29104',
-'A69-1604-29108',
-'A69-1605-16996'
-)
-
-
+new_wp_tags <-
+  c(
+    'A69-1601-29672',
+    'A69-1601-62032',
+    'A69-1601-62867',
+    'A69-1601-62876',
+    'A69-1602-25029',
+    'A69-1602-5623',
+    'A69-1604-14669',
+    'A69-1604-29037',
+    'A69-1604-29044',
+    'A69-1604-29045',
+    'A69-1604-29048',
+    'A69-1604-29063',
+    'A69-1604-29084',
+    'A69-1604-29097',
+    'A69-1604-29104',
+    'A69-1604-29108',
+    'A69-1605-16996'
+  )
 
 
 old_wp_tags <- v_event_animal %>%
@@ -206,8 +199,8 @@ old_wp_tags <- v_event_animal %>%
   pull()
 
 
-excess_tags <- setdiff(new_wp_tags, old_wp_tags) 
-overlap_tags <- intersect(new_wp_tags, old_wp_tags) 
+excess_tags <- setdiff(new_wp_tags, old_wp_tags)
+overlap_tags <- intersect(new_wp_tags, old_wp_tags)
 
 tbl_tag %>%
   filter(TagID %in% excess_tags) %>%
@@ -219,4 +212,3 @@ tbl_tag %>%
   filter(TagID %in% overlap_tags) %>%
   collect() %>%
   nrow()
-
