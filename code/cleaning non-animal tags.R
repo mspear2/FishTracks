@@ -1,7 +1,7 @@
 library(here)
 library(tidyverse)
 source(
-  "C:/Users/mspear2/Desktop/Active Projects/FishTracks/code/helper_functions.R",
+  here("code/helper_functions.R"),
   echo = TRUE
 )
 int <- read.csv(here('data', 'Non-animal tags from Appel', 'intermediate.csv'))

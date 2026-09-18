@@ -212,3 +212,15 @@ tbl_tag %>%
   filter(TagID %in% overlap_tags) %>%
   collect() %>%
   nrow()
+
+
+# searching for yet-unmatched detections
+
+v_event_animal %>%
+  anti_join(tbl_tag, by = 'animal_id') %>%
+  anti_join(tbl_nat, by = 'TagID') %>%
+  left_join(tbl_station) %>%
+  group_by(TagID, station_name) %>%
+  summarise(n_detections = n()) %>%
+  filter(n_detections > 0) %>%
+  collect()

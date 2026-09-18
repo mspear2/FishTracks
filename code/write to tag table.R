@@ -46,6 +46,10 @@ tbl_tag <- tbl(con, Id(schema = 'dbo', table = "tag"))
 
 existing_tags <- tbl_tag %>% pull(animal_id)
 
+
+new_tags %>%
+  filter(!animal_id %in% existing_tags)
+
 schema <- dbGetQuery(
   con,
   "
