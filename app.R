@@ -95,8 +95,7 @@ server <- function(input, output) {
     time_threshold_nonr <- time_threshold()
 
     tbl(con, dbo('event_animal')) %>%
-      filter(TimeStamp >= time_threshold_nonr) %>%
-      collect()
+      filter(TimeStamp >= time_threshold_nonr)
   })
 
   data_riverfilter <- reactive({
@@ -104,9 +103,9 @@ server <- function(input, output) {
 
     selected_rivers_nonr <- input$river_name
 
-    tbl_station %>%
-      filter(river_name %in% selected_rivers_nonr) %>%
-      left_join(data_timefilter())
+    data_timefilter() %>%
+      left_join(tbl(con, dbo('station'))) %>%
+      filter(river_name %in% selected_rivers_nonr)
   })
 
   data_sppfilter <- reactive({
@@ -114,11 +113,8 @@ server <- function(input, output) {
     req(input$species)
     selected_species_nonr <- input$species
 
-    tbl(con, dbo('tag')) %>%
-      filter(common_name_e %in% selected_species_nonr) %>%
-      mutate(TagID = paste(tag_code_space, tag_id_code, sep = '-')) %>%
-      collect() %>%
-      right_join(data_riverfilter()) %>%
+    data_riverfilter() %>%
+      left_join(tbl(con, dbo('tag'))) %>%
       mutate(common_name_e = coalesce(common_name_e, 'unknown')) %>%
       filter(common_name_e %in% selected_species_nonr)
   })
@@ -128,10 +124,18 @@ server <- function(input, output) {
     req(input$timeagg)
 
     data_sppfilter() %>%
+      collect() %>%
       aggregate_detections(unit = input$timeagg)
   })
 
   data_timeseries_plot <- reactive({
+    station_labels_ordered <- data_riverfilter() %>%
+      select(station_label, plot_order) %>%
+      distinct() %>%
+      collect() %>%
+      arrange(plot_order) %>%
+      pull(station_label)
+
     data_timeagg() %>%
       left_join(tbl_station) %>%
       group_by(TimeStamp_binned, station_label, common_name_e) %>%
@@ -141,9 +145,7 @@ server <- function(input, output) {
       mutate(
         station_label = factor(
           station_label,
-          levels = unique(data_riverfilter()$station_label)[order(unique(
-            data_riverfilter()$plot_order
-          ))]
+          levels = station_labels_ordered
         )
       )
   })
