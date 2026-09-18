@@ -117,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(odbc)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># source function that reads data from USGS website</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">here</span>(<span class="st">'code'</span>, <span class="st">'fn_get_fishtracks.R'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">here</span>(<span class="st">'code'</span>, <span class="st">'helper_functions.R'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
@@ -181,115 +181,122 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log_msg</span>(<span class="st">"Fetching FishTracks data"</span>)</span>
 <span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>  compiled <span class="ot">&lt;-</span> <span class="fu">map_df</span>(tbl_station<span class="sc">$</span>station_id, <span class="cf">function</span>(id) {</span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tryCatch</span>(</span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>    <span class="fu">get_fishtracks</span>(id),</span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>    <span class="at">error =</span> <span class="cf">function</span>(e) {</span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>      <span class="fu">log_msg</span>(<span class="fu">paste</span>(<span class="st">"Station failed:"</span>, id, <span class="st">"|"</span>, e<span class="sc">$</span>message), <span class="st">"WARN"</span>)</span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>      <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>}) <span class="sc">%&gt;%</span></span>
-<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
-<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>      <span class="at">DateRetrieved =</span> DateRetrieved,</span>
-<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>      <span class="at">DetectionID =</span> <span class="fu">paste</span>(station_id, Record, <span class="at">sep =</span> <span class="st">'_'</span>)</span>
-<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
-<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>    <span class="fu">relocate</span>(DetectionID)</span>
-<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log_msg</span>(<span class="fu">sprintf</span>(<span class="st">"Retrieved %d new records"</span>, <span class="fu">nrow</span>(compiled)))</span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>tz_lookup <span class="ot">&lt;-</span> tbl_station <span class="sc">%&gt;%</span> <span class="fu">select</span>(station_id, tz)</span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>compiled <span class="ot">&lt;-</span> <span class="fu">map_df</span>(tbl_station<span class="sc">$</span>station_id, <span class="cf">function</span>(id) {</span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tryCatch</span>(</span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>    <span class="fu">get_fishtracks</span>(id, tz_lookup),</span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>    <span class="at">error =</span> <span class="cf">function</span>(e) {</span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>      <span class="fu">log_msg</span>(<span class="fu">paste</span>(<span class="st">"Station failed:"</span>, id, <span class="st">"|"</span>, e<span class="sc">$</span>message), <span class="st">"WARN"</span>)</span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>      <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>}) <span class="sc">%&gt;%</span></span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>      <span class="at">DateRetrieved =</span> DateRetrieved,</span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>      <span class="at">DetectionID =</span> <span class="fu">paste</span>(station_id, Record, <span class="at">sep =</span> <span class="st">'_'</span>)</span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>    <span class="fu">relocate</span>(DetectionID)</span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Clear the staging table</span></span>
-<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dbExecute</span>(con, <span class="st">"DELETE FROM dbo.staging_event"</span>)</span>
-<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Write new data to staging table</span></span>
-<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(</span>
-<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>  con,</span>
-<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Id</span>(<span class="at">schema=</span><span class="st">"dbo"</span>, <span class="at">table=</span><span class="st">"staging_event"</span>),</span>
-<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>  <span class="at">value =</span> compiled,</span>
-<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>  <span class="at">append =</span> <span class="cn">TRUE</span></span>
-<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log_msg</span>(<span class="st">"Wrote staging table"</span>)</span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log_msg</span>(<span class="fu">sprintf</span>(<span class="st">"Retrieved %d new records"</span>, <span class="fu">nrow</span>(compiled)))</span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Clear the staging table</span></span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dbExecute</span>(con, <span class="st">"DELETE FROM dbo.staging_event"</span>)</span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Write new data to staging table</span></span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(</span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>  con,</span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Id</span>(<span class="at">schema=</span><span class="st">"dbo"</span>, <span class="at">table=</span><span class="st">"staging_event"</span>),</span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>  <span class="at">value =</span> compiled,</span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>  <span class="at">append =</span> <span class="cn">TRUE</span></span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Append only new rows to events table</span></span>
-<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>  append_sql <span class="ot">&lt;-</span> <span class="st">"</span></span>
-<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a><span class="st">INSERT INTO dbo.event</span></span>
-<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a><span class="st">SELECT *</span></span>
-<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM dbo.staging_event s</span></span>
-<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a><span class="st">WHERE NOT EXISTS (SELECT 1</span></span>
-<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM dbo.event t</span></span>
-<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a><span class="st">  WHERE t.DetectionID = s.DetectionID)</span></span>
-<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
-<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a>  rows_retrieved <span class="ot">&lt;-</span> <span class="fu">nrow</span>(compiled)</span>
-<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>  rows_inserted <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="fu">dbExecute</span>(con, append_sql))</span>
-<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>  rows_skipped <span class="ot">&lt;-</span> rows_retrieved <span class="sc">-</span> rows_inserted</span>
-<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>  stations_retrieved <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">unique</span>(compiled<span class="sc">$</span>station_id))</span>
-<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a>  stations_lacking_data <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(tbl_station<span class="sc">$</span>station_id, <span class="fu">unique</span>(compiled<span class="sc">$</span>station_id))</span>
-<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a>  timestamp <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log_msg</span>(<span class="st">"Wrote staging table"</span>)</span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Append only new rows to events table</span></span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>  append_sql <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a><span class="st">INSERT INTO dbo.event</span></span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a><span class="st">SELECT *</span></span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM dbo.staging_event s</span></span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a><span class="st">WHERE NOT EXISTS (SELECT 1</span></span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM dbo.event t</span></span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a><span class="st">  WHERE t.DetectionID = s.DetectionID)</span></span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>  rows_retrieved <span class="ot">&lt;-</span> <span class="fu">nrow</span>(compiled)</span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>  rows_inserted <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="fu">dbExecute</span>(con, append_sql))</span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a>  rows_skipped <span class="ot">&lt;-</span> rows_retrieved <span class="sc">-</span> rows_inserted</span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>  stations_retrieved <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">unique</span>(compiled<span class="sc">$</span>station_id))</span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a>  stations_lacking_data <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(tbl_station<span class="sc">$</span>station_id, <span class="fu">unique</span>(compiled<span class="sc">$</span>station_id))</span>
 <span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log_msg</span>(<span class="fu">sprintf</span>(<span class="st">"Rows retrieved: %d"</span>, rows_retrieved))</span>
-<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log_msg</span>(<span class="fu">sprintf</span>(<span class="st">"Rows inserted: %d"</span>, rows_inserted))</span>
-<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log_msg</span>(<span class="fu">sprintf</span>(<span class="st">"Rows skipped: %d"</span>, rows_skipped))</span>
-<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log_msg</span>(<span class="fu">sprintf</span>(<span class="st">"Stations retrieved: %d/%d"</span>, stations_retrieved, <span class="fu">length</span>(tbl_station<span class="sc">$</span>station_id)))  </span>
-<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log_msg</span>(<span class="fu">paste</span>(<span class="st">"Station IDs not retrieved: "</span>, stations_lacking_data))</span>
-<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Log run to SQL log table</span></span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>  timestamp <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log_msg</span>(<span class="fu">sprintf</span>(<span class="st">"Rows retrieved: %d"</span>, rows_retrieved))</span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log_msg</span>(<span class="fu">sprintf</span>(<span class="st">"Rows inserted: %d"</span>, rows_inserted))</span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log_msg</span>(<span class="fu">sprintf</span>(<span class="st">"Rows skipped: %d"</span>, rows_skipped))</span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log_msg</span>(<span class="fu">sprintf</span>(<span class="st">"Stations retrieved: %d/%d"</span>, stations_retrieved, <span class="fu">length</span>(tbl_station<span class="sc">$</span>station_id)))  </span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log_msg</span>(<span class="fu">paste</span>(<span class="st">"Station IDs not retrieved: "</span>, stations_lacking_data))</span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a><span class="fu">dbExecute</span>(</span>
-<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a>  con,</span>
-<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a>  <span class="st">"INSERT INTO dbo.insert_log (run_time, rows_inserted, rows_skipped) VALUES (?, ?, ?)"</span>,</span>
-<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a>  <span class="at">params =</span> <span class="fu">list</span>(timestamp, rows_inserted, rows_skipped)</span>
-<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log_msg</span>(<span class="st">"Logged run to database"</span>)</span>
-<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log_msg</span>(<span class="st">"Job completed successfully"</span>, <span class="st">"SUCCESS"</span>)</span>
-<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a>},</span>
-<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a><span class="co"># Handle errors with useful logging</span></span>
-<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a><span class="at">error =</span> <span class="cf">function</span>(e){</span>
-<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log_msg</span>(<span class="fu">paste</span>(<span class="st">"ERROR:"</span>, e<span class="sc">$</span>message), <span class="st">"ERROR"</span>)</span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Log run to SQL log table</span></span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a><span class="fu">dbExecute</span>(</span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a>  con,</span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a>  <span class="st">"INSERT INTO dbo.insert_log (run_time, rows_inserted, rows_skipped) VALUES (?, ?, ?)"</span>,</span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a>  <span class="at">params =</span> <span class="fu">list</span>(timestamp, rows_inserted, rows_skipped)</span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log_msg</span>(<span class="st">"Logged run to database"</span>)</span>
+<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log_msg</span>(<span class="st">"Job completed successfully"</span>, <span class="st">"SUCCESS"</span>)</span>
+<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a>},</span>
+<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a><span class="co"># Handle errors with useful logging</span></span>
+<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a><span class="at">error =</span> <span class="cf">function</span>(e){</span>
 <span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Safe defaults so logging doesn't fail</span></span>
-<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a>  rows_inserted <span class="ot">&lt;&lt;-</span> <span class="cf">if</span> (<span class="sc">!</span><span class="fu">exists</span>(<span class="st">"rows_inserted"</span>)) <span class="cn">NA_integer_</span> <span class="cf">else</span> rows_inserted</span>
-<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a>  rows_skipped  <span class="ot">&lt;&lt;-</span> <span class="cf">if</span> (<span class="sc">!</span><span class="fu">exists</span>(<span class="st">"rows_skipped"</span>))  <span class="cn">NA_integer_</span> <span class="cf">else</span> rows_skipped</span>
-<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Try logging error to SQL</span></span>
-<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a>  <span class="fu">try</span>({</span>
-<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">exists</span>(<span class="st">"con"</span>) <span class="sc">&amp;&amp;</span> <span class="fu">dbIsValid</span>(con)) {</span>
-<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a>      <span class="fu">dbExecute</span>(</span>
-<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a>        con,</span>
-<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a>        <span class="st">"INSERT INTO dbo.insert_log (run_time, rows_inserted, rows_skipped) VALUES (?, ?, ?)"</span>,</span>
-<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a>        <span class="at">params =</span> <span class="fu">list</span>(<span class="fu">Sys.time</span>(), rows_inserted, rows_skipped)</span>
-<span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a>      <span class="fu">dbDisconnect</span>(con)</span>
-<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a>  }, <span class="at">silent =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a>  <span class="co"># IMPORTANT: print full condition so Quarto shows it</span></span>
-<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">"Full error:"</span>)</span>
-<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(e)</span>
-<span id="cb2-157"><a href="#cb2-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Re-throw so Connect marks failure</span></span>
-<span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(e)</span>
-<span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log_msg</span>(<span class="fu">paste</span>(<span class="st">"ERROR:"</span>, e<span class="sc">$</span>message), <span class="st">"ERROR"</span>)</span>
+<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Safe defaults so logging doesn't fail</span></span>
+<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a>  rows_inserted <span class="ot">&lt;&lt;-</span> <span class="cf">if</span> (<span class="sc">!</span><span class="fu">exists</span>(<span class="st">"rows_inserted"</span>)) <span class="cn">NA_integer_</span> <span class="cf">else</span> rows_inserted</span>
+<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a>  rows_skipped  <span class="ot">&lt;&lt;-</span> <span class="cf">if</span> (<span class="sc">!</span><span class="fu">exists</span>(<span class="st">"rows_skipped"</span>))  <span class="cn">NA_integer_</span> <span class="cf">else</span> rows_skipped</span>
+<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Try logging error to SQL</span></span>
+<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a><span class="fu">try</span>({</span>
+<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">exists</span>(<span class="st">"con"</span>) <span class="sc">&amp;&amp;</span> <span class="fu">dbIsValid</span>(con)) {</span>
+<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dbDisconnect</span>(con)</span>
+<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ✅ Reconnect fresh</span></span>
+<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a>  con2 <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(odbc<span class="sc">::</span><span class="fu">odbc</span>(), <span class="st">"Fish_Tracks_Real_Time"</span>)</span>
+<span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dbExecute</span>(</span>
+<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a>    con2,</span>
+<span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a>    <span class="st">"INSERT INTO dbo.insert_log (run_time, rows_inserted, rows_skipped) VALUES (?, ?, ?)"</span>,</span>
+<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a>    <span class="at">params =</span> <span class="fu">list</span>(<span class="fu">Sys.time</span>(), rows_inserted, rows_skipped)</span>
+<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-157"><a href="#cb2-157" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dbDisconnect</span>(con2)</span>
+<span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a>}, <span class="at">silent =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a>  <span class="co"># IMPORTANT: print full condition so Quarto shows it</span></span>
+<span id="cb2-162"><a href="#cb2-162" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">"Full error:"</span>)</span>
+<span id="cb2-163"><a href="#cb2-163" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(e)</span>
+<span id="cb2-164"><a href="#cb2-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-165"><a href="#cb2-165" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Re-throw so Connect marks failure</span></span>
+<span id="cb2-166"><a href="#cb2-166" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(e)</span>
+<span id="cb2-167"><a href="#cb2-167" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-168"><a href="#cb2-168" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[2026-06-29 11:42:55.652096] [INFO] Job started
-[2026-06-29 11:42:56.802162] [INFO] Connected to database
-[2026-06-29 11:42:57.238449] [INFO] Loaded 13 stations
-[2026-06-29 11:42:57.240323] [INFO] Fetching FishTracks data</code></pre>
+<pre><code>[2026-09-18 12:38:42.642556] [INFO] Job started
+[2026-09-18 12:38:43.061844] [INFO] Connected to database
+[2026-09-18 12:38:43.2191] [INFO] Loaded 13 stations
+[2026-09-18 12:38:43.221818] [INFO] Fetching FishTracks data</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Station ID 05536890: 2,016 rows successfully retrieved.</code></pre>
@@ -307,6 +314,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>Station ID 05541498: 2,016 rows successfully retrieved.</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
+<pre><code>Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `across(...)`.
+Caused by warning:
+! NAs introduced by coercion to integer range</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
 <pre><code>Station ID 411133091003401: 2,016 rows successfully retrieved.</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
@@ -322,34 +335,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>Station ID 412341088161001: 2,016 rows successfully retrieved.</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: There was 1 warning in `mutate()`.
-ℹ In argument: `across(...)`.
-Caused by warning:
-! NAs introduced by coercion to integer range</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
 <pre><code>Station ID 412618083021701: 2,016 rows successfully retrieved.</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Station ID 412652509111316: 2,016 rows successfully retrieved.</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning in get_fishtracks(id): Downloaded data table for Station ID
+<pre><code>Warning in get_fishtracks(id, tz_lookup): Downloaded data table for Station ID
 412957090371001 is not expected shape (69 columns). Station may be skipped.</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Station ID 412957090371001: 0 rows successfully retrieved.</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[2026-06-29 11:43:42.403534] [INFO] Retrieved 24192 new records
-[2026-06-29 11:43:44.897169] [INFO] Wrote staging table
-[2026-06-29 11:43:45.042438] [INFO] Rows retrieved: 24192
-[2026-06-29 11:43:45.052168] [INFO] Rows inserted: 3308
-[2026-06-29 11:43:45.052584] [INFO] Rows skipped: 20884
-[2026-06-29 11:43:45.053146] [INFO] Stations retrieved: 12/13
-[2026-06-29 11:43:45.053511] [INFO] Station IDs not retrieved:  412957090371001
-[2026-06-29 11:43:45.139097] [INFO] Logged run to database
-[2026-06-29 11:43:45.139414] [SUCCESS] Job completed successfully</code></pre>
+<pre><code>[2026-09-18 12:39:19.193307] [INFO] Retrieved 24192 new records
+[2026-09-18 12:39:21.103183] [INFO] Wrote staging table
+[2026-09-18 12:39:21.205063] [INFO] Rows retrieved: 24192
+[2026-09-18 12:39:21.20643] [INFO] Rows inserted: 133
+[2026-09-18 12:39:21.207332] [INFO] Rows skipped: 24059
+[2026-09-18 12:39:21.207983] [INFO] Stations retrieved: 12/13
+[2026-09-18 12:39:21.208666] [INFO] Station IDs not retrieved:  412957090371001
+[2026-09-18 12:39:21.260035] [INFO] Logged run to database
+[2026-09-18 12:39:21.261778] [SUCCESS] Job completed successfully</code></pre>
 </div>
 </div>
 </section>
@@ -360,13 +367,13 @@ Caused by warning:
 <section id="run-summary" class="level2">
 <h2 class="anchored" data-anchor-id="run-summary">Run Summary</h2>
 <ul>
-<li><strong>Run time:</strong> 2026-06-29 11:43:45</li>
+<li><strong>Run time:</strong> 2026-09-18 12:39:21</li>
 <li><strong>Stations queried:</strong> 13</li>
 <li><strong>Stations Retrieved:</strong> 12</li>
 <li><strong>Station IDs lacking data:</strong> 412957090371001</li>
 <li><strong>Rows retrieved:</strong> 24192</li>
-<li><strong>Rows inserted:</strong> 3308</li>
-<li><strong>Rows skipped (duplicates):</strong> 20884</li>
+<li><strong>Rows inserted:</strong> 133</li>
+<li><strong>Rows skipped (duplicates):</strong> 24059</li>
 </ul>
 </section>
 <section id="rows-inserted-by-run" class="level2">
@@ -374,19 +381,21 @@ Caused by warning:
 <div class="cell">
 <details class="code-fold">
 <summary>Show code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>log_data <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con, <span class="fu">Id</span>(<span class="at">schema =</span> <span class="st">"dbo"</span>, <span class="at">table =</span> <span class="st">"insert_log"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>()</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(log_data, <span class="fu">aes</span>(run_time, rows_inserted)) <span class="sc">+</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Rows Inserted per Run"</span>,</span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Run Time"</span>,</span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Rows Inserted"</span></span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>log_data <span class="ot">&lt;-</span> <span class="fu">tryCatch</span>({</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  con_report <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(odbc<span class="sc">::</span><span class="fu">odbc</span>(), <span class="st">"Fish_Tracks_Real_Time"</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">on.exit</span>(<span class="fu">dbDisconnect</span>(con_report), <span class="at">add =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl</span>(con_report, <span class="fu">Id</span>(<span class="at">schema =</span> <span class="st">"dbo"</span>, <span class="at">table =</span> <span class="st">"insert_log"</span>)) <span class="sc">%&gt;%</span> <span class="fu">collect</span>()</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>}, <span class="at">error =</span> <span class="cf">function</span>(e) {</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log_msg</span>(<span class="fu">paste</span>(<span class="st">"Failed to read insert_log:"</span>, e<span class="sc">$</span>message), <span class="st">"ERROR"</span>)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="cn">NULL</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(log_data)) {</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(log_data, <span class="fu">aes</span>(run_time, rows_inserted)) <span class="sc">+</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Rows Inserted per Run"</span>, <span class="at">x =</span> <span class="st">"Run Time"</span>, <span class="at">y =</span> <span class="st">"Rows Inserted"</span>)</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>

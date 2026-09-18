@@ -37,17 +37,8 @@ read_csv_usgs <- function(url) {
   )
 }
 
-
 # get FishTracks from web ####
-get_fishtracks <- function(station_id) {
-  # get station table for timezone
-  fishtracks_con <- dbConnect(odbc::odbc(), "Fish_Tracks_Real_Time")
-
-  tbl_station <- tbl(fishtracks_con, Id(schema = 'dbo', table = "station")) %>%
-    collect()
-
-  dbDisconnect(fishtracks_con)
-
+get_fishtracks <- function(station_id, tz_lookup) {
   url_prefix <- "https://cm.water.usgs.gov/data/Fish_Tracks_Real_Time/"
   html_url <- paste0(url_prefix, station_id, ".html")
   csv_url <- paste0(url_prefix, station_id, ".csv")
@@ -84,7 +75,7 @@ get_fishtracks <- function(station_id) {
       stop(
         sprintf(
           "URL is reachable but failed to read as CSV:\n  %s\nError: %s",
-          url,
+          csv_url,
           e$message
         ),
         call. = FALSE
@@ -134,7 +125,7 @@ get_fishtracks <- function(station_id) {
   df <- df %>%
     mutate(station_id = station_id) %>%
     relocate(station_id) %>%
-    left_join(tbl_station %>% select(station_id, tz), by = 'station_id') %>%
+    left_join(tz_lookup, by = 'station_id') %>%
     rowwise() %>%
     mutate(
       across(where(is.POSIXct), ~ force_tz(.x, tzone = tz))

@@ -7,6 +7,7 @@ format:
     code-summary: Show code
 resource_files:
 - code/fn_get_fishtracks.R
+- code/helper_functions.R
 ---
 
 This Quarto appends new records from FishTracks USGS website, which displays 7 days of Real-Time acoustic tag detections at 5-minute intervals, to the IRBS database that accumulates these data with a long-term vision. Data may eventually be supplemented by a ~6-month schedule of data physically downloaded from each receiver with longer-term and/or more detailed data.
@@ -92,9 +93,11 @@ con <- tryCatch({
   
   log_msg("Fetching FishTracks data")
   
-  compiled <- map_df(tbl_station$station_id, function(id) {
+tz_lookup <- tbl_station %>% select(station_id, tz)
+
+compiled <- map_df(tbl_station$station_id, function(id) {
   tryCatch(
-    get_fishtracks(id),
+    get_fishtracks(id, tz_lookup),
     error = function(e) {
       log_msg(paste("Station failed:", id, "|", e$message), "WARN")
       return(NULL)
@@ -219,19 +222,21 @@ try({
 ## Rows inserted by run
 
 ```{r}
-log_data <- tbl(con, Id(schema = "dbo", table = "insert_log")) %>%
-  collect()
+log_data <- tryCatch({
+  con_report <- dbConnect(odbc::odbc(), "Fish_Tracks_Real_Time")
+  on.exit(dbDisconnect(con_report), add = TRUE)
+  tbl(con_report, Id(schema = "dbo", table = "insert_log")) %>% collect()
+}, error = function(e) {
+  log_msg(paste("Failed to read insert_log:", e$message), "ERROR")
+  NULL
+})
 
-library(ggplot2)
-
-ggplot(log_data, aes(run_time, rows_inserted)) +
-  geom_line() +
-  geom_point() +
-  labs(
-    title = "Rows Inserted per Run",
-    x = "Run Time",
-    y = "Rows Inserted"
-  )
+if (!is.null(log_data)) {
+  ggplot(log_data, aes(run_time, rows_inserted)) +
+    geom_line() +
+    geom_point() +
+    labs(title = "Rows Inserted per Run", x = "Run Time", y = "Rows Inserted")
+}
 
 # Disconnect
 dbDisconnect(con)
