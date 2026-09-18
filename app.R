@@ -124,8 +124,8 @@ server <- function(input, output) {
     req(input$timeagg)
 
     data_sppfilter() %>%
-      collect() %>%
-      aggregate_detections(unit = input$timeagg)
+      aggregate_detections_lazy(unit = input$timeagg) %>%
+      collect()
   })
 
   data_timeseries_plot <- reactive({

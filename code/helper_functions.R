@@ -169,6 +169,31 @@ aggregate_detections <- function(df, unit = "30 minutes") {
     )
 }
 
+# Aggregate detections ####
+aggregate_detections_lazy <- function(
+  tbl_lazy,
+  unit = c("5 minutes", "1 hour", "1 day")
+) {
+  unit <- match.arg(unit)
+
+  bin_expr <- switch(
+    unit,
+    "5 minutes" = "DATEADD(minute, (DATEDIFF(minute, 0, [TimeStamp]) / 5) * 5, 0)",
+    "1 hour" = "DATEADD(hour, DATEDIFF(hour, 0, [TimeStamp]), 0)",
+    "1 day" = "DATEADD(day, DATEDIFF(day, 0, [TimeStamp]), 0)"
+  )
+
+  tbl_lazy %>%
+    mutate(TimeStamp_binned = sql(bin_expr)) %>%
+    group_by(animal_id, TagID, station_id, common_name_e, TimeStamp_binned) %>%
+    summarise(
+      detections = as.integer(n()),
+      presence = 1L,
+      .groups = "drop"
+    ) %>%
+    collect()
+}
+
 # Assemble TagID in tag tabl ematching format of TagID in event table ####
 assemble_TagID <- function(tag) {
   tag %>%
