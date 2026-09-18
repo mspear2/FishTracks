@@ -1,0 +1,1360 @@
+serial_no,model,map_type_69khz,tag_id,json_notes
+480337,VR2Tx-069k-111,MAP-113,A69-1601-62337,"{""state"": ""Disabled"", ""mode"": ""-"", ""power"": ""-""}"
+480406,VR2Tx-069k-111-BAT,MAP-113,A69-1601-62406,"{""state"": ""Disabled"", ""mode"": ""-"", ""power"": ""-""}"
+482564,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62564,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+482565,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62565,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+482566,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62566,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+482567,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62567,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+482038,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62038,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+484591,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62108,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+484592,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62109,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+484593,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62110,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488809,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62255,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488810,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62256,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488811,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62257,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488812,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62258,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488813,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62259,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488814,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62260,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488815,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62261,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488816,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62262,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488817,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62263,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488818,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62264,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488819,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62265,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488820,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62266,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488821,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62267,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488822,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62268,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488823,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62269,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488824,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62270,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488825,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62271,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488826,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62272,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488827,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62273,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488828,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62274,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488829,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62275,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488830,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62276,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488831,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62277,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488832,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62278,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488833,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62279,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488834,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62280,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488835,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62281,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488836,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62282,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488837,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62283,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488838,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62284,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488839,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62285,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488840,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62286,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488841,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62287,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488842,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62288,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488843,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62289,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488844,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62305,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488845,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62306,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488846,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62312,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488847,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62314,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488848,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62315,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488849,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62316,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488850,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62317,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488851,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62318,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488852,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62319,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488853,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62320,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488854,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62321,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488855,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62322,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488856,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62323,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488857,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62324,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488858,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62325,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488859,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62326,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488860,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62331,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488861,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62332,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488862,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62333,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488863,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62334,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+484468,VR2Tx,,A69-1601-62468,
+488864,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62335,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488865,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62336,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488866,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62338,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+484056,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62056,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+484057,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62057,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+484058,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62058,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+484059,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62059,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+484060,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62060,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485325,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62323,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485326,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62324,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485327,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62325,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485328,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62326,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485329,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62327,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485330,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62328,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485331,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62329,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485332,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62330,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485333,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62331,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485334,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62332,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485335,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62333,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485336,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62334,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485337,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62335,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485338,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62336,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485339,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62337,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485340,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62393,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485341,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62394,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485342,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62395,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485343,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62396,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485344,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62397,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485345,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62398,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485346,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62399,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485347,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62400,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485348,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62401,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+480752,VR2Tx-069k-111,MAP-113,A69-1601-62752,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+480753,VR2Tx-069k-111,MAP-113,A69-1601-62753,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+480754,VR2Tx-069k-111,MAP-113,A69-1601-62754,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+480755,VR2Tx-069k-111,MAP-113,A69-1601-62755,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+480756,VR2Tx-069k-111,MAP-113,A69-1601-62756,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+480757,VR2Tx-069k-111,MAP-113,A69-1601-62757,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+480758,VR2Tx-069k-111,MAP-113,A69-1601-62758,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+480759,VR2Tx-069k-111,MAP-113,A69-1601-62759,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+480760,VR2Tx-069k-111,MAP-113,A69-1601-62760,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+480761,VR2Tx-069k-111,MAP-113,A69-1601-62761,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+480762,VR2Tx-069k-111,MAP-113,A69-1601-62762,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+480763,VR2Tx-069k-111,MAP-113,A69-1601-62763,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+480764,VR2Tx-069k-111,MAP-113,A69-1601-62764,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+480765,VR2Tx-069k-111,MAP-113,A69-1601-62765,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+480766,VR2Tx-069k-111,MAP-113,A69-1601-62766,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+480767,VR2Tx-069k-111,MAP-113,A69-1601-62767,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+480768,VR2Tx-069k-111,MAP-113,A69-1601-62768,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+480769,VR2Tx-069k-111,MAP-113,A69-1601-62769,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+480770,VR2Tx-069k-111,MAP-113,A69-1601-62770,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+480771,VR2Tx-069k-111,MAP-113,A69-1601-62771,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+481456,VR2Tx-069k-111,MAP-114,A69-1601-63456,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+481457,VR2Tx-069k-111,MAP-114,A69-1601-63457,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+481458,VR2Tx-069k-111,MAP-114,A69-1601-63458,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+481459,VR2Tx-069k-111,MAP-114,A69-1601-63459,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+481460,VR2Tx-069k-111,MAP-114,A69-1601-63460,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+481461,VR2Tx-069k-111,MAP-114,A69-1601-63461,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+481462,VR2Tx-069k-111,MAP-114,A69-1601-63462,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+481463,VR2Tx-069k-111,MAP-114,A69-1601-63463,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+481464,VR2Tx-069k-111,MAP-114,A69-1601-63464,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+481465,VR2Tx-069k-111,MAP-114,A69-1601-63465,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+484546,VR2Tx-069k-111,MAP-114,A69-1601-62094,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+484547,VR2Tx-069k-111,MAP-114,A69-1601-62095,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+484548,VR2Tx-069k-111,MAP-114,A69-1601-62096,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+484549,VR2Tx-069k-111,MAP-114,A69-1601-62097,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487008,VR2Tx-069k-111,MAP-114,A69-1601-63935,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487009,VR2Tx-069k-111,MAP-114,A69-1601-63936,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487010,VR2Tx-069k-111,MAP-114,A69-1601-63937,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487011,VR2Tx-069k-111,MAP-114,A69-1601-63938,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487012,VR2Tx-069k-111,MAP-114,A69-1601-63939,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487013,VR2Tx-069k-111,MAP-114,A69-1601-63940,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487014,VR2Tx-069k-111,MAP-114,A69-1601-63941,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487015,VR2Tx-069k-111,MAP-114,A69-1601-63942,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487016,VR2Tx-069k-111,MAP-114,A69-1601-63943,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487017,VR2Tx-069k-111,MAP-114,A69-1601-63944,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486591,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63489,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486592,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63490,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+490185,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62703,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+490186,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62704,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+490187,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62705,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+490188,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62706,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486756,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63565,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486757,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63566,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486758,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63567,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486759,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63568,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486760,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63569,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486761,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63570,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486762,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63571,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486763,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63572,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486764,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63573,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486765,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63574,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486766,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63575,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486767,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63576,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486768,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63597,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486769,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63598,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486770,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63599,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486771,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63600,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486772,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63601,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486773,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63602,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486774,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63603,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486775,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63604,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486776,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63605,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486777,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63606,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486778,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63607,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486779,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63608,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486780,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63609,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486781,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63610,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486782,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63611,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486783,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63612,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486784,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63613,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486785,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63614,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486786,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63615,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486787,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63616,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486788,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63617,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486789,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63618,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486790,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63667,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486791,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63668,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486792,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63669,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486793,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63670,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486794,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63671,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486795,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63672,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486796,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63673,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486797,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63674,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486798,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63675,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486799,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63676,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486800,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63677,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486801,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63678,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486802,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63679,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486803,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63680,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486804,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63681,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486482,VR2Tx,,A69-1601-63366,
+490844,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62724,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+490845,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62725,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+490846,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62726,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+490847,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62727,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+490848,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62728,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+490849,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62729,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+490850,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62730,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+490851,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62731,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+490852,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62732,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+490853,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62733,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+490854,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62734,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+490855,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62735,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491665,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62931,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491666,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62932,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491667,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62933,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491668,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62934,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491669,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62935,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491670,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62936,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491671,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62937,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491672,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62938,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491673,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62939,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491674,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62940,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491675,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62941,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491676,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62942,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491677,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62943,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491678,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62944,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491679,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62945,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491680,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62946,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491681,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62947,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486235,VR2Tx-069k-111,MAP-114,A69-1601-63265,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486236,VR2Tx-069k-111,MAP-114,A69-1601-63266,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486237,VR2Tx-069k-111,MAP-114,A69-1601-63267,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486238,VR2Tx-069k-111,MAP-114,A69-1601-63268,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486239,VR2Tx-069k-111,MAP-114,A69-1601-63269,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486240,VR2Tx-069k-111,MAP-114,A69-1601-63270,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486241,VR2Tx-069k-111,MAP-114,A69-1601-63271,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486242,VR2Tx-069k-111,MAP-114,A69-1601-63272,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486243,VR2Tx-069k-111,MAP-114,A69-1601-63273,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486244,VR2Tx-069k-111,MAP-114,A69-1601-63274,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486245,VR2Tx-069k-111,MAP-114,A69-1601-63275,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486246,VR2Tx-069k-111,MAP-114,A69-1601-63276,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486247,VR2Tx-069k-111,MAP-114,A69-1601-63277,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486248,VR2Tx-069k-111,MAP-114,A69-1601-63278,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486249,VR2Tx-069k-111,MAP-114,A69-1601-63279,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486250,VR2Tx-069k-111,MAP-114,A69-1601-63280,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487199,VR2Tx-069k-111,MAP-114,A69-1601-62000,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487200,VR2Tx-069k-111,MAP-114,A69-1601-62001,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487201,VR2Tx-069k-111,MAP-114,A69-1601-62002,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487202,VR2Tx-069k-111,MAP-114,A69-1601-62003,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487203,VR2Tx-069k-111,MAP-114,A69-1601-62004,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487204,VR2Tx-069k-111,MAP-114,A69-1601-62005,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487205,VR2Tx-069k-111,MAP-114,A69-1601-62006,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487206,VR2Tx-069k-111,MAP-114,A69-1601-62007,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487207,VR2Tx-069k-111,MAP-114,A69-1601-62008,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487208,VR2Tx-069k-111,MAP-114,A69-1601-62009,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487209,VR2Tx-069k-111,MAP-114,A69-1601-62010,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487210,VR2Tx-069k-111,MAP-114,A69-1601-62012,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487211,VR2Tx-069k-111,MAP-114,A69-1601-62013,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487212,VR2Tx-069k-111,MAP-114,A69-1601-62014,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487213,VR2Tx-069k-111,MAP-114,A69-1601-62015,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487214,VR2Tx-069k-111,MAP-114,A69-1601-62016,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487215,VR2Tx-069k-111,MAP-114,A69-1601-62017,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487216,VR2Tx-069k-111,MAP-114,A69-1601-62018,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487217,VR2Tx-069k-111,MAP-114,A69-1601-62019,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487218,VR2Tx-069k-111,MAP-114,A69-1601-62020,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487219,VR2Tx-069k-111,MAP-114,A69-1601-62021,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487220,VR2Tx-069k-111,MAP-114,A69-1601-62022,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487221,VR2Tx-069k-111,MAP-114,A69-1601-62023,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487222,VR2Tx-069k-111,MAP-114,A69-1601-62024,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488332,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62186,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491074,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62748,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491075,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62749,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491076,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62750,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491077,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62751,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491078,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62752,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491079,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62753,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491080,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62754,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491081,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62755,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491082,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62756,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491083,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62757,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491084,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62758,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491085,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62759,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491086,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62760,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491087,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62761,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491088,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62762,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491089,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62763,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491090,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62764,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491091,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62765,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491092,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62766,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491093,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62767,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491094,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62768,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491095,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62769,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491096,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62770,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491097,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62771,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491098,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62772,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491099,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62773,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491100,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62774,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491101,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62775,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491102,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62781,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491103,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62782,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491104,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62783,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491105,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62784,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491106,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62785,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491107,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62786,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491108,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62792,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491109,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62793,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491110,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62794,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491111,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62795,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491112,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62796,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491113,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62797,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491114,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62798,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491115,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62799,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491116,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62800,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491117,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62801,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491118,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62802,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491119,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62803,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491120,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62804,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491121,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62805,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491122,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62806,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491123,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62807,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800278,NEXTRAK-R1,Generation 2,A69-1601-12568,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800279,NEXTRAK-R1,Generation 2,A69-1601-12570,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+480710,VR2Tx,,A69-1601-62710,
+800280,NEXTRAK-R1,Generation 2,A69-1601-12572,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800281,NEXTRAK-R1,Generation 2,A69-1601-12574,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800282,NEXTRAK-R1,Generation 2,A69-1601-12576,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800283,NEXTRAK-R1,Generation 2,A69-1601-12578,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800284,NEXTRAK-R1,Generation 2,A69-1601-12580,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800285,NEXTRAK-R1,Generation 2,A69-1601-12582,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800286,NEXTRAK-R1,Generation 2,A69-1601-12584,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800287,NEXTRAK-R1,Generation 2,A69-1601-12586,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800288,NEXTRAK-R1,Generation 2,A69-1601-12588,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800289,NEXTRAK-R1,Generation 2,A69-1601-12590,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800290,NEXTRAK-R1,Generation 2,A69-1601-12592,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800291,NEXTRAK-R1,Generation 2,A69-1601-12594,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800292,NEXTRAK-R1,Generation 2,A69-1601-12596,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800293,NEXTRAK-R1,Generation 2,A69-1601-12598,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800294,NEXTRAK-R1,Generation 2,A69-1601-12600,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800295,NEXTRAK-R1,Generation 2,A69-1601-12602,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800296,NEXTRAK-R1,Generation 2,A69-1601-12604,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800297,NEXTRAK-R1,Generation 2,A69-1601-12606,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800298,NEXTRAK-R1,Generation 2,A69-1601-12608,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800299,NEXTRAK-R1,Generation 2,A69-1601-12610,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800300,NEXTRAK-R1,Generation 2,A69-1601-12612,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800301,NEXTRAK-R1,Generation 2,A69-1601-12614,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800302,NEXTRAK-R1,Generation 2,A69-1601-12616,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+480064,VR2Tx-069k-111-BAT,MAP-113,A69-1601-62064,"{""state"": ""Disabled"", ""mode"": ""-"", ""power"": ""-""}"
+480065,VR2Tx-069k-111-BAT,MAP-113,A69-1601-62065,"{""state"": ""Disabled"", ""mode"": ""-"", ""power"": ""-""}"
+480066,VR2Tx-069k-111-BAT,MAP-113,A69-1601-62066,"{""state"": ""Disabled"", ""mode"": ""-"", ""power"": ""-""}"
+480067,VR2Tx-069k-111-BAT,MAP-113,A69-1601-62067,"{""state"": ""Disabled"", ""mode"": ""-"", ""power"": ""-""}"
+480068,VR2Tx-069k-111-BAT,MAP-113,A69-1601-62068,"{""state"": ""Disabled"", ""mode"": ""-"", ""power"": ""-""}"
+480069,VR2Tx-069k-111-BAT,MAP-113,A69-1601-62069,"{""state"": ""Disabled"", ""mode"": ""-"", ""power"": ""-""}"
+480070,VR2Tx-069k-111-BAT,MAP-113,A69-1601-62070,"{""state"": ""Disabled"", ""mode"": ""-"", ""power"": ""-""}"
+480071,VR2Tx-069k-111-BAT,MAP-113,A69-1601-62071,"{""state"": ""Disabled"", ""mode"": ""-"", ""power"": ""-""}"
+480072,VR2Tx-069k-111-BAT,MAP-113,A69-1601-62072,"{""state"": ""Disabled"", ""mode"": ""-"", ""power"": ""-""}"
+480073,VR2Tx-069k-111-BAT,MAP-113,A69-1601-62073,"{""state"": ""Disabled"", ""mode"": ""-"", ""power"": ""-""}"
+480074,VR2Tx-069k-111-BAT,MAP-113,A69-1601-62074,"{""state"": ""Disabled"", ""mode"": ""-"", ""power"": ""-""}"
+480075,VR2Tx-069k-111-BAT,MAP-113,A69-1601-62075,"{""state"": ""Disabled"", ""mode"": ""-"", ""power"": ""-""}"
+480076,VR2Tx-069k-111-BAT,MAP-113,A69-1601-62076,"{""state"": ""Disabled"", ""mode"": ""-"", ""power"": ""-""}"
+480077,VR2Tx-069k-111-BAT,MAP-113,A69-1601-62077,"{""state"": ""Disabled"", ""mode"": ""-"", ""power"": ""-""}"
+480078,VR2Tx-069k-111-BAT,MAP-113,A69-1601-62078,"{""state"": ""Disabled"", ""mode"": ""-"", ""power"": ""-""}"
+480462,VR2Tx-069k-111-BAT,MAP-113,A69-1601-62462,"{""state"": ""Disabled"", ""mode"": ""-"", ""power"": ""-""}"
+480463,VR2Tx-069k-111-BAT,MAP-113,A69-1601-62463,"{""state"": ""Disabled"", ""mode"": ""-"", ""power"": ""-""}"
+480464,VR2Tx-069k-111-BAT,MAP-113,A69-1601-62464,"{""state"": ""Disabled"", ""mode"": ""-"", ""power"": ""-""}"
+480465,VR2Tx-069k-111-BAT,MAP-113,A69-1601-62465,"{""state"": ""Disabled"", ""mode"": ""-"", ""power"": ""-""}"
+480879,VR2Tx-069k-111-BAT,MAP-113,A69-1601-62879,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+480880,VR2Tx-069k-111-BAT,MAP-113,A69-1601-62880,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+480881,VR2Tx-069k-111-BAT,MAP-113,A69-1601-62881,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+480882,VR2Tx-069k-111-BAT,MAP-113,A69-1601-62882,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+481470,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63470,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+481471,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63471,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+481472,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63472,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+481473,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63473,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+481474,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63474,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+481475,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63475,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+481476,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63476,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+481477,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63477,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+481478,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63478,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+481479,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63479,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+481480,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63480,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+481481,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63481,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+481482,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63482,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+481483,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63483,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+481484,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63484,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+481485,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63485,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+482117,VR2Tx-069k-111,MAP-114,A69-1601-62117,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+482116,VR2Tx-069k-111,MAP-114,A69-1601-62116,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+482145,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62145,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+482146,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62146,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+482147,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62147,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+482148,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62148,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+482149,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62149,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+482150,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62150,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+482151,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62151,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+482365,VR2Tx-069k-111,MAP-114,A69-1601-62365,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+482366,VR2Tx-069k-111,MAP-114,A69-1601-62366,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+482367,VR2Tx-069k-111,MAP-114,A69-1601-62367,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+482368,VR2Tx-069k-111,MAP-114,A69-1601-62368,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483082,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63082,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483083,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63083,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483084,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63084,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483085,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63085,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483086,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63086,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483087,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63087,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483088,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63088,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483089,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63089,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483090,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63090,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483091,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63091,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483092,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63092,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483093,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63093,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483094,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63094,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483095,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63095,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483096,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63096,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483097,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63097,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483098,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63098,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483099,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63099,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483100,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63100,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483101,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63101,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483102,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63102,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483103,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63103,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483104,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63104,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483105,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63105,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483106,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63106,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483107,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63107,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483108,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63108,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483109,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63109,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483110,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63110,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483111,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63111,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483112,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63112,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483113,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63113,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483114,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63114,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483115,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63115,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483116,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63116,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483117,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63117,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483118,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63118,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483119,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63119,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483120,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63120,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483121,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63121,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483122,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63122,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483123,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63123,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483124,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63124,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483125,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63125,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483126,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63126,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483127,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63127,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483128,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63128,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483129,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63129,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483130,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63130,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483131,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63131,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483421,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63421,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483422,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63422,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483423,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63423,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483424,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63424,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483425,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63425,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483426,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63426,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483427,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63427,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483428,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63428,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483429,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63429,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483430,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63430,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483431,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63431,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483432,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63432,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483433,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63433,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+480920,VR2Tx,,A69-1601-62920,
+483434,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63434,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483435,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63435,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483436,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63436,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483437,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63437,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483438,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63438,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483439,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63439,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483440,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63440,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483441,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63441,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483442,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63442,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483443,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63443,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483444,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63444,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483445,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63445,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483567,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63567,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483568,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63568,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483569,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63569,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483570,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63570,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483571,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63571,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483572,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63572,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483573,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63573,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483574,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63574,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483575,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63575,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+483576,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63576,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+484881,VR2Tx-069k-111,MAP-114,A69-1601-62399,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+484882,VR2Tx-069k-111,MAP-114,A69-1601-62400,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+484883,VR2Tx-069k-111,MAP-114,A69-1601-62401,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+484884,VR2Tx-069k-111,MAP-114,A69-1601-62402,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+484885,VR2Tx-069k-111,MAP-114,A69-1601-62403,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485466,VR2Tx-069k-111,MAP-114,A69-1601-62858,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485467,VR2Tx-069k-111,MAP-114,A69-1601-62859,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485468,VR2Tx-069k-111,MAP-114,A69-1601-62860,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485469,VR2Tx-069k-111,MAP-114,A69-1601-62861,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485470,VR2Tx-069k-111,MAP-114,A69-1601-62862,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485471,VR2Tx-069k-111,MAP-114,A69-1601-62863,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485472,VR2Tx-069k-111,MAP-114,A69-1601-62864,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485473,VR2Tx-069k-111,MAP-114,A69-1601-62865,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485474,VR2Tx-069k-111,MAP-114,A69-1601-62866,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485475,VR2Tx-069k-111,MAP-114,A69-1601-62867,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485476,VR2Tx-069k-111,MAP-114,A69-1601-62873,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485477,VR2Tx-069k-111,MAP-114,A69-1601-62874,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485478,VR2Tx-069k-111,MAP-114,A69-1601-62875,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485479,VR2Tx-069k-111,MAP-114,A69-1601-62876,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485480,VR2Tx-069k-111,MAP-114,A69-1601-62877,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485276,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62746,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485277,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62747,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485278,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62748,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485279,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62749,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485280,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62750,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485281,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62751,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485282,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62772,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485283,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62773,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485284,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62774,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485285,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62775,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549947,VR2AR-069k-111,MAP-114,A69-1601-60380,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549948,VR2AR-069k-111,MAP-114,A69-1601-60381,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549949,VR2AR-069k-111,MAP-114,A69-1601-60382,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549950,VR2AR-069k-111,MAP-114,A69-1601-60383,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549951,VR2AR-069k-111,MAP-114,A69-1601-60384,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549952,VR2AR-069k-111,MAP-114,A69-1601-60408,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549953,VR2AR-069k-111,MAP-114,A69-1601-60409,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549954,VR2AR-069k-111,MAP-114,A69-1601-60410,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549955,VR2AR-069k-111,MAP-114,A69-1601-60411,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549956,VR2AR-069k-111,MAP-114,A69-1601-60412,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549957,VR2AR-069k-111,MAP-114,A69-1601-60413,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549958,VR2AR-069k-111,MAP-114,A69-1601-60414,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549959,VR2AR-069k-111,MAP-114,A69-1601-60415,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549960,VR2AR-069k-111,MAP-114,A69-1601-60416,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549961,VR2AR-069k-111,MAP-114,A69-1601-60417,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549962,VR2AR-069k-111,MAP-114,A69-1601-60418,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549963,VR2AR-069k-111,MAP-114,A69-1601-60419,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549964,VR2AR-069k-111,MAP-114,A69-1601-60420,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549965,VR2AR-069k-111,MAP-114,A69-1601-60421,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549966,VR2AR-069k-111,MAP-114,A69-1601-60422,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549967,VR2AR-069k-111,MAP-114,A69-1601-60423,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549968,VR2AR-069k-111,MAP-114,A69-1601-60424,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549969,VR2AR-069k-111,MAP-114,A69-1601-60425,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549970,VR2AR-069k-111,MAP-114,A69-1601-60426,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549971,VR2AR-069k-111,MAP-114,A69-1601-60427,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549972,VR2AR-069k-111,MAP-114,A69-1601-60428,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549973,VR2AR-069k-111,MAP-114,A69-1601-60429,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549974,VR2AR-069k-111,MAP-114,A69-1601-60430,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549975,VR2AR-069k-111,MAP-114,A69-1601-60431,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549976,VR2AR-069k-111,MAP-114,A69-1601-60432,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549977,VR2AR-069k-111,MAP-114,A69-1601-60433,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549978,VR2AR-069k-111,MAP-114,A69-1601-60434,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549979,VR2AR-069k-111,MAP-114,A69-1601-60435,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549980,VR2AR-069k-111,MAP-114,A69-1601-60436,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549981,VR2AR-069k-111,MAP-114,A69-1601-60437,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549982,VR2AR-069k-111,MAP-114,A69-1601-60438,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549983,VR2AR-069k-111,MAP-114,A69-1601-60439,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549984,VR2AR-069k-111,MAP-114,A69-1601-60440,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549985,VR2AR-069k-111,MAP-114,A69-1601-60441,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549986,VR2AR-069k-111,MAP-114,A69-1601-60442,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549987,VR2AR-069k-111,MAP-114,A69-1601-60443,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549988,VR2AR-069k-111,MAP-114,A69-1601-60444,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549989,VR2AR-069k-111,MAP-114,A69-1601-60450,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549990,VR2AR-069k-111,MAP-114,A69-1601-60451,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549991,VR2AR-069k-111,MAP-114,A69-1601-60464,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549992,VR2AR-069k-111,MAP-114,A69-1601-60465,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549993,VR2AR-069k-111,MAP-114,A69-1601-60466,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549994,VR2AR-069k-111,MAP-114,A69-1601-60467,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549995,VR2AR-069k-111,MAP-114,A69-1601-60468,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+549996,VR2AR-069k-111,MAP-114,A69-1601-60469,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486920,VR2Tx-069k-111-BAT,MAP-114,A69-1601-63902,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487136,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62006,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487137,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62007,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487138,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62008,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487139,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62009,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487140,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62010,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487141,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62032,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487142,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62033,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487143,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62034,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487144,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62035,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487145,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62036,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487146,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62037,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487147,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62038,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487148,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62039,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487149,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62040,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487150,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62041,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487151,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62042,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487152,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62043,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487153,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62044,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487154,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62045,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+487155,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62046,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488153,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62083,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488154,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62084,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488155,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62085,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488156,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62086,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488157,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62087,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488158,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62088,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488159,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62089,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488160,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62090,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488161,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62091,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488162,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62092,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488163,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62093,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488164,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62094,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488165,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62095,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488166,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62096,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488167,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62097,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488168,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62098,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488169,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62099,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488170,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62100,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488171,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62101,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488172,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62102,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488173,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62103,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488174,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62104,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488175,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62105,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488176,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62106,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488177,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62107,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488178,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62111,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488179,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62112,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488180,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62118,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488181,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62119,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488182,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62120,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488183,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62121,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488184,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62122,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488185,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62123,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488186,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62124,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488187,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62125,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488188,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62127,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488189,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62128,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488190,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62129,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488191,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62130,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488192,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62131,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488193,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62132,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488194,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62133,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488195,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62134,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488196,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62135,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488197,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62136,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488198,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62137,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488199,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62138,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488200,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62139,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488201,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62140,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488202,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62141,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488203,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62142,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488204,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62143,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488205,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62144,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488206,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62152,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488207,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62153,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488208,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62154,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488209,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62155,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488210,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62156,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488211,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62157,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488212,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62158,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491268,VR2Tx,,A69-1601-63879,
+488213,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62159,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488214,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62160,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488215,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62161,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488216,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62162,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488217,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62163,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488218,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62164,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488219,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62165,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488220,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62166,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488221,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62167,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488222,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62168,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488223,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62169,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488224,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62170,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488225,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62171,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488226,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62172,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488227,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62173,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488228,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62174,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488229,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62175,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488230,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62176,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488231,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62177,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488232,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62178,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488233,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62179,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488234,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62180,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488235,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62181,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488236,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62182,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488237,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62183,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488311,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62393,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488312,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62394,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488313,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62395,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488314,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62396,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488315,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62397,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488316,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62398,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488317,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62399,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488318,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62400,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488319,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62401,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488320,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62402,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488321,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62403,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488689,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62239,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488690,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62240,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488691,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62241,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488692,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62242,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488693,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62243,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488694,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62244,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488695,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62245,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488696,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62246,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488697,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62247,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+486472,VR2Tx,,A69-1601-63353,
+488698,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62248,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488699,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62249,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488700,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62250,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488701,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62251,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488702,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62252,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488703,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62253,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+488704,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62254,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489037,VR2Tx-069k-111,MAP-114,A69-1601-62344,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489038,VR2Tx-069k-111,MAP-114,A69-1601-62345,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489039,VR2Tx-069k-111,MAP-114,A69-1601-62346,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489040,VR2Tx-069k-111,MAP-114,A69-1601-62347,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489069,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62557,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489070,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62558,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489071,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62562,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489072,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62564,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489073,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62565,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489074,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62566,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489075,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62567,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489076,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62568,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489077,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62569,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489078,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62570,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489079,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62571,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489080,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62572,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489081,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62573,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489082,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62574,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489083,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62575,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489084,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62576,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489085,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62577,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489086,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62578,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489087,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62579,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489093,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62348,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489094,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62349,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489095,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62350,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489096,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62351,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489097,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62362,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489098,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62363,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489099,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62364,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489100,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62383,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489101,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62384,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489102,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62385,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489103,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62386,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489104,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62387,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489105,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62388,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489106,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62389,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489107,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62390,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489108,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62391,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489109,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62392,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489110,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62393,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489111,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62394,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489112,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62395,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489113,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62396,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489114,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62397,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489115,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62398,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489116,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62404,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489117,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62405,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489118,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62422,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489119,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62423,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489120,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62424,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489121,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62425,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489122,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62426,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489123,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62427,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489124,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62428,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489125,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62429,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489126,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62430,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489127,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62431,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489204,VR2Tx-069k-111,MAP-114,A69-1601-62437,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489205,VR2Tx-069k-111,MAP-114,A69-1601-62438,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489206,VR2Tx-069k-111,MAP-114,A69-1601-62439,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489207,VR2Tx-069k-111,MAP-114,A69-1601-62440,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489208,VR2Tx-069k-111,MAP-114,A69-1601-62441,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489209,VR2Tx-069k-111,MAP-114,A69-1601-62442,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489210,VR2Tx-069k-111,MAP-114,A69-1601-62443,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489211,VR2Tx-069k-111,MAP-114,A69-1601-62444,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489212,VR2Tx-069k-111,MAP-114,A69-1601-62445,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489213,VR2Tx-069k-111,MAP-114,A69-1601-62446,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489338,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62587,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489339,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62588,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489340,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62589,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489341,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62590,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489342,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62591,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489343,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62592,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489344,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62593,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489345,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62594,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489346,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62595,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489347,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62596,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489348,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62597,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489349,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62598,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489350,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62599,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489351,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62600,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489352,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62601,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489353,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62602,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489354,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62603,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489355,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62604,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489356,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62605,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489357,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62606,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489552,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62471,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489553,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62472,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489554,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62473,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489555,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62474,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489556,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62475,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489557,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62476,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489558,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62477,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489559,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62478,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489560,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62479,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489561,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62480,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489562,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62481,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489563,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62482,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489564,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62483,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489565,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62484,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489566,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62485,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489567,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62486,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489568,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62487,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489569,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62488,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489570,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62489,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489571,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62490,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489572,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62491,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489573,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62492,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489574,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62493,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489575,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62494,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489576,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62495,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489577,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62496,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489578,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62497,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489579,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62498,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489580,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62499,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489581,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62500,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489582,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62501,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489583,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62502,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489584,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62503,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489585,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62504,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489586,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62505,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489587,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62506,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489588,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62507,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489589,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62508,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489590,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62509,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489591,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62510,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+480922,VR2Tx,,A69-1601-62922,
+489592,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62511,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489593,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62512,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489594,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62513,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489595,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62514,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489596,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62515,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489597,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62516,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489598,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62517,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489599,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62518,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489600,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62519,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489601,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62520,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489602,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62521,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489603,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62522,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489604,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62523,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489605,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62524,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489606,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62525,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489607,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62526,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489608,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62527,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489609,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62528,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489610,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62529,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489611,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62530,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489612,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62531,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489613,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62532,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489614,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62533,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489615,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62534,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489616,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62539,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489617,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62540,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489618,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62541,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489619,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62542,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489620,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62552,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489621,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62559,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489622,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62560,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489623,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62561,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489624,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62562,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489625,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62563,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489626,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62584,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489627,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62585,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489628,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62591,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489629,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62592,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489630,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62593,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489631,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62594,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489632,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62595,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489633,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62596,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489634,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62597,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489635,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62598,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489636,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62599,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+481299,VR2Tx,,A69-1601-63299,
+489637,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62600,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489638,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62601,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489639,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62602,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489640,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62603,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489641,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62604,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489642,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62605,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489643,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62606,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489644,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62607,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489645,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62609,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489646,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62621,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489647,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62622,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489648,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62623,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489649,VR2Tx-069k-111-BAT,MAP-115,A69-1601-62624,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489756,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62629,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489757,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62630,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489758,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62631,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489759,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62632,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489760,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62633,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489761,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62634,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489762,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62635,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489763,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62636,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489764,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62637,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489765,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62638,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489766,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62639,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489767,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62640,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489768,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62641,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489769,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62642,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489770,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62651,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489771,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62662,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489772,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62663,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489773,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62664,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489774,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62665,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489775,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62666,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489776,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62667,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489777,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62668,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489778,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62669,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489779,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62670,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489780,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62671,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489781,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62672,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489782,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62673,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489783,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62674,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489784,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62675,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489785,VR2Tx-069k-111-BAT,MAP-114,A69-1601-62676,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+553774,VR2AR-069k-111,Generation 2,A69-1601-61102,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+553775,VR2AR-069k-111,Generation 2,A69-1601-61118,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+485226,VR2Tx,,A69-1601-62054,
+553776,VR2AR-069k-111,Generation 2,A69-1601-61119,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+490945,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62739,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+490946,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62740,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+490947,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62741,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+490948,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62743,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+490949,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62746,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+490950,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62747,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+490980,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62659,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+490981,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62660,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+490982,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62661,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+490983,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62662,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800078,NEXTRAK-R1-BAT,Generation 2,A69-1601-12170,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800079,NEXTRAK-R1-BAT,Generation 2,A69-1601-12172,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800080,NEXTRAK-R1-BAT,Generation 2,A69-1601-12174,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800081,NEXTRAK-R1-BAT,Generation 2,A69-1601-12176,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800082,NEXTRAK-R1-BAT,Generation 2,A69-1601-12178,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800084,NEXTRAK-R1-BAT,Generation 2,A69-1601-12180,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800085,NEXTRAK-R1-BAT,Generation 2,A69-1601-12182,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800086,NEXTRAK-R1-BAT,Generation 2,A69-1601-12184,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491370,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62829,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491371,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62830,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491372,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62831,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491373,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62832,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491374,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62833,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491375,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62834,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491376,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62835,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491377,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62836,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491378,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62837,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491379,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62838,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491380,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62839,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491381,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62840,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491382,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62841,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491383,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62842,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491384,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62843,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491385,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62844,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491386,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62845,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491387,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62846,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491388,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62847,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491389,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62848,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491390,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62849,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491391,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62850,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491392,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62851,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491393,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62852,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491394,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62853,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491395,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62854,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+481296,VR2Tx,,A69-1601-63296,
+491396,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62855,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491397,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62856,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491398,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62857,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491399,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62858,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491400,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62859,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491401,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62860,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491402,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62861,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491403,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62862,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491404,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62863,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491939,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62948,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491940,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62949,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491941,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62950,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+491942,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62951,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+802465,NEXTRAK-R1,Generation 2,A69-1601-16866,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+802466,NEXTRAK-R1,Generation 2,A69-1601-16868,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+802467,NEXTRAK-R1,Generation 2,A69-1601-16870,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+802468,NEXTRAK-R1,Generation 2,A69-1601-16872,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+802469,NEXTRAK-R1,Generation 2,A69-1601-16874,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+802470,NEXTRAK-R1,Generation 2,A69-1601-16876,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+802471,NEXTRAK-R1,Generation 2,A69-1601-16878,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+802472,NEXTRAK-R1,Generation 2,A69-1601-16880,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+802473,NEXTRAK-R1,Generation 2,A69-1601-16882,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+802474,NEXTRAK-R1,Generation 2,A69-1601-16884,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+802475,NEXTRAK-R1,Generation 2,A69-1601-16886,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+802476,NEXTRAK-R1,Generation 2,A69-1601-16888,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+492425,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62986,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+492426,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62987,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+492427,VR2Tx-069k-111-BAT,Generation 2,A69-1601-62988,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+492428,VR2Tx-069k-111-BAT,Generation 2,A69-1601-63014,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+492429,VR2Tx-069k-111-BAT,Generation 2,A69-1601-63015,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+492430,VR2Tx-069k-111-BAT,Generation 2,A69-1601-63016,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+492431,VR2Tx-069k-111-BAT,Generation 2,A69-1601-63017,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+492432,VR2Tx-069k-111-BAT,Generation 2,A69-1601-63026,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+492433,VR2Tx-069k-111-BAT,Generation 2,A69-1601-63027,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+492434,VR2Tx-069k-111-BAT,Generation 2,A69-1601-63028,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+492435,VR2Tx-069k-111-BAT,Generation 2,A69-1601-63029,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+492436,VR2Tx-069k-111-BAT,Generation 2,A69-1601-63030,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+492437,VR2Tx-069k-111-BAT,Generation 2,A69-1601-63031,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+492438,VR2Tx-069k-111-BAT,Generation 2,A69-1601-63032,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+492439,VR2Tx-069k-111-BAT,Generation 2,A69-1601-63033,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+492440,VR2Tx-069k-111-BAT,Generation 2,A69-1601-63034,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+492441,VR2Tx-069k-111-BAT,Generation 2,A69-1601-63035,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+492442,VR2Tx-069k-111-BAT,Generation 2,A69-1601-63036,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+492443,VR2Tx-069k-111-BAT,Generation 2,A69-1601-63037,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+492444,VR2Tx-069k-111-BAT,Generation 2,A69-1601-63063,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+484452,VR2Tx,,A69-1601-62452,
+492445,VR2Tx-069k-111-BAT,Generation 2,A69-1601-63069,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+492446,VR2Tx-069k-111-BAT,Generation 2,A69-1601-63070,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+492447,VR2Tx-069k-111-BAT,Generation 2,A69-1601-63071,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+492448,VR2Tx-069k-111-BAT,Generation 2,A69-1601-63072,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+492449,VR2Tx-069k-111-BAT,Generation 2,A69-1601-63073,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+492450,VR2Tx-069k-111-BAT,Generation 2,A69-1601-63074,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+492451,VR2Tx-069k-111-BAT,Generation 2,A69-1601-63075,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+492452,VR2Tx-069k-111-BAT,Generation 2,A69-1601-63076,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+492453,VR2Tx-069k-111-BAT,Generation 2,A69-1601-63077,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+492454,VR2Tx-069k-111-BAT,Generation 2,A69-1601-63078,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+547000,VR2AR-069k-111-BAT,MAP-114,A69-1601-61464,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+482407,VR2Tx-069k-111,MAP-114,A69-1601-62407,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+482408,VR2Tx-069k-111,MAP-114,A69-1601-62408,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+482409,VR2Tx-069k-111,MAP-114,A69-1601-62409,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+482410,VR2Tx-069k-111,MAP-114,A69-1601-62410,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+482411,VR2Tx-069k-111,MAP-114,A69-1601-62411,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+482412,VR2Tx-069k-111,MAP-114,A69-1601-62412,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+482413,VR2Tx-069k-111,MAP-114,A69-1601-62413,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+482414,VR2Tx-069k-111,MAP-114,A69-1601-62414,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+482415,VR2Tx-069k-111,MAP-114,A69-1601-62415,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+482416,VR2Tx-069k-111,MAP-114,A69-1601-62416,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+482417,VR2Tx-069k-111,MAP-114,A69-1601-62417,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+482418,VR2Tx-069k-111,MAP-114,A69-1601-62418,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+482419,VR2Tx-069k-111,MAP-114,A69-1601-62419,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+482420,VR2Tx-069k-111,MAP-114,A69-1601-62420,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+482421,VR2Tx-069k-111,MAP-114,A69-1601-62421,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+480686,VR2Tx,,A69-1601-62686,
+489128,VR2Tx-069k-111,MAP-114,A69-1601-62432,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489129,VR2Tx-069k-111,MAP-114,A69-1601-62433,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489130,VR2Tx-069k-111,MAP-114,A69-1601-62434,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489131,VR2Tx-069k-111,MAP-114,A69-1601-62435,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+489132,VR2Tx-069k-111,MAP-114,A69-1601-62436,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+490076,VR2Tx-069k-111,MAP-114,A69-1601-62697,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+490077,VR2Tx-069k-111,MAP-114,A69-1601-62698,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+490078,VR2Tx-069k-111,MAP-114,A69-1601-62699,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+490079,VR2Tx-069k-111,MAP-114,A69-1601-62700,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+490080,VR2Tx-069k-111,MAP-114,A69-1601-62701,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+490081,VR2Tx-069k-111,MAP-114,A69-1601-62702,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800274,NEXTRAK-R1,Generation 2,A69-1601-12618,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800275,NEXTRAK-R1,Generation 2,A69-1601-12620,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800276,NEXTRAK-R1,Generation 2,A69-1601-12622,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800277,NEXTRAK-R1,Generation 2,A69-1601-12624,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800470,NEXTRAK-R1,Generation 2,A69-1601-12666,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800471,NEXTRAK-R1,Generation 2,A69-1601-12668,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800472,NEXTRAK-R1,Generation 2,A69-1601-12670,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+800473,NEXTRAK-R1,Generation 2,A69-1601-12672,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+801441,NEXTRAK-R1-BAT,Generation 2,A69-1601-14802,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+801452,NEXTRAK-R1-BAT,Generation 2,A69-1601-14804,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+801453,NEXTRAK-R1-BAT,Generation 2,A69-1601-14806,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+801454,NEXTRAK-R1-BAT,Generation 2,A69-1601-14808,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+801455,NEXTRAK-R1-BAT,Generation 2,A69-1601-14810,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+801456,NEXTRAK-R1-BAT,Generation 2,A69-1601-14812,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+801457,NEXTRAK-R1-BAT,Generation 2,A69-1601-14814,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+803223,NexTrak-R1,,A69-1601-12134,
+801458,NEXTRAK-R1-BAT,Generation 2,A69-1601-14816,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+801459,NEXTRAK-R1-BAT,Generation 2,A69-1601-14818,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+801460,NEXTRAK-R1-BAT,Generation 2,A69-1601-14820,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+801461,NEXTRAK-R1-BAT,Generation 2,A69-1601-14822,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+801462,NEXTRAK-R1-BAT,Generation 2,A69-1601-14824,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+801463,NEXTRAK-R1-BAT,Generation 2,A69-1601-14826,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+801464,NEXTRAK-R1-BAT,Generation 2,A69-1601-14828,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+801465,NEXTRAK-R1-BAT,Generation 2,A69-1601-14830,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+801466,NEXTRAK-R1-BAT,Generation 2,A69-1601-14832,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+801467,NEXTRAK-R1-BAT,Generation 2,A69-1601-14834,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+801468,NEXTRAK-R1-BAT,Generation 2,A69-1601-14836,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+801469,NEXTRAK-R1-BAT,Generation 2,A69-1601-14838,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+801470,NEXTRAK-R1-BAT,Generation 2,A69-1601-14840,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+801471,NEXTRAK-R1-BAT,Generation 2,A69-1601-14842,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+801472,NEXTRAK-R1-BAT,Generation 2,A69-1601-14844,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+801473,NEXTRAK-R1-BAT,Generation 2,A69-1601-14846,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+801476,NEXTRAK-R1-BAT,Generation 2,A69-1601-14848,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+801477,NEXTRAK-R1-BAT,Generation 2,A69-1601-14850,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+802069,NEXTRAK-R1,Generation 2,A69-1601-16184,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+802713,NEXTRAK-R1-BAT,Generation 2,A69-1601-17054,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+802714,NEXTRAK-R1-BAT,Generation 2,A69-1601-17056,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+802715,NEXTRAK-R1-BAT,Generation 2,A69-1601-17058,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+802716,NEXTRAK-R1-BAT,Generation 2,A69-1601-17060,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+802717,NEXTRAK-R1-BAT,Generation 2,A69-1601-17062,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+802718,NEXTRAK-R1-BAT,Generation 2,A69-1601-17064,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+802719,NEXTRAK-R1-BAT,Generation 2,A69-1601-17066,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+802720,NEXTRAK-R1-BAT,Generation 2,A69-1601-17068,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+802721,NEXTRAK-R1-BAT,Generation 2,A69-1601-17070,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+802722,NEXTRAK-R1-BAT,Generation 2,A69-1601-17072,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+802723,NEXTRAK-R1-BAT,Generation 2,A69-1601-17074,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+484586,VR2Tx-069k-111,MAP-114,A69-1601-62098,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+484587,VR2Tx-069k-111,MAP-114,A69-1601-62099,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+484588,VR2Tx-069k-111,MAP-114,A69-1601-62100,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+484589,VR2Tx-069k-111,MAP-114,A69-1601-62106,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+484590,VR2Tx-069k-111,MAP-114,A69-1601-62107,"{""state"": ""Enabled"", ""mode"": ""SYNC 540-660 sec"", ""power"": ""Very High""}"
+481291,VR2Tx,,A69-1601-63291,
+483666,VR2Tx,,A69-1601-63666,
+480923,VR2Tx,,A69-1601-62923,
+485207,VR2Tx,,A69-1601-62655,
+485171,VR2Tx,,A69-1601-62544,
+485198,VR2Tx,,A69-1601-62644,
+489417,VR2Tx,,A69-1601-62449,
+489416,VR2Tx,,A69-1601-62448,
+804015,NexTrak-R1,,A69-1601-12978,
+803190,NexTrak-R1,,A69-1601-12026,
+481298,VR2Tx,,A69-1601-63298,
+480689,VR2Tx,,A69-1601-62689,
+485208,VR2Tx,,A69-1601-62656,
+486988,VR2Tx,,A69-1601-63915,
+484451,VR2Tx,,A69-1601-62451,
+486502,VR2Tx,,A69-1601-63386,
+484453,VR2Tx,,A69-1601-62453,
+486497,VR2Tx,,A69-1601-63381,
+803759,NexTrak-R1,,A69-1601-12796,
+486992,VR2Tx,,A69-1601-63919,
+486495,VR2Tx,,A69-1601-63379,
+480681,VR2Tx,,A69-1601-62681,
+803202,NexTrak-R1,,A69-1601-12110,
+487002,VR2Tx,,A69-1601-63929,
+485227,VR2Tx,,A69-1601-62055,
+487000,VR2Tx,,A69-1601-63927,
+545663,VR2AR,,A69-1601-60127,
+801864,NexTrak-R1,,A69-1601-15884,
+486489,VR2Tx,,A69-1601-63373,
+480684,VR2Tx,,A69-1601-62684,
+486464,VR2Tx,,A69-1601-63330,
+480714,VR2Tx,,A69-1601-62714,
+484460,VR2Tx,,A69-1601-62460,
+488509,VR2Tx,,A69-1601-62208,
+486504,VR2Tx,,A69-1601-63388,
+480709,VR2Tx,,A69-1601-62709,
+481300,VR2Tx,,A69-1601-63300,
+486989,VR2Tx,,A69-1601-63916,
+486503,VR2Tx,,A69-1601-63387,
+485170,VR2Tx,,A69-1601-62543,
+480687,VR2Tx,,A69-1601-62687,
+484457,VR2Tx,,A69-1601-62457,
+803187,NexTrak-R1,,A69-1601-12020,
+487662,VR2Tx,,A69-1601-62026,
+487032,VR2Tx,,A69-1601-63947,
+491717,VR2Tx,,A69-1601-62869,
+483233,VR2Tx,,A69-1601-63233,
+487006,VR2Tx,,A69-1601-63933,
+480696,VR2Tx,,A69-1601-62696,
+480682,VR2Tx,,A69-1601-62682,
+481297,VR2Tx,,A69-1601-63297,
+480310,VR2Tx,,A69-1601-62310,
+801869,NexTrak-R1,,A69-1601-15890,
+804016,NexTrak-R1,,A69-1601-12980,
+803221,NexTrak-R1,,A69-1601-12130,
+484459,VR2Tx,,A69-1601-62459,
+483660,VR2Tx,,A69-1601-63660,
+486473,VR2Tx,,A69-1601-63354,
+483232,VR2Tx,,A69-1601-63232,
+801857,NexTrak-R1,,A69-1601-15872,
+489657,VR2Tx,,A69-1601-62538,
+489421,VR2Tx,,A69-1601-62453,
+489656,VR2Tx,,A69-1601-62537,
+486484,VR2Tx,,A69-1601-63368,
+545611,VR2AR,,A69-1601-60075,
+803243,NexTrak-R1,,A69-1601-12190,
+801863,NexTrak-R1,,A69-1601-15882,
+485117,VR2Tx,,A69-1601-62536,
+487033,VR2Tx,,A69-1601-63948,
+803122,NexTrak-R1,,A69-1601-12002,
+485225,VR2Tx,,A69-1601-62053,
+485206,VR2Tx,,A69-1601-62654,
+484466,VR2Tx,,A69-1601-62466,
+485189,VR2Tx,,A69-1601-62613,
+482369,VR2Tx,,A69-1601-62369,
+483235,VR2Tx,,A69-1601-63235,
+486477,VR2Tx,,A69-1601-63358,
+485190,VR2Tx,,A69-1601-62614,
+485204,VR2Tx,,A69-1601-62652,
+486505,VR2Tx,,A69-1601-63389,
+803124,NexTrak-R1,,A69-1601-12006,
+486498,VR2Tx,,A69-1601-63382,
+803208,NexTrak-R1,,A69-1601-12122,
+801860,NexTrak-R1,,A69-1601-15876,
+486506,VR2Tx,,A69-1601-63390,
+485182,VR2Tx,,A69-1601-62581,
+489422,VR2Tx,,A69-1601-62454,
+481289,VR2Tx,,A69-1601-63289,
+804028,NexTrak-R1,,A69-1601-13004,
+485194,VR2Tx,,A69-1601-62618,
+486996,VR2Tx,,A69-1601-63923,
+486500,VR2Tx,,A69-1601-63384,
+485177,VR2Tx,,A69-1601-62550,
+480716,VR2Tx,,A69-1601-62716,
+485193,VR2Tx,,A69-1601-62617,
+484456,VR2Tx,,A69-1601-62456,
+485175,VR2Tx,,A69-1601-62548,
+485210,VR2Tx,,A69-1601-62658,
+480918,VR2Tx,,A69-1601-62918,
+801858,NexTrak-R1,,A69-1601-15874,
+481796,VR2Tx,,A69-1601-63796,
+804014,NexTrak-R1,,A69-1601-12976,
+803080,NexTrak-R1,,A69-1601-17898,
+486466,VR2Tx,,A69-1601-63332,
+480685,VR2Tx,,A69-1601-62685,
+486474,VR2Tx,,A69-1601-63355,
+803191,NexTrak-R1,,A69-1601-12028,
+481791,VR2Tx,,A69-1601-63791,
+483661,VR2Tx,,A69-1601-63661,
+482380,VR2Tx,,A69-1601-62380,
+483231,VR2Tx,,A69-1601-63231,
+481302,VR2Tx,,A69-1601-63302,
+546972,VR2AR,,A69-1601-61436,
+489743,VR2Tx,,A69-1601-62626,
+486994,VR2Tx,,A69-1601-63921,
+487001,VR2Tx,,A69-1601-63928,
+486991,VR2Tx,,A69-1601-63918,
+485172,VR2Tx,,A69-1601-62545,
+485187,VR2Tx,,A69-1601-62611,
+485176,VR2Tx,,A69-1601-62549,
+487004,VR2Tx,,A69-1601-63931,
+486999,VR2Tx,,A69-1601-63926,
+480694,VR2Tx,,A69-1601-62694,
+485196,VR2Tx,,A69-1601-62620,
+486476,VR2Tx,,A69-1601-63357,
+481290,VR2Tx,,A69-1601-63290,
+486475,VR2Tx,,A69-1601-63356,
+491275,VR2Tx,,A69-1601-63886,
+803209,NexTrak-R1,,A69-1601-12124,
+482373,VR2Tx,,A69-1601-62373,
+485118,VR2Tx,,A69-1601-62537,
+491958,VR2Tx,,A69-1601-64008,
+803206,NexTrak-R1,,A69-1601-12118,
+480691,VR2Tx,,A69-1601-62691,
+803182,NexTrak-R1,,A69-1601-12010,
+481794,VR2Tx,,A69-1601-63794,
+803121,NexTrak-R1,,A69-1601-12000,
+486859,VR2Tx,,A69-1601-63685,
+489418,VR2Tx,,A69-1601-62450,
+485173,VR2Tx,,A69-1601-62546,
+486487,VR2Tx,,A69-1601-63371,
+480921,VR2Tx,,A69-1601-62921,
+484449,VR2Tx,,A69-1601-62449,
+491716,VR2Tx,,A69-1601-62868,
+803204,NexTrak-R1,,A69-1601-12114,
+485199,VR2Tx,,A69-1601-62645,
+801872,NexTrak-R1,,A69-1601-15896,
+803224,NexTrak-R1,,A69-1601-12136,
+482377,VR2Tx,,A69-1601-62377,
+803184,NexTrak-R1,,A69-1601-12014,
+484454,VR2Tx,,A69-1601-62454,
+803203,NexTrak-R1,,A69-1601-12112,
+804013,NexTrak-R1,,A69-1601-12974,
+484536,VR2Tx,,A69-1601-62048,
+486493,VR2Tx,,A69-1601-63377,
+480707,VR2Tx,,A69-1601-62707,
+803240,NexTrak-R1,,A69-1601-12168,
+801871,NexTrak-R1,,A69-1601-15894,
+486486,VR2Tx,,A69-1601-63370,
+485185,VR2Tx,,A69-1601-62608,
+485178,VR2Tx,,A69-1601-62551,
+801861,NexTrak-R1,,A69-1601-15878,
+481295,VR2Tx,,A69-1601-63295,
+486492,VR2Tx,,A69-1601-63376,
+484467,VR2Tx,,A69-1601-62467,
+801865,NexTrak-R1,,A69-1601-15886,
+480711,VR2Tx,,A69-1601-62711,
+491957,VR2Tx,,A69-1601-64007,
+486997,VR2Tx,,A69-1601-63924,
+485183,VR2Tx,,A69-1601-62582,
+800522,NexTrak-R1,,A69-1601-13408,
+482370,VR2Tx,,A69-1601-62370,
+803185,NexTrak-R1,,A69-1601-12016,
+485195,VR2Tx,,A69-1601-62619,
+485209,VR2Tx,,A69-1601-62657,
+480692,VR2Tx,,A69-1601-62692,
+480708,VR2Tx,,A69-1601-62708,
+481294,VR2Tx,,A69-1601-63294,
+484458,VR2Tx,,A69-1601-62458,
+486499,VR2Tx,,A69-1601-63383,
+485191,VR2Tx,,A69-1601-62615,
+480715,VR2Tx,,A69-1601-62715,
+485201,VR2Tx,,A69-1601-62647,
+481793,VR2Tx,,A69-1601-63793,
+546888,VR2AR,,A69-1601-61352,
+803230,NexTrak-R1,,A69-1601-12148,
+480688,VR2Tx,,A69-1601-62688,
+803188,NexTrak-R1,,A69-1601-12022,
+480679,VR2Tx,,A69-1601-62679,
+485119,VR2Tx,,A69-1601-62538,
+486465,VR2Tx,,A69-1601-63331,
+803125,NexTrak-R1,,A69-1601-12008,
+483234,VR2Tx,,A69-1601-63234,
+485203,VR2Tx,,A69-1601-62649,
+485186,VR2Tx,,A69-1601-62610,
+488522,VR2Tx,,A69-1601-62217,
+486990,VR2Tx,,A69-1601-63917,
+484450,VR2Tx,,A69-1601-62450,
+487005,VR2Tx,,A69-1601-63932,
+484455,VR2Tx,,A69-1601-62455,
+481293,VR2Tx,,A69-1601-63293,
+491270,VR2Tx,,A69-1601-63881,
+480690,VR2Tx,,A69-1601-62690,
+480680,VR2Tx,,A69-1601-62680,
+485174,VR2Tx,,A69-1601-62547,
+480693,VR2Tx,,A69-1601-62693,
+803189,NexTrak-R1,,A69-1601-12024,
+486471,VR2Tx,,A69-1601-63352,
+487031,VR2Tx,,A69-1601-63946,
+486494,VR2Tx,,A69-1601-63378,
+486483,VR2Tx,,A69-1601-63367,
+483665,VR2Tx,,A69-1601-63665,
+803186,NexTrak-R1,,A69-1601-12018,
+487003,VR2Tx,,A69-1601-63930,
+486501,VR2Tx,,A69-1601-63385,
+801868,NexTrak-R1,,A69-1601-15888,
+486481,VR2Tx,,A69-1601-63365,
+486485,VR2Tx,,A69-1601-63369,
+481792,VR2Tx,,A69-1601-63792,
+481292,VR2Tx,,A69-1601-63292,
+481301,VR2Tx,,A69-1601-63301,
+488511,VR2Tx,,A69-1601-62210,
+491955,VR2Tx,,A69-1601-64005,
+486470,VR2Tx,,A69-1601-63351,
+488513,VR2Tx,,A69-1601-62212,
+484537,VR2Tx,,A69-1601-62049,
+486993,VR2Tx,,A69-1601-63920,
+482650,VR2Tx,,A69-1601-62650,
+803234,NexTrak-R1,,A69-1601-12156,
+485181,VR2Tx,,A69-1601-62580,
+491271,VR2Tx,,A69-1601-63882,
+481795,VR2Tx,,A69-1601-63795,
+803077,NexTrak-R1,,A69-1601-17892,
+486488,VR2Tx,,A69-1601-63372,
+482372,VR2Tx,,A69-1601-62372,
+486995,VR2Tx,,A69-1601-63922,
+485202,VR2Tx,,A69-1601-62648,
+483664,VR2Tx,,A69-1601-63664,
+480677,VR2Tx,,A69-1601-62677,
+485200,VR2Tx,,A69-1601-62646,
+480713,VR2Tx,,A69-1601-62713,
+803123,NexTrak-R1,,A69-1601-12004,
+801862,NexTrak-R1,,A69-1601-15880,
+489423,VR2Tx,,A69-1601-62455,
+487007,VR2Tx,,A69-1601-63934,
+480678,VR2Tx,,A69-1601-62678,
+480695,VR2Tx,,A69-1601-62695,
+486998,VR2Tx,,A69-1601-63925,
+480712,VR2Tx,,A69-1601-62712,
+487030,VR2Tx,,A69-1601-63945,
+801870,NexTrak-R1,,A69-1601-15892,
+483659,VR2Tx,,A69-1601-63659,
+480915,VR2Tx,,A69-1601-62915,
+803083,NexTrak-R1,,A69-1601-17904,
+484461,VR2Tx,,A69-1601-62461,
+486467,VR2Tx,,A69-1601-63333,
+803084,NexTrak-R1,,A69-1601-17906,
+489419,VR2Tx,,A69-1601-62451,
+485116,VR2Tx,,A69-1601-62535,
+489420,VR2Tx,,A69-1601-62452,

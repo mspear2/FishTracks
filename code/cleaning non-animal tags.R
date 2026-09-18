@@ -1,6 +1,9 @@
 library(here)
 library(tidyverse)
-
+source(
+  "C:/Users/mspear2/Desktop/Active Projects/FishTracks/code/helper_functions.R",
+  echo = TRUE
+)
 int <- read.csv(here('data', 'Non-animal tags from Appel', 'intermediate.csv'))
 
 int$TagID
@@ -64,6 +67,45 @@ more_tx %>%
       'data',
       'Non-animal tags from Appel',
       'Treceiver transmitters in RAFT 20260827_clean.csv'
+    ),
+    row.names = FALSE
+  )
+
+
+vendor_specs <- read.csv(here(
+  'data',
+  'Non-animal tags from Appel',
+  'raw',
+  'receiver vendor specs 20260917.csv'
+)) %>%
+  select(tag_id) %>%
+  rename(TagID = tag_id)
+
+transceiver_list_0917 <- read.csv(here(
+  'data',
+  'Non-animal tags from Appel',
+  'raw',
+  'Updated receiver transmitter list 20260917.csv'
+)) %>%
+  select(data) %>%
+  rename(TagID = data)
+
+evenmore_tx <- rbind(vendor_specs, transceiver_list_0917) %>%
+  mutate(
+    tag_code_space = str_extract(TagID, '(^...-....)-.*$', 1),
+    tag_id_code = str_extract(TagID, '^...-....-(.*$)', 1)
+  ) %>%
+  distinct() %>%
+  filter(!TagID %in% trimws(existing_nat)) %>%
+  select(-TagID)
+
+
+evenmore_tx %>%
+  write.csv(
+    here(
+      'data',
+      'Non-animal tags from Appel',
+      'Treceiver transmitters in RAFT 20260917_clean.csv'
     ),
     row.names = FALSE
   )
