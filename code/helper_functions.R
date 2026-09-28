@@ -169,33 +169,61 @@ aggregate_detections <- function(df, unit = "30 minutes") {
     )
 }
 
+# SQL Server expression that floors [TimeStamp] to a bin ####
+# Shared by aggregate_detections_lazy() and the logger-record query in app.R
+# so both sides of the join bin identically.
+bin_timestamp_sql <- function(unit = c("5 minutes", "1 hour", "1 day")) {
+  unit <- match.arg(unit)
+
+  switch(
+    unit,
+    "5 minutes" = "DATEADD(minute, (DATEDIFF(minute, 0, [TimeStamp]) / 5) * 5, 0)",
+    "1 hour" = "DATEADD(hour, DATEDIFF(hour, 0, [TimeStamp]), 0)",
+    "1 day" = "DATEADD(day, DATEDIFF(day, 0, [TimeStamp]), 0)"
+  )
+}
+
+# Width of a bin in seconds, for detecting gaps between consecutive bins ####
+bin_width_seconds <- function(unit = c("5 minutes", "1 hour", "1 day")) {
+  unit <- match.arg(unit)
+  c("5 minutes" = 300, "1 hour" = 3600, "1 day" = 86400)[[unit]]
+}
+
 # Aggregate detections ####
 aggregate_detections_lazy <- function(
   tbl_lazy,
   unit = c("5 minutes", "1 hour", "1 day")
 ) {
   unit <- match.arg(unit)
-
-  bin_expr <- switch(
-    unit,
-    "5 minutes" = "DATEADD(minute, (DATEDIFF(minute, 0, [TimeStamp]) / 5) * 5, 0)",
-    "1 hour" = "DATEADD(hour, DATEDIFF(hour, 0, [TimeStamp]), 0)",
-    "1 day" = "DATEADD(day, DATEDIFF(day, 0, [TimeStamp]), 0)"
-  )
+  bin_expr <- bin_timestamp_sql(unit)
 
   tbl_lazy %>%
-    mutate(TimeStamp_binned = sql(bin_expr)) %>%
-    group_by(animal_id, TagID, station_id, common_name_e, TimeStamp_binned) %>%
+    mutate(
+      TimeStamp_binned = sql(bin_expr),
+      # One key per fish: the animal when known, otherwise the tag itself.
+      fish_key = coalesce(as.character(animal_id), TagID)
+    ) %>%
+    # Level 1: one row per fish per bin (STRING_AGG has no DISTINCT, so the
+    # de-duplication has to happen before the tag list is built).
+    group_by(station_id, common_name_e, TimeStamp_binned, fish_key) %>%
     summarise(
-      detections = as.integer(n()),
-      presence = 1L,
+      TagID = min(TagID, na.rm = TRUE),
+      n_det = n(),
       .groups = "drop"
     ) %>%
-    collect()
+    # Level 2: one row per station x species x bin, with the tag list.
+    group_by(station_id, common_name_e, TimeStamp_binned) %>%
+    summarise(
+      n_fish = n(),
+      n_detections = sum(n_det, na.rm = TRUE),
+      # CAST to nvarchar(max): STRING_AGG errors past 8,000 bytes otherwise.
+      tag_ids = sql("STRING_AGG(CAST(TagID AS nvarchar(max)), ', ')"),
+      .groups = "drop"
+    )
 }
 
 # Assemble TagID in tag tabl ematching format of TagID in event table ####
 assemble_TagID <- function(tag) {
   tag %>%
-    mutate(TagID = paste(tag_code_space, tag_id_code, sep = '-'))
+    mutate(TagID = paste(trimws(tag_code_space), tag_id_code, sep = '-'))
 }

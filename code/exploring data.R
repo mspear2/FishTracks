@@ -224,3 +224,67 @@ v_event_animal %>%
   summarise(n_detections = n()) %>%
   filter(n_detections > 0) %>%
   collect()
+
+
+# experiment with calculating some historical avg/median and contextualizing current count to identify hotspots, trends, etc
+
+# this may work best hourly and daily, scrap 5-min and weekly aggs
+
+calc_count_pctile <- function(
+  data,
+  aggregation_scale = c('1 hour', '1 day'),
+  context_window_days = 30,
+  station_ids,
+  species = c(
+    'bighead carp',
+    'silver carp',
+    'silver carp/bighead carp',
+    'grass carp'
+  )
+) {
+  context_window_sdate <- floor_date(
+    Sys.time() - days(context_window_days),
+    'day'
+  )
+
+  por <- data %>%
+    filter(
+      station_id %in% station_ids,
+      TimeStamp >= context_window_sdate
+    ) %>%
+    left_join(tbl_tag) %>%
+    filter(common_name_e %in% species) %>%
+    aggregate_detections_lazy(aggregation_scale) %>%
+    group_by(station_id, TimeStamp_binned) %>%
+    summarise(detections = sum(detections, na.rm = TRUE), .groups = 'drop')
+
+  por_counts <- por %>%
+    group_by(TimeStamp_binned) %>%
+    summarise(
+      detections = sum(detections, na.rm = TRUE),
+      .groups = 'drop'
+    ) %>%
+    pull(detections)
+
+  percentile_fn <- ecdf(por_counts)
+
+  result <- por %>%
+    arrange(TimeStamp_binned) %>%
+    slice(1) %>%
+    pull(detections) %>%
+    percentile_fn %>%
+    {
+      . * 100
+    }
+
+  result <- round(result)
+
+  result
+}
+
+calc_count_pctile(
+  data = v_event_animal,
+  '1 hour',
+  station_ids = '05541498',
+  context_window_days = 50
+)

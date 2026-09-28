@@ -1,4 +1,5 @@
 library(shiny)
+library(shinyWidgets)
 library(tidyverse)
 library(DBI)
 library(odbc)
@@ -6,6 +7,16 @@ library(lubridate)
 library(here)
 
 source(here('code', 'helper_functions.R'))
+
+# renderPlot() draws with the ragg device when the package is installed, which
+# is faster than the default Windows device and renders text more cleanly.
+options(shiny.useragg = TRUE)
+if (!requireNamespace('ragg', quietly = TRUE)) {
+  message(
+    "Package 'ragg' is not installed; run install.packages('ragg') ",
+    "for faster plot rendering."
+  )
+}
 
 # schema setting helper
 dbo <- function(name) {
@@ -22,9 +33,86 @@ all_spp <- tbl(con, dbo('tag')) %>%
   tolower() %>%
   c(., 'unknown')
 
+# Species picker groups. A species is assigned to the first group whose
+# pattern it matches; anything unmatched is native. Groups appear in this
+# order, sorted alphabetically within each. Empty groups (e.g. black carp
+# before it shows up in the tag table) are dropped from the picker.
+species_groups <- list(
+  'Invasive'   = 'bighead carp|silver carp|grass carp|black carp',
+  'Unknown'    = '^unknown$',
+  'Non-native' = '^common carp$',
+  'Native'     = '.'
+)
+
+species_choices <- local({
+  remaining <- sort(all_spp)
+  out <- list()
+  for (grp in names(species_groups)) {
+    hit <- remaining[str_detect(remaining, species_groups[[grp]])]
+    if (length(hit)) out[[grp]] <- hit
+    remaining <- setdiff(remaining, hit)
+  }
+  out
+})
+
 tbl_station <- tbl(con, dbo('station')) %>%
   collect() %>%
   mutate(plot_order = factor(plot_order, levels = sort(plot_order)))
+
+# Receiver picker choices, grouped by river: a named list of named vectors
+# (display station_label, return station_id). Rivers are ordered by the
+# plot_order of their first station and receivers by plot_order within each
+# river, so the picker reads in the same order as the facets. Selecting a
+# whole river is done with the group checkbox on its heading.
+receiver_choices <- tbl_station %>%
+  distinct(river_name, station_id, station_label, plot_order) %>%
+  arrange(plot_order) %>%
+  mutate(river_name = fct_inorder(river_name)) %>%
+  group_by(river_name) %>%
+  summarise(
+    choices = list(set_names(station_id, station_label)),
+    .groups = 'drop'
+  ) %>%
+  with(set_names(choices, as.character(river_name)))
+
+# Default selection: every receiver except those on the Sandusky River.
+receiver_default <- tbl_station %>%
+  filter(river_name != 'Sandusky River') %>%
+  pull(station_id)
+
+# Sidebar inputs are virtual-select widgets (shinyWidgets::virtualSelectInput).
+# Multi-selects get a search box, a "Select all" checkbox covering the whole
+# list, and, for grouped choices, a checkbox on each group heading that
+# selects or clears that group. dropboxWrapper = 'body' lets the dropdown
+# escape the narrow sidebar instead of being clipped by it.
+multi_select <- function(inputId, label, choices, selected = NULL) {
+  virtualSelectInput(
+    inputId = inputId,
+    label = label,
+    choices = choices,
+    selected = selected,
+    multiple = TRUE,
+    search = TRUE,
+    selectAllOnlyVisible = TRUE, # "Select all" respects the search filter
+    optionsCount = 12,
+    dropboxWrapper = 'body',
+    width = '100%'
+  )
+}
+
+single_select <- function(inputId, label, choices, selected) {
+  virtualSelectInput(
+    inputId = inputId,
+    label = label,
+    choices = choices,
+    selected = selected,
+    multiple = FALSE,
+    search = FALSE,
+    hideClearButton = TRUE,
+    dropboxWrapper = 'body',
+    width = '100%'
+  )
+}
 
 
 # Define UI for application that draws a histogram
@@ -36,36 +124,28 @@ ui <- fluidPage(
   sidebarLayout(
     sidebarPanel(
       width = 2,
-      selectizeInput(
+      multi_select(
         inputId = 'species',
         label = 'Select spp.',
-        choices = all_spp,
-        selected = c(
-          'silver carp',
-          'silver carp/bighead carp',
-          'bighead carp',
-          'grass carp',
-          'unknown'
-        ),
-        multiple = TRUE
+        choices = species_choices,
+        selected = c(species_choices$Invasive, species_choices$Unknown)
       ),
-      selectizeInput(
-        inputId = 'river_name',
-        label = 'Select river',
-        choices = unique(tbl_station$river_name),
-        selected = setdiff(unique(tbl_station$river_name), 'Sandusky River'),
-        multiple = TRUE
+      multi_select(
+        inputId = 'receiver_name',
+        label = 'Select receiver(s)',
+        choices = receiver_choices,
+        selected = receiver_default
       ),
-      selectInput(
+      single_select(
         inputId = 'lookback',
         label = 'Select lookback period',
         choices = c('1 day' = 1, '1 week' = 7, '1 month' = 30, 'Max' = 'Max'),
         selected = '1'
       ),
-      selectInput(
+      single_select(
         inputId = 'timeagg',
         label = 'Aggregate detections',
-        choice = c('5 minutes', '1 hour', '1 day'),
+        choices = c('5 minutes', '1 hour', '1 day'),
         selected = '1 hour'
       )
     ),
@@ -75,8 +155,36 @@ ui <- fluidPage(
   )
 )
 
+# Timestamp of the last append job run that actually inserted rows. Defined
+# at app level (outside server) with session = NULL so there is ONE poll per
+# R process shared by every session: one small DBI query every 20 s no matter
+# how many users, and all sessions see a data update in the same flush, so
+# they compute the same cache keys and share the same cached results.
+# Downstream reactives are only invalidated when the value changes.
+last_data_update <- reactivePoll(
+  intervalMillis = 20 * 1000,
+  session = NULL,
+  checkFunc = function() {
+    dbGetQuery(
+      con,
+      "SELECT MAX(run_time) AS run_time FROM dbo.insert_log WHERE rows_inserted > 0"
+    )$run_time
+  },
+  valueFunc = function() {
+    dbGetQuery(
+      con,
+      "SELECT MAX(run_time) AS run_time FROM dbo.insert_log WHERE rows_inserted > 0"
+    )$run_time
+  }
+)
+
 # Define server logic required to draw a histogram
-server <- function(input, output) {
+server <- function(input, output, session) {
+  # Receiver selection, debounced so a burst of clicks (e.g. toggling a whole
+  # river via its group checkbox, then a couple of individual receivers) runs
+  # one query rather than one per click.
+  receivers_settled <- reactive(input$receiver_name) %>% debounce(750)
+
   time_threshold <- reactive({
     req(input$lookback)
 
@@ -98,55 +206,105 @@ server <- function(input, output) {
       filter(TimeStamp >= time_threshold_nonr)
   })
 
-  data_riverfilter <- reactive({
-    req(data_timefilter())
-
-    selected_rivers_nonr <- input$river_name
+  data_receiverfilter <- reactive({
+    req(receivers_settled())
+    selected_receivers_nonr <- receivers_settled()
 
     data_timefilter() %>%
-      left_join(tbl(con, dbo('station'))) %>%
-      filter(river_name %in% selected_rivers_nonr)
+      filter(
+        station_id %in% selected_receivers_nonr
+      )
   })
 
-  data_sppfilter <- reactive({
-    req(data_riverfilter())
-    req(input$species)
-    selected_species_nonr <- input$species
+  # Species is NOT filtered here: the query aggregates every species so that
+  # toggling species in the UI is a local filter on the collected summary
+  # rows rather than a new round trip to SQL Server.
+  data_sppjoin <- reactive({
+    req(data_receiverfilter())
 
-    data_riverfilter() %>%
-      left_join(tbl(con, dbo('tag'))) %>%
-      mutate(common_name_e = coalesce(common_name_e, 'unknown')) %>%
-      filter(common_name_e %in% selected_species_nonr)
+    data_receiverfilter() %>%
+      left_join(tbl(con, dbo('tag')), by = c('TagID', 'animal_id')) %>%
+      mutate(common_name_e = coalesce(common_name_e, 'unknown'))
   })
 
+  # One row per station x species x bin, for all species. Cached on the four
+  # inputs that shape the query, so any species combination is served from
+  # the same collected result.
   data_timeagg <- reactive({
-    req(data_sppfilter())
+    req(data_sppjoin())
     req(input$timeagg)
 
-    data_sppfilter() %>%
+    data_sppjoin() %>%
       aggregate_detections_lazy(unit = input$timeagg) %>%
+      collect()
+  }) %>%
+    bindCache(
+      time_threshold(),
+      receivers_settled(),
+      input$timeagg,
+      last_data_update()
+    )
+
+  # Bins in which each selected receiver logged at least one record, with or
+  # without detections. event_animal only carries records that contain tags,
+  # so this is what lets the plot tell "no fish" (record, zero tags) apart
+  # from "no data" (logger or feed outage).
+  data_records <- reactive({
+    req(time_threshold(), receivers_settled(), input$timeagg)
+
+    time_threshold_nonr <- time_threshold()
+    selected_receivers_nonr <- receivers_settled()
+    bin_expr <- bin_timestamp_sql(input$timeagg)
+
+    tbl(con, dbo('event')) %>%
+      filter(
+        TimeStamp >= time_threshold_nonr,
+        station_id %in% selected_receivers_nonr
+      ) %>%
+      mutate(TimeStamp_binned = sql(bin_expr)) %>%
+      distinct(station_id, TimeStamp_binned) %>%
       collect()
   })
 
   data_timeseries_plot <- reactive({
-    station_labels_ordered <- data_riverfilter() %>%
-      select(station_label, plot_order) %>%
-      distinct() %>%
-      collect() %>%
+    station_labels_ordered <- tbl_station %>%
+      filter(station_id %in% receivers_settled()) %>%
+      distinct(station_label, plot_order) %>%
       arrange(plot_order) %>%
       pull(station_label)
 
-    data_timeagg() %>%
-      left_join(tbl_station) %>%
-      group_by(TimeStamp_binned, station_label, common_name_e) %>%
-      summarise(n = n()) %>%
-      ungroup() %>%
-      left_join(tbl_station) %>%
+    req(input$species)
+
+    fish <- data_timeagg() %>%
+      filter(common_name_e %in% input$species)
+    species_present <- unique(fish$common_name_e)
+    gap_s <- bin_width_seconds(input$timeagg) * 1.5
+
+    # Every recorded bin x every species seen in the window. Bins with a
+    # record but no fish of that species become explicit zeros; bins with no
+    # record are absent, and `segment` increments across them so geom_line
+    # breaks instead of bridging the outage.
+    data_records() %>%
+      tidyr::crossing(common_name_e = species_present) %>%
+      left_join(
+        fish,
+        by = c('station_id', 'common_name_e', 'TimeStamp_binned')
+      ) %>%
       mutate(
-        station_label = factor(
-          station_label,
-          levels = station_labels_ordered
+        n_fish = coalesce(n_fish, 0L),
+        n_detections = coalesce(n_detections, 0L)
+      ) %>%
+      arrange(station_id, common_name_e, TimeStamp_binned) %>%
+      group_by(station_id, common_name_e) %>%
+      mutate(
+        segment = cumsum(
+          c(TRUE, diff(as.numeric(TimeStamp_binned)) > gap_s)
         )
+      ) %>%
+      ungroup() %>%
+      left_join(tbl_station, by = 'station_id') %>%
+      mutate(
+        station_label = factor(station_label, levels = station_labels_ordered)
       )
   })
 
@@ -156,16 +314,18 @@ server <- function(input, output) {
     data_timeseries_plot() %>%
       ggplot(aes(
         x = TimeStamp_binned,
-        y = n,
+        y = n_fish,
         color = common_name_e,
         alpha = .7
       )) +
-      geom_point(pch = 16) +
-      geom_line() +
+      # Lines break between segments (logger outages); zeros are drawn as
+      # line only, so the baseline isn't a wall of points.
+      geom_line(aes(group = interaction(common_name_e, segment))) +
+      geom_point(data = ~ filter(.x, n_fish > 0), pch = 16) +
       facet_wrap(~station_label, scales = 'fixed', drop = FALSE) +
       labs(
         x = 'Time',
-        y = paste0('Number of detections (per ', input$timeagg, ')'),
+        y = paste0('Unique tagged fish (per ', input$timeagg, ')'),
         color = 'Species'
       ) +
       theme_minimal(base_size = 15) +
@@ -174,27 +334,30 @@ server <- function(input, output) {
         expand = expansion(mult = c(0, 0.15)),
         labels = scales::label_number(accuracy = 1)
       ) +
+      # Break positions and labels adapt to the window: breaks_pretty() picks
+      # ~8 evenly spaced ticks for any span, and label_date_short() prints
+      # only the parts of the date that changed since the previous tick
+      # (e.g. "Sep 22 / 23 / 24", or "Sep / Oct / 2026" across a year).
       scale_x_datetime(
         limits = c(time_threshold(), now()),
-        expand = c(0.05, 0.05),
-        date_breaks = case_when(
-          input$lookback == 1 ~ '12 hours',
-          input$lookback == 7 ~ '3 days',
-          input$lookback == 30 ~ '10 days',
-          input$lookback == 'Max' ~ '1 month',
-          TRUE ~ '1 month'
-        ),
-
-        date_labels = case_when(
-          input$lookback == 1 ~ "%m/%d %H:%M",
-          input$lookback == 7 ~ "%b %d",
-          input$lookback == 30 ~ "%b %Y",
-          input$lookback == 'Max' ~ "%b %Y",
-          TRUE ~ "%b %Y"
-        )
+        expand = c(0.02, 0.02),
+        breaks = scales::breaks_pretty(n = 5), # ~6 h ticks at 1 day; panels are narrow
+        labels = scales::label_date_short(),
+        guide = guide_axis(check.overlap = TRUE)
       ) +
       scale_alpha_identity()
-  })
+  }) %>%
+    # Cache rendered plots (app-wide, so shared across sessions on Connect).
+    # The key covers every input that shapes the plot, plus the time of the
+    # last data update so the cache is invalidated exactly when new rows land.
+    bindCache(
+      time_threshold(),
+      receivers_settled(),
+      input$species,
+      input$timeagg,
+      input$lookback,
+      last_data_update()
+    )
 }
 # Run the application
 shinyApp(ui = ui, server = server)
