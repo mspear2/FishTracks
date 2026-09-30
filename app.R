@@ -378,7 +378,7 @@ server <- function(input, output, session) {
       geom_point(data = ~ filter(.x, n_fish > 0), pch = 16) +
       facet_wrap(~station_label, scales = 'fixed', drop = FALSE) +
       labs(
-        x = 'Time',
+        x = 'Time (Central)',
         y = paste0('Unique tagged fish (per ', input$timeagg, ')'),
         color = 'Species',
         caption = 'Grey bands: no logger records'
@@ -399,6 +399,7 @@ server <- function(input, output, session) {
         expand = c(0.02, 0.02),
         breaks = scales::breaks_pretty(n = 5), # ~6 h ticks at 1 day; panels are narrow
         labels = scales::label_date_short(),
+        timezone = 'America/Chicago', # data are UTC; render in Central
         guide = guide_axis(check.overlap = TRUE)
       ) +
       scale_alpha_identity()

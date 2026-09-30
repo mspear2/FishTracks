@@ -172,6 +172,12 @@ aggregate_detections <- function(df, unit = "30 minutes") {
 # SQL Server expression that floors [TimeStamp] to a bin ####
 # Shared by aggregate_detections_lazy() and the logger-record query in app.R
 # so both sides of the join bin identically.
+# TimeStamp is stored in UTC. 5-minute and hourly bins are floored in UTC,
+# which coincides with Central boundaries (whole-hour offset). Daily bins
+# are floored to Central CALENDAR days: convert to Central, take the date,
+# convert that midnight back to UTC. AT TIME ZONE handles DST, so the bin
+# for a 23- or 25-hour day is still that local day. The result stays UTC.
+# ('Central Standard Time' is SQL Server's zone name; it covers CDT too.)
 bin_timestamp_sql <- function(unit = c("5 minutes", "1 hour", "1 day")) {
   unit <- match.arg(unit)
 
@@ -179,7 +185,11 @@ bin_timestamp_sql <- function(unit = c("5 minutes", "1 hour", "1 day")) {
     unit,
     "5 minutes" = "DATEADD(minute, (DATEDIFF(minute, 0, [TimeStamp]) / 5) * 5, 0)",
     "1 hour" = "DATEADD(hour, DATEDIFF(hour, 0, [TimeStamp]), 0)",
-    "1 day" = "DATEADD(day, DATEDIFF(day, 0, [TimeStamp]), 0)"
+    "1 day" = paste0(
+      "CAST((CAST(CAST(([TimeStamp] AT TIME ZONE 'UTC' ",
+      "AT TIME ZONE 'Central Standard Time') AS date) AS datetime2) ",
+      "AT TIME ZONE 'Central Standard Time' AT TIME ZONE 'UTC') AS datetime2)"
+    )
   )
 }
 
