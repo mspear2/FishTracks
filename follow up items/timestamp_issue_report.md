@@ -80,11 +80,19 @@ Records around the seam, with the logger's own record counter:
 
 Three facts fall out of this.
 
-1. **The logger was restarted.** A Campbell record counter only resets when the program is recompiled or the table is reset. Records 1–44 (roughly 16:10–19:50 UTC, 11:10–14:50 CDT) never reached the database: either the logger was offline or the USGS feed didn't carry them. About four hours of data are missing at this station.
+1. **The logger was restarted, at the end of a five-day outage.** A Campbell record counter only resets when the program is recompiled or the table is reset. Records 1–44 (roughly 16:10–19:50 UTC, 11:10–14:50 CDT) never reached the database. The database also has no records at all for this station from 2026-09-18 ~09:00 UTC to the restart on 2026-09-23 19:55 UTC, and the USGS feed shows the same hole (a 7,855-minute jump), so the site was fully down for about five days, not four hours.
 2. **The logger clock did not change.** Its latest record lags retrieval by 78 minutes, the same as its neighbours. If the logger had been set to daylight time it would sit an hour ahead of the pack.
 3. **The receiver clock was set back one hour.** From 20:10 UTC (15:10 CDT) the receiver stamp is UTC−1 h rather than UTC. The timing, a workday afternoon coinciding with a logger restart, points to a site visit at which the VR2C clock was set from a device on local time or with the wrong zone.
 
 Practical consequence: with the ingest still adding +6 h, this station's stored `TagIDTimeStamp` values since the 23rd are UTC+5 h rather than UTC+6 h, and once the ingest is fixed they will be UTC−1 h until the receiver clock is corrected in the field.
+
+### 3.1 Addendum (2026-09-30): power system evidence and a second restart
+
+`VRLineVolt` (the receiver's supply voltage, reported on every logger record) tells the story. From July 1 to about September 17 the site was stable: daily median 12.4 V, daily range ~12.0–13.3 V. After the September 18–23 outage the voltage declined day by day (median 12.3 → 10.7 V, lows below 10.5 V) and never reached the former peaks. On September 26 a new regime appeared: 16.5 V plateaus by day (a level never seen in the prior three months) collapsing to ~11.5 V each mid-afternoon, followed by three ~15-hour overnight logger outages (Sept 26–27, 27–28, 28–29). On September 29 around 12:00 CDT the receiver stopped answering the logger (records present, voltage NULL), the logger dropped for an hour, and it restarted at ~12:35 CDT with the record counter reset a second time; since then the voltage has been flat at ~12.2–12.8 V.
+
+Interpretation, to be confirmed by the maintainers: a battery that could not hold charge, possibly with charging-side (panel/controller) trouble, and a site visit or swap on the 29th. Whether charging has resumed will be visible within a day or two (a healthy day shows a daytime rise to ~13 V).
+
+The second restart also exposed an ingest bug: `DetectionID` was built from the logger's `Record` counter, so post-restart records collided with rows stored after the first restart and were silently skipped from 21:15 UTC on the 29th. Fixed 2026-09-30 (timestamp-based IDs, station+time de-duplication, unique index); the missing rows were recovered from the feed.
 
 ## 4. Why it has no visible effect today, and where it would
 
@@ -97,7 +105,8 @@ Where it *would* bite: any colleague querying `TagIDTimeStamp` for residency, tr
 - **Confirm the time references.** Ask them to confirm that the datalogger `TimeStamp` in the Fish Tracks CSVs is local standard time, held year-round, and that `TagIDTimeStamp` is UTC as reported by the VR2C. The data are unambiguous on this, but a documented answer belongs in the project README.
 - **The September 23 visit at 05538010.** Was the site visited? What was done to the logger (the record counter reset around 16:10 UTC / 11:10 CDT), and was the VR2C clock touched? Which device was used to set it, and to what zone?
 - **Receiver clock at 05538010 is now one hour slow.** Request that it be reset to UTC at the next visit (or remotely, if the unit allows), so it matches the rest of the array.
-- **The four-hour data hole at 05538010** (approximately 11:10–14:50 CDT on the 23rd). Were those records lost at the logger, or are they retrievable from the logger's internal memory or a USGS archive?
+- **The five-day outage at 05538010** (September 18 to the restart on the 23rd) and the three overnight outages September 26–29. What happened on or about the 18th? Are the missing records retrievable from the logger's internal memory or a USGS archive?
+- **Power system at 05538010.** The receiver line voltage was steady at 12.0–13.3 V from July to mid-September, declined to overnight lows below 10.5 V after the 23rd, then showed 16.5 V daytime plateaus with afternoon collapses from the 26th. Was the battery, panel, or charge controller serviced on the 29th, and is the system charging now?
 - **Receiver clock drift generally.** Station 05536995 shows detections stamped up to 11 minutes *after* the logger record that carried them, which can only be clock error. Ask whether the loggers resync the VR2C clocks on a schedule, and how often.
 - **Clock-change reporting.** Ask whether visits that touch either clock can be logged somewhere the Data Team can see (a field-visit log or a note in the station metadata), so future seams are explained rather than discovered.
 

@@ -64,10 +64,10 @@ all_spp <- tbl(con, dbo('tag')) %>%
 # order, sorted alphabetically within each. Empty groups (e.g. black carp
 # before it shows up in the tag table) are dropped from the picker.
 species_groups <- list(
-  'Invasive'   = 'bighead carp|silver carp|grass carp|black carp',
-  'Unknown'    = '^unknown$',
+  'Invasive' = 'bighead carp|silver carp|grass carp|black carp',
+  'Unknown' = '^unknown$',
   'Non-native' = '^common carp$',
-  'Native'     = '.'
+  'Native' = '.'
 )
 
 species_choices <- local({
@@ -75,7 +75,9 @@ species_choices <- local({
   out <- list()
   for (grp in names(species_groups)) {
     hit <- remaining[str_detect(remaining, species_groups[[grp]])]
-    if (length(hit)) out[[grp]] <- hit
+    if (length(hit)) {
+      out[[grp]] <- hit
+    }
     remaining <- setdiff(remaining, hit)
   }
   out
@@ -89,17 +91,19 @@ species_choices <- local({
 # supporting colours in alphabetical order.
 species_palette <- local({
   assign_group <- function(spp, cols) {
-    if (is.null(spp)) return(character(0))
+    if (is.null(spp)) {
+      return(character(0))
+    }
     set_names(rep_len(cols, length(spp)), spp)
   }
   # unname(): irbs_pal() returns a named vector, and c('x' = named) would
   # produce the name 'x.illini-orange', which then fails to match a species.
   invasive_named <- c(
-    'silver carp'              = unname(irbs_pal('illini-orange')), # primary series
-    'bighead carp'             = unname(irbs_pal('illini-blue')),
+    'silver carp' = unname(irbs_pal('illini-orange')), # primary series
+    'bighead carp' = unname(irbs_pal('illini-blue')),
     'silver carp/bighead carp' = unname(irbs_pal('altgeld')),
-    'grass carp'               = unname(irbs_pal('harvest')),
-    'black carp'               = unname(irbs_pal('berry'))
+    'grass carp' = unname(irbs_pal('harvest')),
+    'black carp' = unname(irbs_pal('berry'))
   )
   c(
     invasive_named[names(invasive_named) %in% species_choices$Invasive],
@@ -199,7 +203,7 @@ fishtracks_footer <- tagAppendChild(
         target = '_blank',
         rel = 'noopener noreferrer',
         'USGS Fish Tracks Real-Time receiver array'
-      ), 
+      ),
       " · ",
       'Tag and receiver data from ',
       tags$a(
@@ -239,7 +243,8 @@ ui <- page_navbar(
     irbs_css,
     # Point the navbar-brand anchor at the IRBS website (bslib renders the
     # brand as an <a>, so a nested link would be invalid HTML).
-    tags$script(HTML('
+    tags$script(HTML(
+      '
       document.addEventListener("DOMContentLoaded", function () {
         var brand = document.querySelector(".navbar-brand");
         if (brand) {
@@ -248,7 +253,8 @@ ui <- page_navbar(
           brand.rel    = "noopener noreferrer";
         }
       });
-    '))
+    '
+    ))
   ),
 
   # Collapsible filter sidebar on the left (bslib). Fixed width keeps the
@@ -321,11 +327,12 @@ ui <- page_navbar(
             click = clickOpts(id = 'plot_click')
           ),
           uiOutput('plot_tooltip'), # transient, follows the cursor
-          uiOutput('plot_pinned'),  # pinned by click; has the copy button
+          uiOutput('plot_pinned'), # pinned by click; has the copy button
           # Copy runs entirely in the browser inside the click gesture, which
           # the Clipboard API requires. The tag list travels in a data-
           # attribute so no server round trip sits between click and copy.
-          tags$script(HTML("
+          tags$script(HTML(
+            "
             $(document).on('click', '.tag-copy-btn', function() {
               var btn = this;
               navigator.clipboard.writeText(btn.dataset.tags).then(function() {
@@ -337,7 +344,8 @@ ui <- page_navbar(
             $(document).on('click', '.tag-pin-close', function() {
               Shiny.setInputValue('pin_close', Date.now());
             });
-          "))
+          "
+          ))
         )
       )
     )
@@ -457,6 +465,51 @@ server <- function(input, output, session) {
       collect()
   })
 
+  # Intervals with no logger records, per selected receiver: a leading gap
+  # (window start to first record), internal gaps (more than one bin between
+  # consecutive records) and a trailing gap (last record to now, i.e. the
+  # receiver is down right now). A receiver with no records at all in the
+  # window gets one band across the whole panel. Drawn as pale bands under
+  # the lines; derived from data_records(), so no extra query.
+  data_gaps <- reactive({
+    bin_s <- bin_width_seconds(input$timeagg)
+    win_start <- time_threshold()
+    # End the window at the newest record anywhere on the array, not now():
+    # every station lags the feed by an hour or so, and only a receiver that
+    # is behind the OTHERS should be flagged as down at the right edge.
+    # No + bin_s: that gives one bin of tolerance, so a station is only
+    # flagged at the right edge when it is two or more bins behind the
+    # freshest station, not merely an hour behind in the normal USGS lag.
+    win_end <- max(data_records()$TimeStamp_binned)
+
+    station_labels_ordered <- tbl_station %>%
+      filter(station_id %in% receivers_settled()) %>%
+      distinct(station_label, plot_order) %>%
+      arrange(plot_order) %>%
+      pull(station_label)
+
+    recorded <- data_records() %>%
+      group_by(station_id) %>%
+      summarise(bins = list(sort(TimeStamp_binned)), .groups = 'drop')
+
+    tibble(station_id = receivers_settled()) %>%
+      left_join(recorded, by = 'station_id') %>%
+      mutate(
+        bins = map(bins, ~ .x %||% as.POSIXct(character(0), tz = 'UTC')),
+        # gap i runs from the end of recorded bin i-1 (or window start)
+        # to the start of recorded bin i (or window end)
+        xmin = map(bins, ~ c(win_start, .x + bin_s)),
+        xmax = map(bins, ~ c(.x, win_end))
+      ) %>%
+      select(-bins) %>%
+      unnest(c(xmin, xmax)) %>%
+      filter(as.numeric(xmax) - as.numeric(xmin) > bin_s * 0.5) %>%
+      left_join(tbl_station, by = 'station_id') %>%
+      mutate(
+        station_label = factor(station_label, levels = station_labels_ordered)
+      )
+  })
+
   data_timeseries_plot <- reactive({
     station_labels_ordered <- tbl_station %>%
       filter(station_id %in% receivers_settled()) %>%
@@ -516,8 +569,10 @@ server <- function(input, output, session) {
       card_label('activity', 'Detections in window'),
       format(sum(d$n_detections), big.mark = ','),
       sub = paste0(
-        length(unique(d$common_name_e)), ' species \u00b7 ',
-        length(receivers_settled()), ' receivers selected'
+        length(unique(d$common_name_e)),
+        ' species \u00b7 ',
+        length(receivers_settled()),
+        ' receivers selected'
       ),
       accent = 'orange'
     )
@@ -625,7 +680,9 @@ server <- function(input, output, session) {
       ),
       tags$div(
         style = 'color:var(--irbs-storm);',
-        format(pt$TimeStamp_binned, '%b %d %H:%M'), ' \u00b7 ', pt$common_name_e
+        format(pt$TimeStamp_binned, '%b %d %H:%M'),
+        ' \u00b7 ',
+        pt$common_name_e
       ),
       tags$div(sprintf(
         '%s fish, %s detections',
@@ -701,6 +758,15 @@ server <- function(input, output, session) {
         color = common_name_e,
         alpha = .7
       )) +
+      # Pale bands where the logger recorded nothing (outages), drawn first
+      # so the data sit on top.
+      geom_rect(
+        data = data_gaps(),
+        aes(xmin = xmin, xmax = xmax, ymin = -Inf, ymax = Inf),
+        inherit.aes = FALSE,
+        fill = '#C8C6C7', # storm-light
+        alpha = 0.35
+      ) +
       # Lines break between segments (logger outages); zeros are drawn as
       # line only, so the baseline isn't a wall of points.
       geom_line(aes(group = interaction(common_name_e, segment))) +
@@ -709,11 +775,15 @@ server <- function(input, output, session) {
       labs(
         x = 'Time',
         y = paste0('Unique tagged fish (per ', input$timeagg, ')'),
-        color = 'Species'
+        color = 'Species',
+        caption = 'Grey bands: no logger records'
       ) +
       scale_color_manual(values = species_palette) +
       theme_irbs_minimal(base_size = 15) +
-      theme(legend.position = 'top') +
+      theme(
+        legend.position = 'top',
+        panel.spacing.x = unit(1.5, 'lines') # keep edge tick labels apart
+      ) +
       scale_y_continuous(
         limits = c(0, NA),
         expand = expansion(mult = c(0, 0.15)),

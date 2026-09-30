@@ -266,6 +266,51 @@ server <- function(input, output, session) {
       collect()
   })
 
+  # Intervals with no logger records, per selected receiver: a leading gap
+  # (window start to first record), internal gaps (more than one bin between
+  # consecutive records) and a trailing gap (last record to now, i.e. the
+  # receiver is down right now). A receiver with no records at all in the
+  # window gets one band across the whole panel. Drawn as pale bands under
+  # the lines; derived from data_records(), so no extra query.
+  data_gaps <- reactive({
+    bin_s <- bin_width_seconds(input$timeagg)
+    win_start <- time_threshold()
+    # End the window at the newest record anywhere on the array, not now():
+    # every station lags the feed by an hour or so, and only a receiver that
+    # is behind the OTHERS should be flagged as down at the right edge.
+    # No + bin_s: that gives one bin of tolerance, so a station is only
+    # flagged at the right edge when it is two or more bins behind the
+    # freshest station, not merely an hour behind in the normal USGS lag.
+    win_end <- max(data_records()$TimeStamp_binned)
+
+    station_labels_ordered <- tbl_station %>%
+      filter(station_id %in% receivers_settled()) %>%
+      distinct(station_label, plot_order) %>%
+      arrange(plot_order) %>%
+      pull(station_label)
+
+    recorded <- data_records() %>%
+      group_by(station_id) %>%
+      summarise(bins = list(sort(TimeStamp_binned)), .groups = 'drop')
+
+    tibble(station_id = receivers_settled()) %>%
+      left_join(recorded, by = 'station_id') %>%
+      mutate(
+        bins = map(bins, ~ .x %||% as.POSIXct(character(0), tz = 'UTC')),
+        # gap i runs from the end of recorded bin i-1 (or window start)
+        # to the start of recorded bin i (or window end)
+        xmin = map(bins, ~ c(win_start, .x + bin_s)),
+        xmax = map(bins, ~ c(.x, win_end))
+      ) %>%
+      select(-bins) %>%
+      unnest(c(xmin, xmax)) %>%
+      filter(as.numeric(xmax) - as.numeric(xmin) > bin_s * 0.5) %>%
+      left_join(tbl_station, by = 'station_id') %>%
+      mutate(
+        station_label = factor(station_label, levels = station_labels_ordered)
+      )
+  })
+
   data_timeseries_plot <- reactive({
     station_labels_ordered <- tbl_station %>%
       filter(station_id %in% receivers_settled()) %>%
@@ -318,6 +363,15 @@ server <- function(input, output, session) {
         color = common_name_e,
         alpha = .7
       )) +
+      # Pale bands where the logger recorded nothing (outages), drawn first
+      # so the data sit on top.
+      geom_rect(
+        data = data_gaps(),
+        aes(xmin = xmin, xmax = xmax, ymin = -Inf, ymax = Inf),
+        inherit.aes = FALSE,
+        fill = '#C8C6C7', # storm-light
+        alpha = 0.35
+      ) +
       # Lines break between segments (logger outages); zeros are drawn as
       # line only, so the baseline isn't a wall of points.
       geom_line(aes(group = interaction(common_name_e, segment))) +
@@ -326,9 +380,11 @@ server <- function(input, output, session) {
       labs(
         x = 'Time',
         y = paste0('Unique tagged fish (per ', input$timeagg, ')'),
-        color = 'Species'
+        color = 'Species',
+        caption = 'Grey bands: no logger records'
       ) +
       theme_minimal(base_size = 15) +
+      theme(panel.spacing.x = unit(1.5, 'lines')) + # keep edge tick labels apart
       scale_y_continuous(
         limits = c(0, NA),
         expand = expansion(mult = c(0, 0.15)),

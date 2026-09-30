@@ -106,9 +106,27 @@ compiled <- map_df(tbl_station$station_id, function(id) {
 }) %>%
     mutate(
       DateRetrieved = DateRetrieved,
-      DetectionID = paste(station_id, Record, sep = '_')
+      # Key on the record's own timestamp, NOT the logger's Record counter:
+      # the counter resets to 1 whenever the logger restarts, so Record-based
+      # IDs collide with earlier rows and the append silently skips them
+      # (05538010, 2026-09-23 and 2026-09-29). One record per station per
+      # 5-minute poll makes station_id + TimeStamp unique by construction.
+      DetectionID = paste(
+        station_id,
+        format(TimeStamp, '%Y%m%d%H%M%S', tz = 'UTC'),
+        sep = '_'
+      )
     ) %>%
-    relocate(DetectionID)
+    relocate(DetectionID) %>%
+    # A logger occasionally polls twice within one interval (e.g. after a
+    # small backward clock adjustment), giving two records with the same
+    # TimeStamp; the second is usually empty. Keep the one with detections,
+    # then the later Record, so a batch never carries two rows with the same
+    # station + TimeStamp (the NOT EXISTS below only checks against rows
+    # already in dbo.event, not within the batch). distinct() keeps the
+    # first row in the current order.
+    arrange(station_id, TimeStamp, desc(VRTagCount), desc(Record)) %>%
+    distinct(station_id, TimeStamp, .keep_all = TRUE)
   
   
   log_msg(sprintf("Retrieved %d new records", nrow(compiled)))
@@ -126,14 +144,17 @@ dbWriteTable(
   
   log_msg("Wrote staging table")
   
-  # Append only new rows to events table
+  # Append only new rows to events table. Match on station + record time,
+  # not DetectionID, so rows already stored under the old Record-based IDs
+  # (pre-2026-09-30) are still recognised as duplicates.
   append_sql <- "
 INSERT INTO dbo.event
 SELECT *
   FROM dbo.staging_event s
 WHERE NOT EXISTS (SELECT 1
   FROM dbo.event t
-  WHERE t.DetectionID = s.DetectionID)
+  WHERE t.station_id = s.station_id
+    AND t.TimeStamp  = s.TimeStamp)
 
 "
   
