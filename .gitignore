@@ -49,3 +49,5 @@ rsconnect/
 # End of https://www.toptal.com/developers/gitignore/api/r
 
 /output/profvis_files/
+
+/Claude outputs/

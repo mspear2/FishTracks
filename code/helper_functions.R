@@ -237,3 +237,98 @@ assemble_TagID <- function(tag) {
   tag %>%
     mutate(TagID = paste(trimws(tag_code_space), tag_id_code, sep = '-'))
 }
+
+# Receiver activity rating ("heat") ####
+# How many distinct fish a receiver saw in the most recent `recent_h` hours,
+# and where that sits in the distribution of the same statistic over rolling
+# windows across the preceding `baseline_h` hours. Pure R on hourly summaries,
+# so changing the window, baseline, species or receivers needs no new query.
+#
+# hourly:    one row per station x species x hourly bin with a `tag_ids`
+#            string (output of aggregate_detections_lazy(unit = '1 hour')).
+#            The window's distinct-fish count is the union of the tag lists
+#            of the selected species over the window's hours.
+# coverage:  distinct (station_id, TimeStamp_binned) hourly bins in which
+#            the logger wrote at least one record, with or without fish.
+#
+# The window ending at the newest recorded hour anywhere on the array is
+# "now" (the feed lags real time by about an hour, so now() would leave the
+# current window short). Baseline windows are the `baseline_h` windows of the
+# same length ending at each of the hours before it, minus any whose logger
+# coverage is below `min_coverage`: a receiver that was down for part of a
+# window would otherwise contribute an artificially low count and make its
+# present activity look hotter than it is. Each receiver is compared only with
+# its own history, so sites with very different detection ranges or local
+# fish densities can be read on the same scale.
+#
+# pctile is the STRICT exceedance fraction: the share of baseline windows
+# with fewer fish than now. Strict, so that zero fish is always 0 even where
+# most windows are zero. NA when no baseline window has enough coverage.
+receiver_heat <- function(
+  hourly,
+  coverage,
+  stations,
+  species,
+  recent_h = 6,
+  baseline_h = 1440,
+  min_coverage = 0.8
+) {
+  t_end <- max(coverage$TimeStamp_binned)
+  grid <- seq(t_end - 3600 * (baseline_h + recent_h - 1), t_end, by = 3600)
+  n_grid <- length(grid)
+  ends <- recent_h:n_grid # grid index at which each window ends
+  n_win <- length(ends)
+
+  fish_sets <- hourly %>%
+    filter(
+      station_id %in% stations,
+      common_name_e %in% species,
+      TimeStamp_binned >= grid[1],
+      TimeStamp_binned <= t_end
+    ) %>%
+    group_by(station_id, TimeStamp_binned) %>%
+    summarise(
+      tags = list(unique(unlist(strsplit(tag_ids, ', ', fixed = TRUE)))),
+      .groups = 'drop'
+    )
+
+  covered <- coverage %>%
+    filter(
+      station_id %in% stations,
+      TimeStamp_binned >= grid[1],
+      TimeStamp_binned <= t_end
+    )
+
+  map_dfr(stations, function(st) {
+    # one entry per grid hour: the fish seen, and whether the logger reported
+    sets <- vector('list', n_grid)
+    s <- fish_sets[fish_sets$station_id == st, ]
+    sets[match(s$TimeStamp_binned, grid)] <- s$tags
+    cov <- logical(n_grid)
+    cov[match(covered$TimeStamp_binned[covered$station_id == st], grid)] <- TRUE
+
+    # rolling window ending at grid hour i spans hours i - recent_h + 1 .. i
+    fish_in_win <- vapply(
+      ends,
+      function(i) length(unique(unlist(sets[(i - recent_h + 1):i]))),
+      integer(1)
+    )
+    cov_in_win <- vapply(
+      ends,
+      function(i) mean(cov[(i - recent_h + 1):i]),
+      numeric(1)
+    )
+
+    n_now <- fish_in_win[n_win]
+    base <- fish_in_win[-n_win][cov_in_win[-n_win] >= min_coverage]
+
+    tibble(
+      station_id = st,
+      n_now = n_now,
+      coverage_now = cov_in_win[n_win],
+      n_windows = length(base),
+      base_median = if (length(base)) median(base) else NA_real_,
+      pctile = if (length(base)) mean(base < n_now) else NA_real_
+    )
+  })
+}
