@@ -552,7 +552,8 @@ server <- function(input, output, session) {
     req(data_sppjoin())
     req(input$timeagg)
 
-    data_sppjoin() %>%
+    t0 <- Sys.time()
+    out <- data_sppjoin() %>%
       aggregate_detections_lazy(unit = input$timeagg) %>%
       collect() %>%
       # odbc returns SQL Server counts as bit64::integer64. That class does
@@ -560,6 +561,12 @@ server <- function(input, output, session) {
       # which silently defeats the plot's species dodge; plain integers from
       # here on.
       mutate(across(c(n_fish, n_detections), as.integer))
+    message(sprintf(
+      'data_timeagg: %d rows in %.1f s (%s, %s)',
+      nrow(out), as.numeric(Sys.time() - t0, 'secs'),
+      input$lookback, input$timeagg
+    ))
+    out
   }) %>%
     bindCache(
       time_threshold(),
@@ -577,9 +584,13 @@ server <- function(input, output, session) {
 
     time_threshold_nonr <- time_threshold()
     selected_receivers_nonr <- receivers_settled()
-    bin_expr <- bin_timestamp_sql(input$timeagg)
+    # Daily bins: hours in SQL (cheap), floored to Central days in R; see
+    # aggregate_detections_lazy() for why AT TIME ZONE is avoided per row.
+    sql_unit <- if (input$timeagg == '1 day') '1 hour' else input$timeagg
+    bin_expr <- bin_timestamp_sql(sql_unit)
 
-    tbl(con, dbo('event')) %>%
+    t0 <- Sys.time()
+    out <- tbl(con, dbo('event')) %>%
       filter(
         TimeStamp >= time_threshold_nonr,
         station_id %in% selected_receivers_nonr
@@ -587,6 +598,21 @@ server <- function(input, output, session) {
       mutate(TimeStamp_binned = sql(bin_expr)) %>%
       distinct(station_id, TimeStamp_binned) %>%
       collect()
+    if (input$timeagg == '1 day') {
+      out <- out %>%
+        mutate(
+          TimeStamp_binned = with_tz(
+            floor_date(with_tz(TimeStamp_binned, 'America/Chicago'), 'day'),
+            'UTC'
+          )
+        ) %>%
+        distinct(station_id, TimeStamp_binned)
+    }
+    message(sprintf(
+      'data_records: %d rows in %.1f s',
+      nrow(out), as.numeric(Sys.time() - t0, 'secs')
+    ))
+    out
   })
 
   # Intervals with no logger records, per selected receiver: a leading gap
@@ -1179,8 +1205,12 @@ server <- function(input, output, session) {
         ) +
         scale_y_continuous(
           limits = c(y_floor, NA),
-          # integer breaks from 0, ignoring the sub-zero dodge room
-          breaks = function(lim) scales::breaks_pretty()(c(0, lim[2])),
+          # integer breaks from 0 (breaks_pretty picks half-fish steps on
+          # small ranges, which then label as duplicate integers)
+          breaks = function(lim) {
+            top <- max(1, ceiling(lim[2]))
+            seq(0, top, by = max(1, ceiling(top / 6)))
+          },
           expand = expansion(mult = c(0, 0.15)),
           labels = scales::label_number(accuracy = 1)
         ) +

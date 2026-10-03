@@ -178,18 +178,25 @@ aggregate_detections <- function(df, unit = "30 minutes") {
 # convert that midnight back to UTC. AT TIME ZONE handles DST, so the bin
 # for a 23- or 25-hour day is still that local day. The result stays UTC.
 # ('Central Standard Time' is SQL Server's zone name; it covers CDT too.)
-bin_timestamp_sql <- function(unit = c("5 minutes", "1 hour", "1 day")) {
+# `col` is the column the expression floors; the daily case is also applied
+# to an already-hourly column in aggregate_detections_lazy().
+bin_timestamp_sql <- function(
+  unit = c("5 minutes", "1 hour", "1 day"),
+  col = "[TimeStamp]"
+) {
   unit <- match.arg(unit)
 
   switch(
     unit,
-    "5 minutes" = "DATEADD(minute, (DATEDIFF(minute, 0, [TimeStamp]) / 5) * 5, 0)",
-    "1 hour" = "DATEADD(hour, DATEDIFF(hour, 0, [TimeStamp]), 0)",
-    "1 day" = paste0(
-      "CAST((CAST(CAST(([TimeStamp] AT TIME ZONE 'UTC' ",
+    "5 minutes" = sprintf(
+      "DATEADD(minute, (DATEDIFF(minute, 0, %s) / 5) * 5, 0)", col
+    ),
+    "1 hour" = sprintf("DATEADD(hour, DATEDIFF(hour, 0, %s), 0)", col),
+    "1 day" = sprintf(paste0(
+      "CAST((CAST(CAST((%s AT TIME ZONE 'UTC' ",
       "AT TIME ZONE 'Central Standard Time') AS date) AS datetime2) ",
       "AT TIME ZONE 'Central Standard Time' AT TIME ZONE 'UTC') AS datetime2)"
-    )
+    ), col)
   )
 }
 
@@ -205,11 +212,18 @@ aggregate_detections_lazy <- function(
   unit = c("5 minutes", "1 hour", "1 day")
 ) {
   unit <- match.arg(unit)
-  bin_expr <- bin_timestamp_sql(unit)
 
-  tbl_lazy %>%
+  # AT TIME ZONE (used by the daily bin) is slow per row in SQL Server, so
+  # daily bins are built in two steps: dedupe fish within cheap UTC HOURS
+  # first, then convert only those fish-hour rows to Central days and dedupe
+  # again. Same result as flooring every detection to a Central day, at a
+  # fraction of the cost. Central day boundaries fall on UTC hour boundaries,
+  # so the hourly step loses nothing.
+  first_unit <- if (unit == "1 day") "1 hour" else unit
+
+  per_fish <- tbl_lazy %>%
     mutate(
-      TimeStamp_binned = sql(bin_expr),
+      TimeStamp_binned = sql(bin_timestamp_sql(first_unit)),
       # One key per fish: the animal when known, otherwise the tag itself.
       fish_key = coalesce(as.character(animal_id), TagID)
     ) %>%
@@ -220,7 +234,22 @@ aggregate_detections_lazy <- function(
       TagID = min(TagID, na.rm = TRUE),
       n_det = n(),
       .groups = "drop"
-    ) %>%
+    )
+
+  if (unit == "1 day") {
+    per_fish <- per_fish %>%
+      mutate(
+        TimeStamp_binned = sql(bin_timestamp_sql("1 day", "[TimeStamp_binned]"))
+      ) %>%
+      group_by(station_id, common_name_e, TimeStamp_binned, fish_key) %>%
+      summarise(
+        TagID = min(TagID, na.rm = TRUE),
+        n_det = sum(n_det, na.rm = TRUE),
+        .groups = "drop"
+      )
+  }
+
+  per_fish %>%
     # Level 2: one row per station x species x bin, with the tag list.
     group_by(station_id, common_name_e, TimeStamp_binned) %>%
     summarise(
