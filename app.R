@@ -233,6 +233,36 @@ single_select <- function(inputId, label, choices, selected) {
   )
 }
 
+# Receiver-activity rating windows, in hours. Edit options here only: the
+# inputs read these vectors, and heat_window_label() builds the sentence
+# text from the hours, so there is no second lookup to keep in sync.
+heat_recent_choices <- c(
+  'Last hour' = 1,
+  'Last 6 hours' = 6,
+  'Last 12 hours' = 12,
+  'Last 24 hours' = 24
+)
+heat_baseline_choices <- c(
+  'Last 24 hours' = 24,
+  'Last 7 days' = 168,
+  'Last 30 days' = 720,
+  'Last 60 days' = 1440,
+  'Last 90 days' = 2160
+)
+
+# Short form for card / tile text: 1 -> "last hour", 12 -> "last 12 h",
+# 24 -> "last 24 h", 168 -> "last 7 d" (whole days beyond 24 h).
+heat_window_label <- function(hours) {
+  h <- as.numeric(hours)
+  if (h == 1) {
+    'last hour'
+  } else if (h > 24 && h %% 24 == 0) {
+    paste0('last ', h / 24, ' d')
+  } else {
+    paste0('last ', h, ' h')
+  }
+}
+
 
 # App footer: the shared IRBS footer plus a data-source line that leads with
 # the USGS identifier, laid out like the Block I line above it.
@@ -447,24 +477,13 @@ ui <- page_navbar(
               single_select(
                 inputId = 'heat_recent',
                 label = 'Count fish seen in the',
-                choices = c(
-                  'Last hour' = 1,
-                  'Last 6 hours' = 6,
-                  'Last 12 hours' = 12,
-                  'Last 24 hours' = 24
-                ),
+                choices = heat_recent_choices,
                 selected = '12'
               ),
               single_select(
                 inputId = 'heat_baseline',
                 label = 'Compared with each receiver\u2019s',
-                choices = c(
-                  'Last 24 hours' = 24,
-                  'Last 7 days' = 168,
-                  'Last 30 days' = 720,
-                  'Last 60 days' = 1440,
-                  'Last 90 days' = 2160
-                ),
+                choices = heat_baseline_choices,
                 selected = '1440'
               )
             )
@@ -927,14 +946,13 @@ server <- function(input, output, session) {
       )
   })
 
-  heat_labels <- reactive(list(
-    recent = c('1' = 'last hour', '6' = 'last 6 h', '24' = 'last 24 h')[[
-      input$heat_recent
-    ]],
-    baseline = c('24' = 'last 24 h', '168' = 'last 7 d', '1440' = 'last 60 d')[[
-      input$heat_baseline
-    ]]
-  ))
+  heat_labels <- reactive({
+    req(input$heat_recent, input$heat_baseline)
+    list(
+      recent = heat_window_label(input$heat_recent),
+      baseline = heat_window_label(input$heat_baseline)
+    )
+  })
 
   # Percentile as text ("92%"), or why there is none
   heat_pct <- function(r) {

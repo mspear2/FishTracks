@@ -213,6 +213,21 @@ irbs_css <- tags$style(HTML(
     white-space: nowrap;
   }
 
+  /* ── Phones: shrink the brand so the collapsed-menu toggler fits ─────── */
+  /* Logo + nowrap title + 2.5rem margin is ~330px, which pushes the
+     navbar toggler off-screen on a 360-390px phone. Desktop unaffected.  */
+  @media (max-width: 575.98px) {
+    .navbar .navbar-header { min-width: 0; flex: 1 1 auto; }
+    .navbar .navbar-brand  { margin-right: 0.5rem; min-width: 0; }
+    .navbar .navbar-brand img { height: 32px; }
+    .navbar .navbar-toggler { flex-shrink: 0; }
+    .irbs-app-title {
+      font-size: 16px;
+      line-height: 1.15;
+      white-space: normal;   /* wrap to two lines if needed */
+    }
+  }
+
 "
 ))
 
