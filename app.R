@@ -10,6 +10,7 @@
 #   code/metric_card.R    -- metric_card()
 #   www/irbs_inverse.png  -- IRBS logo (reversed) for the navbar
 #   www/block_i_color.png -- Block I for the footer
+#   www/usgs_logo_green.png -- USGS identifier for the footer's data line
 # Dependencies beyond shiny/tidyverse/DBI/odbc: bslib, bsicons, htmltools,
 # shinyWidgets, showtext, ragg (optional).
 # ============================================================================
@@ -18,6 +19,8 @@ library(shiny)
 library(bslib)
 library(htmltools)
 library(shinyWidgets)
+library(reactable)
+library(leaflet)
 library(tidyverse)
 library(DBI)
 library(odbc)
@@ -68,7 +71,7 @@ all_spp <- tbl(con, dbo('tag')) %>%
 species_groups <- list(
   'Invasive' = 'bighead carp|silver carp|grass carp|black carp',
   'Unknown' = '^unknown$',
-  'Non-native' = '^common carp$',
+  'Non-native' = 'common carp|goldfish',
   'Native' = '.'
 )
 
@@ -157,6 +160,39 @@ receiver_default <- tbl_station %>%
   filter(river_name != 'Sandusky River') %>%
   pull(station_id)
 
+# Species photos for the Tag lookup spotlight live in www/species/ as
+# <slug>_<AGENCY>.<ext>; the agency after the underscore is shown as the
+# photo credit. Any species without a file gets the placeholder.
+species_slug <- function(x) {
+  x %>%
+    tolower() %>%
+    str_replace_all('[^a-z0-9]+', '-') %>%
+    str_replace_all('(^-|-$)', '')
+}
+
+species_photos <- local({
+  files <- list.files(
+    here('www', 'species'),
+    pattern = '^[a-z0-9-]+_[^_]+\\.(png|jpe?g|svg)$',
+    ignore.case = TRUE
+  )
+  tibble(file = files) %>%
+    mutate(
+      slug = str_extract(file, '^[a-z0-9-]+'),
+      # everything between the first underscore and the extension
+      credit = str_match(file, '^[a-z0-9-]+_(.+)\\.[^.]+$')[, 2]
+    )
+})
+
+species_photo <- function(common_name) {
+  hit <- species_photos %>% filter(slug == species_slug(common_name))
+  if (nrow(hit) == 0) {
+    list(src = 'species/_placeholder.svg', credit = NULL)
+  } else {
+    list(src = file.path('species', hit$file[1]), credit = hit$credit[1])
+  }
+}
+
 # Sidebar inputs are virtual-select widgets (shinyWidgets::virtualSelectInput).
 # Multi-selects get a search box, a "Select all" checkbox covering the whole
 # list, and, for grouped choices, a checkbox on each group heading that
@@ -198,14 +234,25 @@ single_select <- function(inputId, label, choices, selected) {
 }
 
 
-# App footer: the shared IRBS footer plus a data-source tagline on a second
-# line, aligned with the link text. The Block I is 20px high; at its 243x351
-# aspect ratio that is ~14px wide, plus the footer's 10px flex gap = 24px.
+# App footer: the shared IRBS footer plus a data-source line that leads with
+# the USGS identifier, laid out like the Block I line above it.
 fishtracks_footer <- tagAppendChild(
   irbs_footer,
   div(
     class = 'irbs-footer-inner',
-    style = 'margin-top:4px; padding-left:24px;',
+    style = 'margin-top:4px;',
+    tags$a(
+      href = 'https://www.usgs.gov/',
+      target = '_blank',
+      rel = 'noopener noreferrer',
+      title = 'U.S. Geological Survey',
+      tags$img(
+        src = 'usgs_logo_green.png',
+        height = '20px',
+        alt = 'U.S. Geological Survey',
+        style = 'opacity:0.55; flex-shrink:0; display:block;'
+      )
+    ),
     div(
       class = 'irbs-footer-text',
       'Detection data from ',
@@ -225,6 +272,42 @@ fishtracks_footer <- tagAppendChild(
       )
     )
   )
+)
+
+# Collapsible filter sidebar for the Detections page (bslib). Fixed width
+# keeps the inputs from growing with their content; the toggle collapses it
+# to give the plot the full width. Defined here and placed inside the
+# Detections panel so the Tag lookup page is not shown filters it ignores.
+detections_sidebar <- sidebar(
+  title = 'Filters',
+  width = 300,
+  open = 'open',
+  multi_select(
+    inputId = 'species',
+    label = 'Species',
+    choices = species_choices,
+    selected = c(species_choices$Invasive, species_choices$Unknown)
+  ),
+  multi_select(
+    inputId = 'receiver_name',
+    label = 'Receivers',
+    choices = receiver_choices,
+    selected = receiver_default
+  ),
+  single_select(
+    inputId = 'lookback',
+    label = 'Lookback period',
+    choices = c('1 day' = 1, '1 week' = 7, '1 month' = 30, 'Max' = 'Max'),
+    selected = '1'
+  ),
+  single_select(
+    inputId = 'timeagg',
+    label = 'Aggregate detections',
+    choices = c('5 minutes', '1 hour', '1 day'),
+    selected = '1 hour'
+  ),
+  # Overlay the all-species total; species series fade behind it.
+  input_switch('show_total', 'Show all-species total', value = FALSE)
 )
 
 # ── UI ───────────────────────────────────────────────────────────────────────
@@ -323,135 +406,103 @@ ui <- page_navbar(
     ))
   ),
 
-  # Collapsible filter sidebar on the left (bslib). Fixed width keeps the
-  # inputs from growing with their content; the toggle in the top corner
-  # collapses it to give the plot the full width.
-  sidebar = sidebar(
-    title = 'Filters',
-    width = 300,
-    open = 'open',
-    multi_select(
-      inputId = 'species',
-      label = 'Species',
-      choices = species_choices,
-      selected = c(species_choices$Invasive, species_choices$Unknown)
-    ),
-    multi_select(
-      inputId = 'receiver_name',
-      label = 'Receivers',
-      choices = receiver_choices,
-      selected = receiver_default
-    ),
-    single_select(
-      inputId = 'lookback',
-      label = 'Lookback period',
-      choices = c('1 day' = 1, '1 week' = 7, '1 month' = 30, 'Max' = 'Max'),
-      selected = '1'
-    ),
-    single_select(
-      inputId = 'timeagg',
-      label = 'Aggregate detections',
-      choices = c('5 minutes', '1 hour', '1 day'),
-      selected = '1 hour'
-    ),
-    # Overlay the all-species total; species series fade behind it.
-    input_switch('show_total', 'Show all-species total', value = FALSE)
-  ),
-
   nav_panel(
     'Detections',
     icon = bsicons::bs_icon('broadcast'),
+    layout_sidebar(
+      fillable = FALSE,
+      sidebar = detections_sidebar,
 
-    # Summary cards for the current selection and window. Three columns of
-    # 3/12 each; the remaining quarter of the row is left empty on purpose
-    # so the cards stay compact instead of stretching across the page.
-    layout_columns(
-      col_widths = c(3, 3, 3),
-      fill = FALSE,
-      gap = '16px',
-      uiOutput('card_hottest'),
-      uiOutput('card_receivers'),
-      uiOutput('card_updated')
-    ),
+      # Summary cards for the current selection and window. Three columns of
+      # 3/12 each; the remaining quarter of the row is left empty on purpose
+      # so the cards stay compact instead of stretching across the page.
+      layout_columns(
+        col_widths = c(3, 3, 3),
+        fill = FALSE,
+        gap = '16px',
+        uiOutput('card_hottest'),
+        uiOutput('card_receivers'),
+        uiOutput('card_updated')
+      ),
 
-    # One tile per selected receiver, in river order, coloured by how the
-    # current window compares with the receiver's own baseline. Collapsible,
-    # so the plot can be brought up the page once the tiles have been read.
-    accordion(
-      id = 'heat_accordion',
-      open = TRUE,
-      accordion_panel(
-        'Receiver activity',
-        icon = bsicons::bs_icon('fire'),
-        uiOutput('heat_tiles'),
-        # The rating's two dials live with the card they tune, not in the
-        # sidebar: "now" is the window counted, the baseline is what it is
-        # ranked against. Both are hours; applied in R to a cached hourly
-        # summary, so changing them never touches the database.
-        div(
-          class = 'heat-controls',
-          div(class = 'heat-controls-title', 'Adjust the rating'),
+      # One tile per selected receiver, in river order, coloured by how the
+      # current window compares with the receiver's own baseline. Collapsible,
+      # so the plot can be brought up the page once the tiles have been read.
+      accordion(
+        id = 'heat_accordion',
+        open = TRUE,
+        accordion_panel(
+          'Receiver activity',
+          icon = bsicons::bs_icon('fire'),
+          uiOutput('heat_tiles'),
+          # The rating's two dials live with the card they tune, not in the
+          # sidebar: "now" is the window counted, the baseline is what it is
+          # ranked against. Both are hours; applied in R to a cached hourly
+          # summary, so changing them never touches the database.
           div(
-            class = 'heat-controls-row',
-            single_select(
-              inputId = 'heat_recent',
-              label = 'Count fish seen in the',
-              choices = c(
-                'Last hour' = 1,
-                'Last 6 hours' = 6,
-                'Last 24 hours' = 24
+            class = 'heat-controls',
+            div(class = 'heat-controls-title', 'Adjust the rating'),
+            div(
+              class = 'heat-controls-row',
+              single_select(
+                inputId = 'heat_recent',
+                label = 'Count fish seen in the',
+                choices = c(
+                  'Last hour' = 1,
+                  'Last 6 hours' = 6,
+                  'Last 24 hours' = 24
+                ),
+                selected = '6'
               ),
-              selected = '6'
-            ),
-            single_select(
-              inputId = 'heat_baseline',
-              label = 'Compared with each receiver\u2019s',
-              choices = c(
-                'Last 24 hours' = 24,
-                'Last 7 days' = 168,
-                'Last 60 days' = 1440
-              ),
-              selected = '1440'
+              single_select(
+                inputId = 'heat_baseline',
+                label = 'Compared with each receiver\u2019s',
+                choices = c(
+                  'Last 24 hours' = 24,
+                  'Last 7 days' = 168,
+                  'Last 60 days' = 1440
+                ),
+                selected = '1440'
+              )
             )
           )
         )
-      )
-    ),
+      ),
 
-    card(
-      full_screen = TRUE,
-      height = '860px',
-      card_header('Unique tagged fish detected'),
-      card_body(
-        style = 'overflow:hidden;',
-        # Fixed y-axes make receivers comparable; free lets a quiet receiver
-        # use its own scale when one busy site would otherwise flatten it.
-        input_switch(
-          'free_y',
-          'Independent y-axis per receiver',
-          value = FALSE
-        ),
-        # position:relative so the tooltip can be placed over the plot image
-        div(
-          style = 'position:relative;',
-          plotOutput(
-            'plot',
-            height = 800,
-            hover = hoverOpts(
-              id = 'plot_hover',
-              delay = 100,
-              delayType = 'debounce',
-              nullOutside = TRUE
-            ),
-            click = clickOpts(id = 'plot_click')
+      card(
+        full_screen = TRUE,
+        height = '860px',
+        card_header('Unique tagged fish detected'),
+        card_body(
+          style = 'overflow:hidden;',
+          # Fixed y-axes make receivers comparable; free lets a quiet receiver
+          # use its own scale when one busy site would otherwise flatten it.
+          input_switch(
+            'free_y',
+            'Independent y-axis per receiver',
+            value = FALSE
           ),
-          uiOutput('plot_tooltip'), # transient, follows the cursor
-          uiOutput('plot_pinned'), # pinned by click; has the copy button
-          # Copy runs entirely in the browser inside the click gesture, which
-          # the Clipboard API requires. The tag list travels in a data-
-          # attribute so no server round trip sits between click and copy.
-          tags$script(HTML(
-            "
+          # position:relative so the tooltip can be placed over the plot image
+          div(
+            style = 'position:relative;',
+            plotOutput(
+              'plot',
+              height = 800,
+              hover = hoverOpts(
+                id = 'plot_hover',
+                delay = 100,
+                delayType = 'debounce',
+                nullOutside = TRUE
+              ),
+              click = clickOpts(id = 'plot_click')
+            ),
+            uiOutput('plot_tooltip'), # transient, follows the cursor
+            uiOutput('plot_pinned'), # pinned by click; has the copy button
+            # Copy runs entirely in the browser inside the click gesture, which
+            # the Clipboard API requires. The tag list travels in a data-
+            # attribute so no server round trip sits between click and copy.
+            tags$script(HTML(
+              "
             $(document).on('click', '.tag-copy-btn', function() {
               var btn = this;
               navigator.clipboard.writeText(btn.dataset.tags).then(function() {
@@ -464,9 +515,63 @@ ui <- page_navbar(
               Shiny.setInputValue('pin_close', Date.now());
             });
           "
-          ))
+            ))
+          )
         )
       )
+    )
+  ),
+
+  # ── Tag lookup page ─────────────────────────────────────────────────────────
+  # Paste one or more tag IDs; the table lists every matching tag record and
+  # the spotlight card describes the selected row.
+  nav_panel(
+    'Tag lookup',
+    icon = bsicons::bs_icon('search'),
+    layout_columns(
+      col_widths = c(4, 8),
+      fill = FALSE,
+      gap = '16px',
+      card(
+        card_header('Look up tags'),
+        card_body(
+          textAreaInput(
+            'tag_input',
+            label = NULL,
+            rows = 5,
+            width = '100%',
+            placeholder = paste(
+              'Paste tag IDs (e.g. A69-9001-12345) or bare ID codes,',
+              'separated by commas, spaces, tabs or new lines'
+            )
+          ),
+          actionButton(
+            'tag_go',
+            'Look up',
+            class = 'btn-primary',
+            width = '100%'
+          ),
+          uiOutput('tag_note')
+        )
+      ),
+      card(
+        card_header(uiOutput('spot_header', inline = TRUE)),
+        card_body(
+          layout_columns(
+            col_widths = c(4, 8),
+            fill = FALSE,
+            gap = '16px',
+            uiOutput('spot_photo'),
+            uiOutput('spot_facts')
+          ),
+          uiOutput('spot_comments'),
+          leafletOutput('tag_map', height = 220)
+        )
+      )
+    ),
+    card(
+      card_header('Tag records'),
+      card_body(uiOutput('tag_table_note'), reactableOutput('tag_table'))
     )
   ),
 
@@ -563,8 +668,10 @@ server <- function(input, output, session) {
       mutate(across(c(n_fish, n_detections), as.integer))
     message(sprintf(
       'data_timeagg: %d rows in %.1f s (%s, %s)',
-      nrow(out), as.numeric(Sys.time() - t0, 'secs'),
-      input$lookback, input$timeagg
+      nrow(out),
+      as.numeric(Sys.time() - t0, 'secs'),
+      input$lookback,
+      input$timeagg
     ))
     out
   }) %>%
@@ -610,7 +717,8 @@ server <- function(input, output, session) {
     }
     message(sprintf(
       'data_records: %d rows in %.1f s',
-      nrow(out), as.numeric(Sys.time() - t0, 'secs')
+      nrow(out),
+      as.numeric(Sys.time() - t0, 'secs')
     ))
     out
   })
@@ -1121,115 +1229,115 @@ server <- function(input, output, session) {
   # ── Plot ───────────────────────────────────────────────────────────────────
 
   output$plot <- renderPlot({
-      req(data_timeseries_plot())
+    req(data_timeseries_plot())
 
-      d <- data_timeseries_plot()
-      show_total <- isTRUE(input$show_total)
-      # species series step back when the total is overlaid
-      spp_alpha <- if (show_total) 0.3 else 0.8
-      # room below zero for the lowest dodged series
-      y_floor <- -max(d$dodge_step, 0) *
-        (n_distinct(d$common_name_e) - 1) /
-        2 -
-        0.05
-      # All-species total drawn on top, full opacity, in black (NULL adds
-      # nothing to the plot when the switch is off)
-      total_layers <- if (show_total) {
-        list(
-          geom_step(
-            data = data_total_plot(),
-            aes(group = segment, color = 'All species'),
-            direction = 'hv',
-            linewidth = 0.9
-          ),
-          geom_point(
-            data = data_total_plot() %>% filter(n_fish > 0, !is_end),
-            aes(color = 'All species'),
-            pch = 16,
-            size = 2.2
-          )
-        )
-      }
-
-      d %>%
-        ggplot(aes(
-          x = TimeStamp_binned,
-          y = y_plot,
-          color = common_name_e
-        )) +
-        # Pale bands where the logger recorded nothing (outages), drawn first
-        # so the data sit on top.
-        geom_rect(
-          data = data_gaps(),
-          aes(xmin = xmin, xmax = xmax, ymin = -Inf, ymax = Inf),
-          inherit.aes = FALSE,
-          fill = '#C8C6C7', # storm-light
-          alpha = 0.35
-        ) +
-        # Steps: each bin's count holds until the next bin, which is what a
-        # binned count means, and coincident series differ by where they
-        # step. Breaks between segments (logger outages); zeros are drawn
-        # as line only, so the baseline isn't a wall of points.
+    d <- data_timeseries_plot()
+    show_total <- isTRUE(input$show_total)
+    # species series step back when the total is overlaid
+    spp_alpha <- if (show_total) 0.3 else 0.8
+    # room below zero for the lowest dodged series
+    y_floor <- -max(d$dodge_step, 0) *
+      (n_distinct(d$common_name_e) - 1) /
+      2 -
+      0.05
+    # All-species total drawn on top, full opacity, in black (NULL adds
+    # nothing to the plot when the switch is off)
+    total_layers <- if (show_total) {
+      list(
         geom_step(
-          aes(group = interaction(common_name_e, segment)),
+          data = data_total_plot(),
+          aes(group = segment, color = 'All species'),
           direction = 'hv',
-          alpha = spp_alpha
-        ) +
+          linewidth = 0.9
+        ),
         geom_point(
-          data = ~ filter(.x, n_fish > 0, !is_end),
+          data = data_total_plot() %>% filter(n_fish > 0, !is_end),
+          aes(color = 'All species'),
           pch = 16,
-          alpha = spp_alpha
-        ) +
-        total_layers +
-        facet_wrap(
-          ~station_label,
-          scales = if (isTRUE(input$free_y)) 'free_y' else 'fixed',
-          drop = FALSE
-        ) +
-        labs(
-          x = 'Time (Central)',
-          y = paste0('Unique tagged fish (per ', input$timeagg, ')'),
-          color = 'Species',
-          caption = paste(
-            'Grey bands: no logger records.',
-            'Species series are offset vertically for legibility.'
-          )
-        ) +
-        scale_color_manual(
-          values = c(species_palette, 'All species' = '#000000')
-        ) +
-        theme_irbs_minimal(base_size = 15) +
-        theme(
-          legend.position = 'top',
-          panel.spacing.x = unit(1.5, 'lines') # keep edge tick labels apart
-        ) +
-        scale_y_continuous(
-          limits = c(y_floor, NA),
-          # integer breaks from 0 (breaks_pretty picks half-fish steps on
-          # small ranges, which then label as duplicate integers)
-          breaks = function(lim) {
-            top <- max(1, ceiling(lim[2]))
-            seq(0, top, by = max(1, ceiling(top / 6)))
-          },
-          expand = expansion(mult = c(0, 0.15)),
-          labels = scales::label_number(accuracy = 1)
-        ) +
-        # Break positions and labels adapt to the window: breaks_pretty() picks
-        # ~8 evenly spaced ticks for any span, and label_date_short() prints
-        # only the parts of the date that changed since the previous tick
-        # (e.g. "Sep 22 / 23 / 24", or "Sep / Oct / 2026" across a year).
-        scale_x_datetime(
-          limits = c(time_threshold(), now()),
-          # keep (and clip) points outside the limits rather than dropping
-          # them: the first bin floors to before the window start and the
-          # terminal step row sits one bin past the last record
-          oob = scales::oob_keep,
-          expand = c(0.02, 0.02),
-          breaks = scales::breaks_pretty(n = 5), # ~6 h ticks at 1 day; panels are narrow
-          labels = scales::label_date_short(),
-          timezone = 'America/Chicago', # data are UTC; render in Central
-          guide = guide_axis(check.overlap = TRUE)
+          size = 2.2
         )
+      )
+    }
+
+    d %>%
+      ggplot(aes(
+        x = TimeStamp_binned,
+        y = y_plot,
+        color = common_name_e
+      )) +
+      # Pale bands where the logger recorded nothing (outages), drawn first
+      # so the data sit on top.
+      geom_rect(
+        data = data_gaps(),
+        aes(xmin = xmin, xmax = xmax, ymin = -Inf, ymax = Inf),
+        inherit.aes = FALSE,
+        fill = '#C8C6C7', # storm-light
+        alpha = 0.35
+      ) +
+      # Steps: each bin's count holds until the next bin, which is what a
+      # binned count means, and coincident series differ by where they
+      # step. Breaks between segments (logger outages); zeros are drawn
+      # as line only, so the baseline isn't a wall of points.
+      geom_step(
+        aes(group = interaction(common_name_e, segment)),
+        direction = 'hv',
+        alpha = spp_alpha
+      ) +
+      geom_point(
+        data = ~ filter(.x, n_fish > 0, !is_end),
+        pch = 16,
+        alpha = spp_alpha
+      ) +
+      total_layers +
+      facet_wrap(
+        ~station_label,
+        scales = if (isTRUE(input$free_y)) 'free_y' else 'fixed',
+        drop = FALSE
+      ) +
+      labs(
+        x = 'Time (Central)',
+        y = paste0('Unique tagged fish (per ', input$timeagg, ')'),
+        color = 'Species',
+        caption = paste(
+          'Grey bands: no logger records.',
+          'Species series are offset vertically for legibility.'
+        )
+      ) +
+      scale_color_manual(
+        values = c(species_palette, 'All species' = '#000000')
+      ) +
+      theme_irbs_minimal(base_size = 15) +
+      theme(
+        legend.position = 'top',
+        panel.spacing.x = unit(1.5, 'lines') # keep edge tick labels apart
+      ) +
+      scale_y_continuous(
+        limits = c(y_floor, NA),
+        # integer breaks from 0 (breaks_pretty picks half-fish steps on
+        # small ranges, which then label as duplicate integers)
+        breaks = function(lim) {
+          top <- max(1, ceiling(lim[2]))
+          seq(0, top, by = max(1, ceiling(top / 6)))
+        },
+        expand = expansion(mult = c(0, 0.15)),
+        labels = scales::label_number(accuracy = 1)
+      ) +
+      # Break positions and labels adapt to the window: breaks_pretty() picks
+      # ~8 evenly spaced ticks for any span, and label_date_short() prints
+      # only the parts of the date that changed since the previous tick
+      # (e.g. "Sep 22 / 23 / 24", or "Sep / Oct / 2026" across a year).
+      scale_x_datetime(
+        limits = c(time_threshold(), now()),
+        # keep (and clip) points outside the limits rather than dropping
+        # them: the first bin floors to before the window start and the
+        # terminal step row sits one bin past the last record
+        oob = scales::oob_keep,
+        expand = c(0.02, 0.02),
+        breaks = scales::breaks_pretty(n = 5), # ~6 h ticks at 1 day; panels are narrow
+        labels = scales::label_date_short(),
+        timezone = 'America/Chicago', # data are UTC; render in Central
+        guide = guide_axis(check.overlap = TRUE)
+      )
   }) %>%
     # Cache rendered plots (app-wide, so shared across sessions on Connect).
     # The key covers every input that shapes the plot, plus the time of the
@@ -1244,6 +1352,518 @@ server <- function(input, output, session) {
       input$free_y,
       last_data_update()
     )
+
+  # ── Tag lookup ─────────────────────────────────────────────────────────────
+
+  # Tokens typed or pasted, split on commas, semicolons and any whitespace.
+  # ignoreNULL = FALSE: evaluates once (to nothing) before the first click,
+  # so the spotlight card shows its placeholder instead of sitting empty.
+  tag_tokens <- eventReactive(
+    input$tag_go,
+    {
+      str_split(input$tag_input %||% '', '[,;\\s]+')[[1]] %>%
+        str_trim() %>%
+        discard(~ .x == '') %>%
+        unique()
+    },
+    ignoreNULL = FALSE
+  )
+
+  # Every tag record whose TagID, or bare tag_id_code, matches a token. A
+  # redeployed tag has one row per animal_id.
+  tag_rows <- reactive({
+    tokens <- tag_tokens()
+    if (length(tokens) == 0) {
+      return(tibble())
+    }
+    tokens_upper <- toupper(tokens)
+    tbl(con, dbo('tag')) %>%
+      filter(
+        toupper(TagID) %in%
+          tokens_upper |
+          toupper(tag_id_code) %in% tokens_upper
+      ) %>%
+      collect() %>%
+      mutate(across(where(bit64::is.integer64), as.numeric)) %>%
+      arrange(common_name_e, TagID, utc_release_date_time)
+  })
+
+  # Most recent detection per matched deployment, with its station.
+  tag_last_detection <- reactive({
+    rows <- tag_rows()
+    if (nrow(rows) == 0) {
+      return(tibble())
+    }
+    ids <- unique(rows$TagID)
+    det <- tbl(con, dbo('event_animal')) %>%
+      filter(TagID %in% ids)
+    last <- det %>%
+      group_by(TagID, animal_id) %>%
+      filter(TimeStamp == max(TimeStamp, na.rm = TRUE)) %>%
+      ungroup() %>%
+      select(TagID, animal_id, station_id, TimeStamp) %>%
+      distinct() %>%
+      collect()
+    counts <- det %>%
+      group_by(TagID, animal_id) %>%
+      summarise(n_detections = n(), .groups = 'drop') %>%
+      collect() %>%
+      mutate(n_detections = as.integer(n_detections))
+    last %>%
+      group_by(TagID, animal_id) %>%
+      slice_max(TimeStamp, n = 1, with_ties = FALSE) %>%
+      ungroup() %>%
+      left_join(counts, by = c('TagID', 'animal_id')) %>%
+      left_join(
+        tbl_station %>%
+          select(station_id, station_label, latitude, longitude),
+        by = 'station_id'
+      )
+  })
+
+  output$tag_note <- renderUI({
+    tokens <- tag_tokens()
+    rows <- tag_rows()
+    if (length(tokens) == 0) {
+      return(div(class = 'heat-note top', 'No tag IDs entered.'))
+    }
+    hit <- toupper(tokens) %in% toupper(c(rows$TagID, rows$tag_id_code))
+    tagList(
+      div(
+        class = 'heat-note top',
+        sprintf(
+          '%d of %d IDs matched, %d tag record%s.',
+          sum(hit),
+          length(tokens),
+          nrow(rows),
+          if (nrow(rows) == 1) '' else 's'
+        )
+      ),
+      if (any(!hit)) {
+        div(
+          class = 'heat-note',
+          style = 'color: var(--irbs-altgeld);',
+          'Not found: ',
+          paste(tokens[!hit], collapse = ', ')
+        )
+      }
+    )
+  })
+
+  # Full tag table, most useful columns first; single-row selection drives
+  # the spotlight. Columns that are empty for every matched row are hidden.
+  tag_display <- reactive({
+    rows <- tag_rows()
+    req(nrow(rows) > 0)
+    lead <- c(
+      'TagID',
+      'animal_id',
+      'common_name_e',
+      'scientific_name',
+      'utc_release_date_time',
+      'release_location',
+      'length',
+      'weight',
+      'sex',
+      'tag_owner_pi',
+      'tag_owner_organization',
+      'tagger',
+      'tag_type',
+      'tag_manufacturer',
+      'tag_model',
+      'comments'
+    )
+    rows %>%
+      select(any_of(lead), everything()) %>%
+      select(where(~ !all(is.na(.x))))
+  })
+
+  output$tag_table_note <- renderUI({
+    if (nrow(tag_rows()) == 0) {
+      div(class = 'heat-note top', 'Matched tag records will appear here.')
+    }
+  })
+
+  output$tag_table <- renderReactable({
+    d <- tag_display()
+    reactable(
+      d,
+      selection = 'single',
+      onClick = 'select',
+      defaultSelected = 1,
+      highlight = TRUE,
+      compact = TRUE,
+      wrap = FALSE,
+      resizable = TRUE,
+      searchable = nrow(d) > 10,
+      defaultPageSize = 10,
+      defaultColDef = colDef(minWidth = 120),
+      columns = list(
+        utc_release_date_time = colDef(
+          name = 'release (Central)',
+          cell = function(v) {
+            if (is.na(v)) {
+              ''
+            } else {
+              format(with_tz(v, 'America/Chicago'), '%Y-%m-%d %H:%M')
+            }
+          }
+        ),
+        scientific_name = colDef(minWidth = 190),
+        release_location = colDef(minWidth = 200),
+        comments = colDef(minWidth = 300)
+      ),
+      theme = reactableTheme(
+        style = list(
+          fontFamily = 'var(--irbs-font-accessible)',
+          fontSize = '13px'
+        ),
+        headerStyle = list(
+          background = '#13294B',
+          color = '#fff',
+          fontSize = '11px',
+          textTransform = 'uppercase',
+          letterSpacing = '.05em'
+        ),
+        rowSelectedStyle = list(
+          backgroundColor = '#EEF2F8',
+          boxShadow = 'inset 3px 0 0 0 #FF5F05'
+        )
+      )
+    )
+  })
+
+  # The spotlighted record: the selected row, or the first.
+  spot_row <- reactive({
+    d <- tag_display()
+    sel <- getReactableState('tag_table', 'selected') %||% 1L
+    rows <- tag_rows()
+    # tag_display keeps row order, so the index maps straight back
+    rows[min(sel, nrow(rows)), ]
+  })
+
+  spot_detection <- reactive({
+    r <- spot_row()
+    tag_last_detection() %>%
+      filter(TagID == r$TagID, animal_id == r$animal_id | is.na(animal_id)) %>%
+      slice_max(TimeStamp, n = 1, with_ties = FALSE)
+  })
+
+  fmt_central <- function(x, fmt = '%b %d, %Y %H:%M') {
+    if (length(x) == 0 || is.na(x)) {
+      '\u2014'
+    } else {
+      format(with_tz(x, 'America/Chicago'), fmt)
+    }
+  }
+  fmt_num <- function(x, unit = '') {
+    if (length(x) == 0 || is.na(x)) {
+      '\u2014'
+    } else {
+      paste0(format(x, big.mark = ','), unit)
+    }
+  }
+  fmt_chr <- function(x) {
+    if (length(x) == 0 || is.na(x) || x == '') '\u2014' else as.character(x)
+  }
+  # "4 hours ago", "212 days ago": how stale a detection is
+  fmt_ago <- function(x) {
+    if (length(x) == 0 || is.na(x)) {
+      return('')
+    }
+    h <- as.numeric(difftime(Sys.time(), x, units = 'hours'))
+    if (h < 1) {
+      'under an hour ago'
+    } else if (h < 48) {
+      n <- round(h)
+      sprintf('%d hour%s ago', n, if (n == 1) '' else 's')
+    } else {
+      sprintf('%d days ago', round(h / 24))
+    }
+  }
+
+  output$spot_header <- renderUI({
+    if (nrow(tag_rows()) == 0) {
+      return(span('Tag spotlight'))
+    }
+    r <- spot_row()
+    n_deploy <- sum(tag_rows()$TagID == r$TagID)
+    div(
+      style = 'display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;',
+      span(str_to_title(r$common_name_e)),
+      span(
+        style = 'font-weight:400; color:var(--irbs-storm);',
+        tags$i(r$scientific_name)
+      ),
+      span(
+        style = 'margin-left:auto; font-weight:400; color:var(--irbs-storm); font-variant-numeric:tabular-nums;',
+        r$TagID,
+        if (n_deploy > 1) {
+          sprintf(' \u00b7 redeployed tag (%d records)', n_deploy)
+        }
+      )
+    )
+  })
+
+  output$spot_photo <- renderUI({
+    if (nrow(tag_rows()) == 0) {
+      return(NULL)
+    }
+    photo <- species_photo(spot_row()$common_name_e)
+    tagList(
+      tags$img(
+        src = photo$src,
+        alt = spot_row()$common_name_e,
+        # contain, not cover: show the whole fish, letterboxed on the light panel
+        style = 'width:100%; border-radius:8px; object-fit:contain; aspect-ratio: 3 / 2; padding:8px; background:#EEF2F8;'
+      ),
+      if (!is.null(photo$credit)) {
+        div(
+          class = 'heat-note',
+          style = 'margin-top:4px;',
+          '(C) ',
+          photo$credit
+        )
+      }
+    )
+  })
+
+  # Two-column fact list
+  fact <- function(label, value) {
+    tagList(
+      tags$dt(
+        style = 'font-family:var(--irbs-font-accessible); font-size:11px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--irbs-storm); margin-top:6px;',
+        label
+      ),
+      tags$dd(style = 'margin:0; color:var(--irbs-blue);', value)
+    )
+  }
+
+  output$spot_facts <- renderUI({
+    if (nrow(tag_rows()) == 0) {
+      return(div(
+        class = 'heat-note top',
+        'Look up a tag to see its details here.'
+      ))
+    }
+    r <- spot_row()
+    d <- spot_detection()
+    # RAFT/OTN units: length in metres, weight in kilograms
+    size <- paste(
+      c(
+        if (!is.na(r$length)) {
+          paste0(
+            fmt_num(r$length, ' m'),
+            if (!is.na(r$length_type)) paste0(' ', tolower(r$length_type))
+          )
+        },
+        if (!is.na(r$weight)) fmt_num(r$weight, ' kg')
+      ),
+      collapse = ' \u00b7 '
+    )
+    origin <- c(W = 'wild', H = 'hatchery')[toupper(r$wild_or_hatchery %||% NA)]
+    origin <- if (is.na(origin)) r$wild_or_hatchery else unname(origin)
+    # Estimated transmitter end date from release + est_tag_life
+    tag_life <- if (is.na(r$est_tag_life)) {
+      '\u2014'
+    } else if (is.na(r$utc_release_date_time)) {
+      paste(r$est_tag_life, 'days')
+    } else {
+      end <- r$utc_release_date_time + days(r$est_tag_life)
+      if (end < Sys.time()) {
+        tagList(
+          paste(r$est_tag_life, 'days \u00b7 '),
+          span(
+            style = 'color:var(--irbs-altgeld);',
+            'expired ',
+            fmt_central(end, '%b %Y')
+          )
+        )
+      } else {
+        paste0(
+          r$est_tag_life,
+          ' days \u00b7 est. end ',
+          fmt_central(end, '%b %Y')
+        )
+      }
+    }
+    layout_columns(
+      col_widths = c(6, 6),
+      fill = FALSE,
+      gap = '16px',
+      tags$dl(
+        style = 'margin:0;',
+        fact(
+          'Tag owner',
+          paste(
+            c(fmt_chr(r$tag_owner_pi), r$tag_owner_organization),
+            collapse = ', '
+          )
+        ),
+        fact('Tagger', fmt_chr(r$tagger)),
+        fact(
+          'Released',
+          paste0(
+            fmt_central(r$utc_release_date_time),
+            ' \u00b7 ',
+            fmt_chr(r$release_location)
+          )
+        ),
+        fact(
+          'At capture',
+          # missing parts drop out of the list rather than printing a dash
+          c(
+            if (nzchar(size)) size,
+            r$sex,
+            tolower(r$life_stage),
+            origin
+          ) %>%
+            discard(~ is.na(.x) || .x == '') %>%
+            paste(collapse = ' \u00b7 ') %>%
+            fmt_chr()
+        )
+      ),
+      tags$dl(
+        style = 'margin:0;',
+        fact(
+          'Last detection',
+          if (nrow(d) == 0) {
+            'none in the Fish Tracks array'
+          } else {
+            tagList(
+              paste0(
+                fmt_central(d$TimeStamp),
+                ' \u00b7 ',
+                d$station_label,
+                sprintf(
+                  ' (%s detections)',
+                  format(d$n_detections, big.mark = ',')
+                )
+              ),
+              div(
+                class = 'heat-note',
+                style = 'margin-top:2px;',
+                fmt_ago(d$TimeStamp)
+              )
+            )
+          }
+        ),
+        fact(
+          'Tag',
+          paste(
+            c(r$tag_type, r$tag_manufacturer, r$tag_model) %>% discard(is.na),
+            collapse = ' \u00b7 '
+          )
+        ),
+        fact('Tag life', tag_life),
+        fact('Capture location', fmt_chr(r$capture_location))
+      )
+    )
+  })
+
+  output$spot_comments <- renderUI({
+    if (nrow(tag_rows()) == 0) {
+      return(NULL)
+    }
+    r <- spot_row()
+    if (is.na(r$comments) || r$comments == '') {
+      return(NULL)
+    }
+    div(
+      style = 'margin:10px 0; padding:8px 12px; background:#F7F6F7; border-left:3px solid var(--irbs-harvest); font-family:var(--irbs-font-accessible); font-size:13px;',
+      tags$strong('Comments: '),
+      r$comments
+    )
+  })
+
+  # Release point (orange) and most recent detection (blue, labelled with
+  # the station), joined by a line. Stations without coordinates in
+  # dbo.station are noted rather than drawn.
+  output$tag_map <- renderLeaflet({
+    # Esri topo tiles: no API key (CARTO's basemaps now require one)
+    base <- leaflet(options = leafletOptions(zoomControl = FALSE)) %>%
+      addProviderTiles('Esri.WorldTopoMap')
+    if (nrow(tag_rows()) == 0) {
+      return(base %>% setView(-89.5, 41.0, zoom = 6))
+    }
+    r <- spot_row()
+    d <- spot_detection()
+    pts <- bind_rows(
+      if (!is.na(r$release_latitude) && !is.na(r$release_longitude)) {
+        tibble(
+          lat = r$release_latitude,
+          lng = r$release_longitude,
+          what = 'Release',
+          label = fmt_chr(r$release_location),
+          col = '#FF5F05'
+        )
+      },
+      if (nrow(d) == 1 && !is.na(d$latitude) && !is.na(d$longitude)) {
+        tibble(
+          lat = d$latitude,
+          lng = d$longitude,
+          what = 'Last detection',
+          label = d$station_label,
+          col = '#13294B'
+        )
+      }
+    )
+    if (nrow(pts) == 0) {
+      return(
+        base %>%
+          setView(-89.5, 41.0, zoom = 6) %>%
+          addControl(
+            'No coordinates for release or last detection',
+            position = 'topleft'
+          )
+      )
+    }
+    m <- base %>%
+      addCircleMarkers(
+        data = pts,
+        lng = ~lng,
+        lat = ~lat,
+        radius = 7,
+        weight = 2,
+        color = ~col,
+        fillColor = ~col,
+        fillOpacity = 0.85,
+        label = ~ paste0(what, ': ', label),
+        labelOptions = labelOptions(
+          noHide = TRUE,
+          direction = 'top',
+          textsize = '12px'
+        )
+      )
+    if (nrow(pts) == 2) {
+      m <- m %>%
+        addPolylines(
+          lng = pts$lng,
+          lat = pts$lat,
+          color = '#707372',
+          weight = 2,
+          dashArray = '4 4'
+        ) %>%
+        fitBounds(
+          min(pts$lng),
+          min(pts$lat),
+          max(pts$lng),
+          max(pts$lat),
+          # cap the zoom so same-site release/detection still shows the river
+          options = list(padding = c(40, 40), maxZoom = 13)
+        )
+    } else {
+      m <- m %>% setView(pts$lng, pts$lat, zoom = 10)
+    }
+    if (nrow(d) == 1 && (is.na(d$latitude) || is.na(d$longitude))) {
+      m <- m %>%
+        addControl(
+          paste0('No coordinates for ', d$station_label),
+          position = 'topleft'
+        )
+    }
+    m
+  })
 }
 # Run the application
 shinyApp(ui = ui, server = server)
