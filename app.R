@@ -450,9 +450,10 @@ ui <- page_navbar(
                 choices = c(
                   'Last hour' = 1,
                   'Last 6 hours' = 6,
+                  'Last 12 hours' = 12,
                   'Last 24 hours' = 24
                 ),
-                selected = '6'
+                selected = '12'
               ),
               single_select(
                 inputId = 'heat_baseline',
@@ -460,7 +461,9 @@ ui <- page_navbar(
                 choices = c(
                   'Last 24 hours' = 24,
                   'Last 7 days' = 168,
-                  'Last 60 days' = 1440
+                  'Last 30 days' = 720,
+                  'Last 60 days' = 1440,
+                  'Last 90 days' = 2160
                 ),
                 selected = '1440'
               )
@@ -471,10 +474,11 @@ ui <- page_navbar(
 
       card(
         full_screen = TRUE,
-        height = '860px',
         card_header('Unique tagged fish detected'),
         card_body(
-          style = 'overflow:hidden;',
+          # x only: the card now grows with the facet rows, and full-screen
+          # mode needs to scroll vertically
+          style = 'overflow-x:hidden;',
           # Fixed y-axes make receivers comparable; free lets a quiet receiver
           # use its own scale when one busy site would otherwise flatten it.
           input_switch(
@@ -496,6 +500,9 @@ ui <- page_navbar(
               ),
               click = clickOpts(id = 'plot_click')
             ),
+            # Height of #plot, set from plot_layout() (see server). CSS because
+            # bindCache() ignores renderPlot()'s height argument.
+            uiOutput('plot_height_css'),
             uiOutput('plot_tooltip'), # transient, follows the cursor
             uiOutput('plot_pinned'), # pinned by click; has the copy button
             # Copy runs entirely in the browser inside the click gesture, which
@@ -1226,12 +1233,38 @@ server <- function(input, output, session) {
     tag_box(p$pt, p$x, p$y, pinned = TRUE)
   })
 
+  # ── Plot layout (responsive facets) ─────────────────────────────────────────
+  # Columns follow the plot's rendered width so panels stay readable on
+  # phones; the plot grows taller instead of narrower.
+  plot_w <- reactive(session$clientData$output_plot_width) %>% debounce(250)
+
+  plot_layout <- reactive({
+    w <- plot_w() %||% 1200 # before the first render, assume desktop
+    n <- max(1, nlevels(data_timeseries_plot()$station_label))
+    small <- w < 600
+    ncol <- max(1, min(n, floor(w / 300))) # ~300 px minimum per panel
+    panel_h <- if (small) 200 else 260
+    list(
+      ncol = ncol,
+      small = small,
+      height = ceiling(n / ncol) * panel_h + 170 # + legend, axis titles, caption
+    )
+  })
+
+  output$plot_height_css <- renderUI({
+    tags$style(sprintf(
+      '#plot { height: %dpx !important; }',
+      as.integer(plot_layout()$height)
+    ))
+  })
+
   # ── Plot ───────────────────────────────────────────────────────────────────
 
   output$plot <- renderPlot({
     req(data_timeseries_plot())
 
     d <- data_timeseries_plot()
+    layout <- plot_layout()
     show_total <- isTRUE(input$show_total)
     # species series step back when the total is overlaid
     spp_alpha <- if (show_total) 0.3 else 0.8
@@ -1291,6 +1324,7 @@ server <- function(input, output, session) {
       total_layers +
       facet_wrap(
         ~station_label,
+        ncol = layout$ncol,
         scales = if (isTRUE(input$free_y)) 'free_y' else 'fixed',
         drop = FALSE
       ) +
@@ -1306,7 +1340,7 @@ server <- function(input, output, session) {
       scale_color_manual(
         values = c(species_palette, 'All species' = '#000000')
       ) +
-      theme_irbs_minimal(base_size = 15) +
+      theme_irbs_minimal(base_size = if (layout$small) 12 else 15) +
       theme(
         legend.position = 'top',
         panel.spacing.x = unit(1.5, 'lines') # keep edge tick labels apart
@@ -1350,6 +1384,8 @@ server <- function(input, output, session) {
       input$lookback,
       input$show_total,
       input$free_y,
+      plot_layout()$ncol,
+      plot_layout()$small,
       last_data_update()
     )
 
@@ -1726,9 +1762,9 @@ server <- function(input, output, session) {
       tags$dl(
         style = 'margin:0;',
         fact(
-          'Last detection',
+          'Last detection in Real-Time array',
           if (nrow(d) == 0) {
-            'none in the Fish Tracks array'
+            'none in the Real-Time array'
           } else {
             tagList(
               paste0(
