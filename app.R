@@ -64,29 +64,29 @@ all_spp <- tbl(con, dbo('tag')) %>%
   tolower() %>%
   c(., 'unknown')
 
-# Species picker groups. A species is assigned to the first group whose
-# pattern it matches; anything unmatched is native. Groups appear in this
-# order, sorted alphabetically within each. Empty groups (e.g. black carp
-# before it shows up in the tag table) are dropped from the picker.
-species_groups <- list(
-  'Invasive' = 'bighead carp|silver carp|grass carp|black carp',
-  'Unknown' = '^unknown$',
-  'Non-native' = 'common carp|goldfish',
-  'Native' = '.'
-)
+# Species lookup: picker group and restricted flag per species. 'unknown'
+# (tags with no deployment record) is not a row in dbo.species; it is added
+# to the Unknown group here and is never part of the public tier.
+species_info <- tbl(con, dbo('species')) %>%
+  select(species = common_name_e, species_group, restricted) %>%
+  collect() %>%
+  mutate(species = tolower(species)) %>%
+  bind_rows(tibble(
+    species = 'unknown',
+    species_group = 'Unknown',
+    restricted = TRUE
+  ))
 
-species_choices <- local({
-  remaining <- sort(all_spp)
-  out <- list()
-  for (grp in names(species_groups)) {
-    hit <- remaining[str_detect(remaining, species_groups[[grp]])]
-    if (length(hit)) {
-      out[[grp]] <- hit
-    }
-    remaining <- setdiff(remaining, hit)
-  }
-  out
-})
+# Species picker groups, from dbo.species.species_group. Groups appear in
+# this order, sorted alphabetically within each; only species present in the
+# tag table are listed, and empty groups are dropped from the picker.
+species_group_order <- c('Invasive', 'Unknown', 'Non-native', 'Native')
+
+species_choices <- species_info %>%
+  filter(species %in% all_spp) %>%
+  mutate(species_group = factor(species_group, levels = species_group_order)) %>%
+  arrange(species_group, species) %>%
+  with(split(species, species_group, drop = TRUE))
 
 # Fixed colour per species so a species keeps its colour whatever else is
 # selected. Invasive carp are assigned BY NAME so silver and bighead are always
@@ -159,6 +159,55 @@ receiver_choices <- tbl_station %>%
 receiver_default <- tbl_station %>%
   filter(river_name != 'Sandusky River') %>%
   pull(station_id)
+
+species_default <- c(species_choices$Invasive, species_choices$Unknown)
+
+# ── Access tiers ──────────────────────────────────────────────────────────────
+# Members of this Posit Connect group see every station and species; everyone
+# else (anonymous visitors included) gets the public tier: stations and
+# species with restricted = 0, and no unmatched ('unknown') tags.
+restricted_group <- 'Real Time Telemetry Restricted Data'
+
+# Posit Connect login page, linked from the public-tier status line.
+connect_login_url <- 'https://irbs-posit.inhs.illinois.edu/connect/#/login'
+
+# Tier for a session, decided once at session start. For local testing set
+# options(fishtracks.tier = 'restricted') or 'public' before runApp(); the
+# option is ignored on Posit Connect, where only group membership counts.
+# Locally with no option set, the tier is public.
+session_tier <- function(session) {
+  on_connect <- identical(Sys.getenv('POSIT_PRODUCT'), 'CONNECT')
+  override <- getOption('fishtracks.tier')
+  if (!on_connect && !is.null(override)) {
+    return(match.arg(override, c('public', 'restricted')))
+  }
+  if (restricted_group %in% session$groups) 'restricted' else 'public'
+}
+
+# Keep only the allowed values of a grouped choices list; drop empty groups.
+keep_choices <- function(choices, allowed) {
+  out <- map(choices, ~ .x[.x %in% allowed])
+  out[lengths(out) > 0]
+}
+
+station_public <- tbl_station %>%
+  filter(restricted == 0L) %>%
+  pull(station_id)
+species_public <- species_info %>%
+  filter(restricted == 0L) %>%
+  pull(species)
+
+# The UI is built with PUBLIC choices so restricted station and species
+# names never reach a public browser; the server upgrades the pickers for
+# restricted sessions.
+receiver_choices_public <- keep_choices(receiver_choices, station_public)
+receiver_default_public <- intersect(receiver_default, station_public)
+species_choices_public <- keep_choices(species_choices, species_public)
+species_default_public <- intersect(species_default, species_public)
+# if every invasive species is restricted, start with all public species
+if (length(species_default_public) == 0) {
+  species_default_public <- unlist(species_choices_public, use.names = FALSE)
+}
 
 # Species photos for the Tag lookup spotlight live in www/species/ as
 # <slug>_<AGENCY>.<ext>; the agency after the underscore is shown as the
@@ -264,6 +313,19 @@ heat_window_label <- function(hours) {
 }
 
 
+# USGS provisional-data disclaimer, shown in full in a popover on hover over
+# the footer's "Provisional data disclaimer" item.
+usgs_disclaimer <- paste(
+  'These data are preliminary or provisional and are subject to revision.',
+  'They are being provided to meet the need for timely best science. The',
+  'data have not received final approval by the U.S. Geological Survey',
+  '(USGS) and are provided on the condition that neither the USGS nor the',
+  'U.S. Government shall be held liable for any damages resulting from the',
+  'authorized or unauthorized use of the data. These data should not be',
+  'published without the written consent from the USGS Real-Time Fish',
+  'Telemetry Team and the agencies who own the detected tags.'
+)
+
 # App footer: the shared IRBS footer plus a data-source line that leads with
 # the USGS identifier, laid out like the Block I line above it.
 fishtracks_footer <- tagAppendChild(
@@ -299,6 +361,19 @@ fishtracks_footer <- tagAppendChild(
         target = '_blank',
         rel = 'noopener noreferrer',
         'USGS Riverine Acoustic Fish Telemetry Network (RAFT)'
+      ),
+      " · ",
+      # Full text on hover/focus/tap; the trigger stays one short item. A
+      # popover rather than a tooltip: wider box (276px vs 200px) and a title.
+      popover(
+        tags$span(
+          bsicons::bs_icon('info-circle'),
+          'Provisional data disclaimer'
+        ),
+        usgs_disclaimer,
+        title = 'Provisional data',
+        placement = 'top',
+        options = list(trigger = 'hover focus')
       )
     )
   )
@@ -315,14 +390,14 @@ detections_sidebar <- sidebar(
   multi_select(
     inputId = 'species',
     label = 'Species',
-    choices = species_choices,
-    selected = c(species_choices$Invasive, species_choices$Unknown)
+    choices = species_choices_public,
+    selected = species_default_public
   ),
   multi_select(
     inputId = 'receiver_name',
     label = 'Receivers',
-    choices = receiver_choices,
-    selected = receiver_default
+    choices = receiver_choices_public,
+    selected = receiver_default_public
   ),
   single_select(
     inputId = 'lookback',
@@ -601,6 +676,10 @@ ui <- page_navbar(
     )
   ),
 
+  # Access tier, right-aligned in the navbar (see output$tier_status)
+  nav_spacer(),
+  nav_item(uiOutput('tier_status')),
+
   footer = fishtracks_footer
 )
 
@@ -629,10 +708,87 @@ last_data_update <- reactivePoll(
 
 # Define server logic required to draw a histogram
 server <- function(input, output, session) {
+  # Access tier, fixed for the session. A plain value, not a reactive: it is
+  # part of every bindCache key, since those caches are shared app-wide.
+  tier <- session_tier(session)
+  is_public <- tier == 'public'
+  allowed_stations <- if (is_public) station_public else tbl_station$station_id
+
+  # The UI ships public choices; restricted sessions get the full lists.
+  if (!is_public) {
+    updateVirtualSelect(
+      'species',
+      choices = species_choices,
+      selected = species_default
+    )
+    updateVirtualSelect(
+      'receiver_name',
+      choices = receiver_choices,
+      selected = receiver_default
+    )
+  }
+
+  # Access status line in the navbar: who is signed in (session$user is NULL
+  # for anonymous visitors and when run locally) and which tier they see.
+  # Anonymous public visitors get a login link; a signed-in user who is not
+  # in the group is told why they still see the public view.
+  output$tier_status <- renderUI({
+    user <- session$user
+    who <- if (is.null(user) || !nzchar(user)) NULL else paste('Signed in as', user)
+
+    if (!is_public) {
+      return(tags$span(
+        class = 'navbar-text small',
+        bsicons::bs_icon('shield-lock'),
+        paste(c(who, 'Restricted data'), collapse = ' \u00b7 ')
+      ))
+    }
+
+    if (is.null(who)) {
+      # Back to this app after login. Connect is expected to honour ?url= on
+      # its login route; if it does not, the link still reaches the login.
+      cd <- session$clientData
+      here <- paste0(
+        cd$url_protocol, '//', cd$url_hostname,
+        if (nzchar(cd$url_port)) paste0(':', cd$url_port),
+        cd$url_pathname
+      )
+      tags$span(
+        class = 'navbar-text small',
+        bsicons::bs_icon('globe'),
+        'Public view \u00b7 ',
+        tags$a(
+          href = paste0(
+            connect_login_url, '?url=', URLencode(here, reserved = TRUE)
+          ),
+          target = '_top', # leave the Connect iframe, if any
+          class = 'link-light',
+          'Log in for full access'
+        )
+      )
+    } else {
+      tooltip(
+        tags$span(
+          class = 'navbar-text small',
+          bsicons::bs_icon('globe'),
+          paste(who, 'Public view', sep = ' \u00b7 ')
+        ),
+        paste(
+          'Your account is not in the restricted-data group, so some',
+          'receivers and species are not shown.'
+        )
+      )
+    }
+  })
+
   # Receiver selection, debounced so a burst of clicks (e.g. toggling a whole
   # river via its group checkbox, then a couple of individual receivers) runs
-  # one query rather than one per click.
-  receivers_settled <- reactive(input$receiver_name) %>% debounce(750)
+  # one query rather than one per click. Intersected with the tier's stations
+  # so a hand-crafted input value cannot reach a restricted receiver.
+  receivers_settled <- reactive(
+    intersect(input$receiver_name, allowed_stations)
+  ) %>%
+    debounce(750)
 
   time_threshold <- reactive({
     req(input$lookback)
@@ -667,12 +823,21 @@ server <- function(input, output, session) {
 
   # Species is NOT filtered here: the query aggregates every species so that
   # toggling species in the UI is a local filter on the collected summary
-  # rows rather than a new round trip to SQL Server.
+  # rows rather than a new round trip to SQL Server. The exception is the
+  # public tier: restricted stations and species are removed here, in SQL,
+  # before aggregation. The species filter runs before the 'unknown'
+  # coalesce, so unmatched tags (NULL species) drop out of the public tier.
   data_sppjoin <- reactive({
     req(data_receiverfilter())
 
-    data_receiverfilter() %>%
-      left_join(tbl(con, dbo('tag')), by = c('TagID', 'animal_id')) %>%
+    out <- data_receiverfilter() %>%
+      left_join(tbl(con, dbo('tag')), by = c('TagID', 'animal_id'))
+    if (is_public) {
+      out <- out %>%
+        keep_public_stations(con) %>%
+        keep_public_species(con)
+    }
+    out %>%
       mutate(common_name_e = coalesce(common_name_e, 'unknown'))
   })
 
@@ -702,6 +867,7 @@ server <- function(input, output, session) {
     out
   }) %>%
     bindCache(
+      tier,
       time_threshold(),
       receivers_settled(),
       input$timeagg,
@@ -727,7 +893,11 @@ server <- function(input, output, session) {
       filter(
         TimeStamp >= time_threshold_nonr,
         station_id %in% selected_receivers_nonr
-      ) %>%
+      )
+    if (is_public) {
+      out <- keep_public_stations(out, con)
+    }
+    out <- out %>%
       mutate(TimeStamp_binned = sql(bin_expr)) %>%
       distinct(station_id, TimeStamp_binned) %>%
       collect()
@@ -895,23 +1065,34 @@ server <- function(input, output, session) {
     thr <- as_datetime(now() - days(62))
     bin_expr <- bin_timestamp_sql('1 hour')
 
+    # Public tier: same filters as data_sppjoin(), before aggregation.
     hourly <- tbl(con, dbo('event_animal')) %>%
       filter(TimeStamp >= thr) %>%
-      left_join(tbl(con, dbo('tag')), by = c('TagID', 'animal_id')) %>%
+      left_join(tbl(con, dbo('tag')), by = c('TagID', 'animal_id'))
+    if (is_public) {
+      hourly <- hourly %>%
+        keep_public_stations(con) %>%
+        keep_public_species(con)
+    }
+    hourly <- hourly %>%
       mutate(common_name_e = coalesce(common_name_e, 'unknown')) %>%
       aggregate_detections_lazy(unit = '1 hour') %>%
       select(-n_detections) %>%
       collect()
 
     coverage <- tbl(con, dbo('event')) %>%
-      filter(TimeStamp >= thr) %>%
+      filter(TimeStamp >= thr)
+    if (is_public) {
+      coverage <- keep_public_stations(coverage, con)
+    }
+    coverage <- coverage %>%
       mutate(TimeStamp_binned = sql(bin_expr)) %>%
       distinct(station_id, TimeStamp_binned) %>%
       collect()
 
     list(hourly = hourly, coverage = coverage)
   }) %>%
-    bindCache(last_data_update())
+    bindCache(tier, last_data_update())
 
   # Per selected receiver: fish in the current window, percentile against
   # the baseline, and how much of the current window the logger covered.
@@ -1395,6 +1576,7 @@ server <- function(input, output, session) {
     # The key covers every input that shapes the plot, plus the time of the
     # last data update so the cache is invalidated exactly when new rows land.
     bindCache(
+      tier,
       time_threshold(),
       receivers_settled(),
       input$species,
@@ -1431,12 +1613,17 @@ server <- function(input, output, session) {
       return(tibble())
     }
     tokens_upper <- toupper(tokens)
-    tbl(con, dbo('tag')) %>%
+    rows <- tbl(con, dbo('tag')) %>%
       filter(
         toupper(TagID) %in%
           tokens_upper |
           toupper(tag_id_code) %in% tokens_upper
-      ) %>%
+      )
+    # Public tier: restricted-species tags read as "Not found".
+    if (is_public) {
+      rows <- keep_public_species(rows, con)
+    }
+    rows %>%
       collect() %>%
       mutate(across(where(bit64::is.integer64), as.numeric)) %>%
       arrange(common_name_e, TagID, utc_release_date_time)
@@ -1451,6 +1638,10 @@ server <- function(input, output, session) {
     ids <- unique(rows$TagID)
     det <- tbl(con, dbo('event_animal')) %>%
       filter(TagID %in% ids)
+    # Public tier: last detection and counts at unrestricted stations only.
+    if (is_public) {
+      det <- keep_public_stations(det, con)
+    }
     last <- det %>%
       group_by(TagID, animal_id) %>%
       filter(TimeStamp == max(TimeStamp, na.rm = TRUE)) %>%

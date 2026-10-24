@@ -261,6 +261,29 @@ aggregate_detections_lazy <- function(
     )
 }
 
+# Public-tier filters ####
+# Restrict a lazy query to stations / species flagged restricted = 0. Semi
+# joins (WHERE EXISTS), so they run in SQL before any aggregation and add no
+# columns. `restricted == 0L` rather than `!restricted`: `!` becomes
+# NOT(restricted), which is not valid T-SQL for a bit column.
+keep_public_stations <- function(tbl_lazy, con) {
+  open_stations <- tbl(con, Id(schema = 'dbo', table = 'station')) %>%
+    filter(restricted == 0L) %>%
+    select(station_id)
+  semi_join(tbl_lazy, open_stations, by = 'station_id')
+}
+
+# Species is matched on dbo.species.common_name_e (the FK target of
+# dbo.tag.common_name_e). Unmatched tags (common_name_e NULL, before the
+# 'unknown' coalesce) never satisfy the semi join, so they are dropped from
+# the public tier.
+keep_public_species <- function(tbl_lazy, con) {
+  open_species <- tbl(con, Id(schema = 'dbo', table = 'species')) %>%
+    filter(restricted == 0L) %>%
+    select(common_name_e)
+  semi_join(tbl_lazy, open_species, by = 'common_name_e')
+}
+
 # Assemble TagID in tag tabl ematching format of TagID in event table ####
 assemble_TagID <- function(tag) {
   tag %>%
